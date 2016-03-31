@@ -70,12 +70,14 @@ plugins                | 外掛                          |
 pointer                | 指標                          | 參考：[維基百科][pointer]
 primitive type         | 基本型別                      | 參考：[維基百科][primitive type]
 reference              | 參照、參考                    | 參考：[維基百科][reference]
+round bracket          | 圓括號                        | 參考：[維基百科][bracket]
 scope                  | 有效範圍                      |
 semantics              | 語意                          |
 segment                | 區段                          | 參考：[維基百科][segment]
 segmentation fault     | 記憶體區段錯誤                | 參考：[維基百科][segmentation fault]
 shadowing              | 遮蔽                          |
 signed integer         | 帶號整數                      | 參考：[維基百科][integer]
+square bracket         | 方括號                        | 參考：[維基百科][bracket]
 stack                  | 堆疊                          | 參考：[維基百科][stack]
 statements             | 陳述式                        |
 string                 | 字串                          | 參考：[維基百科][string]
@@ -104,6 +106,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [bit]: https://zh.wikipedia.org/zh-tw/%E4%BD%8D%E5%85%83
 [boolean]: https://zh.wikipedia.org/wiki/%E5%B8%83%E7%88%BE_(%E6%95%B8%E6%93%9A%E9%A1%9E%E5%9E%8B)
 [bounds-check]: https://zh.wikipedia.org/zh-tw/%E8%BE%B9%E7%95%8C%E6%A3%80%E6%9F%A5
+[bracket]: https://zh.wikipedia.org/zh-tw/%E6%8B%AC%E5%8F%B7
 [byte]: https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82
 [camel case]: https://zh.wikipedia.org/zh-tw/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB
 [collection]: https://zh.wikipedia.org/zh-tw/%E9%9B%86%E5%90%88_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
