@@ -1,23 +1,23 @@
-# 向量 
+# 向量
 
-向量 `Vec<T>` 為標準函式庫中動態可增長的陣列，型別 `T` 表示我們可以宣告任何型別的向量(可參考[泛型][generic]章節)
-向量的記憶體一定保存在堆積區，可以使用 `vec!` 巨集來生成向量。
+向量 `Vec<T>` 為標準函式庫中動態可增長的陣列，型別 `T` 表示我們可以宣告任何型別的向量（可參考[泛型][generic]章節）。
+向量的資料一定會配置在堆積區 (heap) ，可以使用 `vec!` 巨集來生成向量。
 
 ```rust
 let v = vec![1, 2, 3, 4, 5]; // v: Vec<i32>
 ```
 
-(注意到不像之前使用的 `println!` 巨集，`vec!` 巨集使用方括號，Rust 允許我們使用圓括號或方括號
-這裡使用方括號純粹是慣例)
+（注意到不像之前使用的 `println!` 巨集，`vec!` 巨集使用方括號，Rust 允許我們使用圓括號或方括號。
+在這裡使用方括號純粹是慣例。）
 
-`vec!` 有另一種形式用來產生重複的初始值：
+`vec!` 有另一種用來產生重複初始值的形式：
 
 ```rust
 let v = vec![0; 10]; // ten zeroes
 ```
 
-向量將內容儲存在連續的堆疊之中，意味著在編譯時，型別 `T` 的大小即需要確定(即需要多少bytes 來儲存一個 `T`)
-有些東西的大小在編譯時期無法確定，這種情況你必須儲存一個指向該物件的指標： [`Box`][box] 型別對此相當合用。
+向量將內容儲存在連續的堆積之中，意味著在編譯時，型別 `T` 的大小就必須是已知的（即需要多少 bytes 來儲存一個 `T`）。
+有些東西的大小在編譯期無法確定，這種情況你必須儲存一個指向該物件的指標：[Box][box] 型別對此相當合用。
 
 ## 存取物件
 
@@ -31,9 +31,9 @@ println!("The third element of v is {}", v[2]);
 
 編號是由 `0` 開始計算，因此第三個元素為 `v[2]`。
 
-同時需注意一定要用 `usize` 型別作為編號值：
+同時需注意一定要用 `usize` 型別作為索引值：
 
-```ignore
+```rust,ignore
 let v = vec![1, 2, 3, 4, 5];
 
 let i: usize = 0;
@@ -57,25 +57,24 @@ note: the type `collections::vec::Vec<_>` cannot be indexed by `i32`
 error: aborting due to previous error
 ```
 
-錯誤訊息中有許多標點，不過內容很單純：你不能使用 `i32` 作為編號值。
+錯誤訊息中有許多標點符號，不過內容其實很單純：你不能使用 `i32` 作為索引值。
 
 ## 超出邊界存取
 
-如果你試圖存取不存在的位置：
+如果你試圖存取不存在的索引位置：
 
-```ignore
+```rust,ignore
 let v = vec![1, 2, 3];
 println!("Item 7 is {}", v[7]);
 ```
 
-則現行的執行緒會 [panic] 並產生如下的訊息
-then the current thread will [panic] with a message like this:
+則現行的執行緒會 [panic] 並產生如下的訊息：
 
 ```text
 thread '<main>' panicked at 'index out of bounds: the len is 3 but the index is 7'
 ```
 
-如果你要處理超出邊界錯誤，可以使用 [`get`][get] 或 [`get_mut`][get_mut]方法，當遇到不合法的編號會回傳 `None`：
+如果你要處理超出邊界的錯誤，可以使用 [get][get] 或 [get_mut][get_mut] 方法，當它們遇到無效的索引值會回傳 `None`：
 
 ```rust
 let v = vec![1, 2, 3];
@@ -105,10 +104,10 @@ for i in v {
 }
 ```
 
-向量有許多有用的方法，可以參考 [向量的API文件][vec]。
+向量有許多有用的方法，可以參考[向量的 API 文件][vec]。
 
-[vec]: ../std/vec/index.html
-[box]: ../std/boxed/index.html
+[vec]: http://doc.rust-lang.org/std/vec/index.html
+[box]: http://doc.rust-lang.org/std/boxed/index.html
 [generic]: generics.html
 [panic]: concurrency.html#panics
 [get]: http://doc.rust-lang.org/std/vec/struct.Vec.html#method.get

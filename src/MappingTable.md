@@ -46,6 +46,7 @@ fault                  | 錯誤                          |
 formalization          | 正規化                        |
 function               | 函式                          | 參考：[維基百科][function]
 generics               | 泛型                          | 參考：[維基百科][generics]
+index                  | 索引                          | 參考：[維基百科][index]
 instance               | 實體                          |
 iterative              | 疊代                          | 參考：[維基百科][iterative]
 iterator               | 疊代器                        | 參考：[維基百科][iterator]
@@ -123,6 +124,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [heap]: https://zh.wikipedia.org/zh-tw/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
 [function]: https://zh.wikipedia.org/zh-tw/%E5%AD%90%E7%A8%8B%E5%BA%8F
 [generics]: https://zh.wikipedia.org/zh-tw/%E6%B3%9B%E5%9E%8B
+[index]: https://zh.wikipedia.org/zh-tw/%E7%B4%A2%E5%BC%95
 [integer]: https://zh.wikipedia.org/zh-tw/%E6%95%B4%E6%95%B0_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 [iterative]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3
 [iterator]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3%E5%99%A8
