@@ -1,13 +1,13 @@
 # 模式
 
-模式 (pattern) 在 Rust 中很常見。
-我們在[變數綁定][bindings]、[match 陳述式][match]、及其他地方都會用到。
+模式（pattern）在 Rust 中很常見。
+我們在 [變數綁定][bindings]、[match 陳述式][match]、及其他地方都會用到。
 讓我們開始快速地了解模式可以做到些什麼！
 
 [bindings]: variable-bindings.html
 [match]: match.html
 
-快速複習一下：你可以直接配對變數，而 `_` 將會配對到 "任何" 沒列出來的其他情況：
+快速複習一下：你可以直接配對變數，而 `_` 將會配對到「任何」沒列出來的其他情況：
 
 ```rust
 let x = 1;
@@ -22,7 +22,7 @@ match x {
 
 這會印出 `one`。
 
-模式有個陷阱：它會產生遮蔽 (shadowing)，與其他會產生新的綁定的任何東西一樣。
+模式有個陷阱：它會產生遮蔽（shadowing），與其他會產生新的綁定的任何東西一樣。
 舉例來說：
 
 ```rust
@@ -48,7 +48,7 @@ x: 1
 請注意，在 match 有效範圍之外的 `x` 的值不會影響到範圍內的 `x`。
 因為我們本來已經有了 `x` 綁定，而新的 `x` 遮蔽了它。
 
-## 多重模式 (Multiple patterns)
+## 多重模式（Multiple patterns）
 
 你可以使用 `|` 來配對多重模式：
 
@@ -64,9 +64,9 @@ match x {
 
 這會印出 `one or two`。
 
-## 解構 (Destructuring)
+## 解構（Destructuring）
 
-如果你有個複合的資料型別，像是[結構體][struct] (struct)，你可以在模式中解構它：
+如果你有個複合的資料型別，像是 [結構體][struct]（struct），你可以在模式中解構它：
 
 ```rust
 struct Point {
@@ -132,9 +132,9 @@ match origin {
 
 這會印出 `y is 0`。
 
-這種 "解構" 行為在任何複合資料型別上都可以運作，像[多元組][tuples] (tuple) 或[枚舉][enums] (enum) 都可以。
+這種「解構」行為在任何複合資料型別上都可以運作，像 [多元組][tuples]（tuple）或 [枚舉][enums]（enum）都可以。
 
-[tuples]: primitive-types.html#多元組%20(Tuples)
+[tuples]: primitive-types.html#多元組（Tuples）
 [enums]: enums.html
 
 ## 忽略綁定
@@ -220,7 +220,7 @@ match x {
 
 ## ref 與 ref mut
 
-如果你想要獲得一個[參照][ref] (reference)，可以使用 `ref` 關鍵字：
+如果你想要獲得一個 [參照][ref]（reference），可以使用 `ref` 關鍵字：
 
 ```rust
 let x = 5;
@@ -236,7 +236,7 @@ match x {
 
 這邊 `match` 中的 `r` 是一個 `&i32` 型別。
 換句話說，`ref` 關鍵字 _建立_ 了一個可在模式當中使用的參照。
-如果你需要一個可變的 (mutable) 參照，可以使用 `ref mut`：
+如果你需要一個可變的（mutable）參照，可以使用 `ref mut`：
 
 ```rust
 let mut x = 5;
@@ -318,9 +318,9 @@ match x {
 }
 ```
 
-## 守衛 (Guards)
+## 守衛（Guards）
 
-你可以使用 `if` 來產生 "配對守衛" (match guards)：
+你可以使用 `if` 來產生「配對守衛」（match guards）：
 
 ```rust
 enum OptionalInt {
@@ -364,8 +364,7 @@ match x {
 4 | (5 if y) => ...
 ```
 
-## 混合與配對 (Mix and Match)
-
+## 混合與配對（Mix and Match）
 
 恩！有非常多種方法可以進行配對，而且它們可以根據你想做的事情而組合使用：
 

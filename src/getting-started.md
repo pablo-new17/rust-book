@@ -2,7 +2,7 @@
 
 本書第一章，將會帶領我們使用 Rust 及它的相關工具。
 首先，我們會安裝 Rust。
-接著，撰寫經典的 "Hello World" 程式。
+接著，撰寫經典的「Hello World」程式。
 最後，我們將談到 Cargo，它是 Rust 的建置系統跟套件管理器。
 
 ## 安裝 Rust
@@ -19,17 +19,17 @@
 Rust 編譯器能編譯並執行在大多數的平台上，但不是所有的平台都有相同的支援性。
 Rust 的支援程度被分為三級。每一級都有不同的保證。
 
-平台將以 "target triple" 的方式標識，這個字串是用來告知編譯器最終該產出怎樣的輸出。
+平台將以「target triple」的方式標識，這個字串是用來告知編譯器最終該產出怎樣的輸出。
 而各列代表對應的元件在特定平台的支援性。
 
 > 譯註：`target triple` 通常會依 `<arch><sub>-<vendor>-<sys>-<abi>` 的規則表示。
-> 可以參考 Clang 的[說明文件][target triple]。
+> 可以參考 Clang 的 [說明文件][target triple]。
 
 [target triple]: http://clang.llvm.org/docs/CrossCompilation.html#target-triple
 
 #### Tier 1 一級
 
-一級平台可被認為是"被保證可建置且運行"的。
+一級平台可被認為是「被保證可建置且運行」的。
 具體來說，它們都滿足以下要求：
 
 * 此平台的已建有自動化測試。
@@ -50,7 +50,7 @@ Rust 的支援程度被分為三級。每一級都有不同的保證。
 
 #### Tier 2 二級
 
-二級平台可被認為是"被保證可以建置"的。
+二級平台可被認為是「被保證可以建置」的。
 但因為沒有執行自動化測試，所以不保證能產生可以運行的 build，不過此平台通常運行良好，且永遠歡迎上 patches！
 具體來說，這些平台被要求要符合以下各項：
 
@@ -131,7 +131,7 @@ Continue? (y/N)
 
 ### 安裝在 Windows 上
 
-如果你使用 Windows，請下載合適版本的[安裝檔][install-page]。
+如果你使用 Windows，請下載合適版本的 [安裝檔][install-page]。
 
 [install-page]: https://www.rust-lang.org/install.html
 
@@ -158,7 +158,7 @@ $ rustc --version
 如果你成功了，代表 Rust 安裝成功了！恭喜你！
 
 如果沒有成功，而你是使用 Windows 作業系統，請確認 Rust 有設定在你的 %PATH% 系統環境變數內。
-如果沒有，重新執行安裝檔，在 "Change, repair, or remove installation" 頁面選擇 "Change"，接著確定 "Add to PATH" 有裝到本機端。
+如果沒有，重新執行安裝檔，在「Change, repair, or remove installation」頁面選擇「Change」，接著確定「Add to PATH」有裝到本機端。
 
 Rust 不自己做 linking，所以你會需要安裝一個 linker。
 做這件事會相依於你所使用的作業系統，更多細節請查閱相關文件。
@@ -166,7 +166,7 @@ Rust 不自己做 linking，所以你會需要安裝一個 linker。
 如果仍然沒有成功，有許多地方可以獲得協助。
 最簡單的是使用 [Mibbit][mibbit] 連上 [irc.mozilla.org 的 #rust IRC 頻道][irc]。
 按下連結，然後就能跟可以幫助我們的 Rustaceans（我們用以自稱的暱稱）聊天。
-其他的資源還包括了[使用者論壇][users]和 [Stack Overflow][stackoverflow]。
+其他的資源還包括了 [使用者論壇][users] 和 [Stack Overflow][stackoverflow]。
 
 [irc]: irc://irc.mozilla.org/#rust
 [mibbit]: http://chat.mibbit.com/?server=irc.mozilla.org&channel=%23rust
@@ -180,7 +180,7 @@ Rust 不自己做 linking，所以你會需要安裝一個 linker。
 ## Hello, world!
 
 現在 Rust 已經裝好了，我們將協助你開始寫你的第一個 Rust 程式。
-學習一個新語言的傳統是，撰寫一個小程式，並在螢幕上印出 "Hello, world!"。
+學習一個新語言的傳統是，撰寫一個小程式，並在螢幕上印出「Hello, world!」。
 本節我們會遵循這個傳統。
 
 從這樣一個簡單小程式開始的好處，是你能很快地驗證編譯器已經安裝完成，而且正常運行。
@@ -189,7 +189,7 @@ Rust 不自己做 linking，所以你會需要安裝一個 linker。
 > 註：本書假設你已經有基本的指令熟悉程度。
 > Rust 對你的編輯器、工具、或程式碼放在何處沒有特別要求，所以如果你喜歡使用 IDE 而非 command line 介面，使用 IDE 也是個選擇。
 > 你也許會想嘗試專為 Rust 建立的 [SolidOak]。
-> 社群也開發了許多擴充功能，而且 Rust 團隊也替[許多編輯器][various editors]發佈了外掛。
+> 社群也開發了許多擴充功能，而且 Rust 團隊也替 [許多編輯器][various editors] 發佈了外掛。
 > 配置你的編輯器或 IDE 不在本教學的範圍內，所以請依據你的設置查閱文件。
 
 [SolidOak]: https://github.com/oakes/SolidOak
@@ -242,7 +242,7 @@ Hello, world!
 
 ### 剖析 Rust 程式
 
-現在，讓我們來仔細檢視 "Hello, world!" 程式到底發生了什麼事。
+現在，讓我們來仔細檢視「Hello, world!」程式到底發生了什麼事。
 這是第一塊謎團：
 
 ```rust
@@ -251,9 +251,9 @@ fn main() {
 }
 ```
 
-這幾行定義了 Rust 中的 *函式* (function)。
+這幾行定義了 Rust 中的 *函式*（function）。
 其中 `main` 函式比較特殊：他是所有 Rust 程式的起始點。
-第一行意指 "我要定義一個叫 `main` 的函式，它沒有參數也沒有回傳值。"
+第一行意指「我要定義一個叫 `main` 的函式，它沒有參數也沒有回傳值。」
 如果函式有參數的話，參數會放在括號（`(` 及 `)`）中，且因為我們不回傳值，所以可以省略回傳的型態。
 
 同時留意，函式的內容會被包在大括號（`{` 及 `}`）內。
@@ -271,21 +271,21 @@ Rust 要求所有函式的內容都要用它包起來。
 首先，縮排是四個空白，而不是 tabs。
 
 第二個重要的部分是 `println!()` 這行。
-這個在 Rust 中叫做 *[巨集][macro]* (macro)，這是 Rust 達成 metaprogramming 的方式。
+這個在 Rust 中叫做 *[巨集][macro]*（macro），這是 Rust 達成 metaprogramming 的方式。
 如果在此處改用函式的話，看起來會像是 `println()`（沒有 ! 符號）。
 我們將在之後討論 Rust 巨集的更多細節，但現在你只需知道，當看到 `!` 的時候，代表你正在呼叫一個巨集，而不是一般的函式。
 
 [macro]: macros.html
 
-接著 `"Hello, world!"` 是一個 *字串* (string)。
-在系統程式語言中，字串是個複雜到令人驚訝的主題，在此處，這是一個 *[靜態分配][statically allocated]* (statically allocated) 的字串。
+接著 `"Hello, world!"` 是一個 *字串*（string）。
+在系統程式語言中，字串是個複雜到令人驚訝的主題，在此處，這是一個 *[靜態分配][statically allocated]*（statically allocated）的字串。
 我們傳遞這個字串作為參數給 `println!`，然後它將字串印在螢幕上。
 夠簡單吧！
 
 [statically allocated]: the-stack-and-the-heap.html
 
 程式中每一行都以分號（`;`）結尾。
-Rust 是個 *[表達式導向語言][expression-oriented language]* (expression-oriented language)，這代表大多數的東西都是表達式，而不是陳述式 (statements)。
+Rust 是個 *[表達式導向語言][expression-oriented language]*（expression-oriented language），這代表大多數的東西都是表達式，而不是陳述式（statements）。
 `;` 代表著這個表達式已經結束，而且下一個正準備開始。
 大多數 Rust 程式碼的行都是以 `;` 結尾。
 
@@ -293,7 +293,7 @@ Rust 是個 *[表達式導向語言][expression-oriented language]* (expression-
 
 ### 編譯和執行是不同的步驟
 
-在 "撰寫並執行 Rust 程式" 中，我們告訴你如何執行一個新建的程式。
+在「撰寫並執行 Rust 程式」中，我們告訴你如何執行一個新建的程式。
 現在我們分解流程，檢查每一步。
 
 執行 Rust 程式之前，你需要編譯它。
@@ -325,10 +325,10 @@ main.exe  main.rs
 $ ./main  # or main.exe on Windows
 ```
 
-如果 *main.rs* 是 "Hello, world!" 程式，那它會印出 `Hello, world!` 在終端機上。
+如果 *main.rs* 是「Hello, world!」程式，那它會印出 `Hello, world!` 在終端機上。
 
 如果你以前學的是動態語言，例如 Ruby、Python、或 JavaScript，你可能會不習慣把編譯程式和執行程式的動作分開。
-Rust 是個 *事先編譯* (ahead-of-time compiled) 的語言，你可以編譯程式，把程式給其他人，他們不用安裝 Rust 就能執行程式。
+Rust 是個 *事先編譯*（ahead-of-time compiled）的語言，你可以編譯程式，把程式給其他人，他們不用安裝 Rust 就能執行程式。
 如果你給一個人 `.rb` 或 `.py` 或 `.js` 檔，他則必須要先裝好 Ruby、Python、或 JavaScript 應用，不過反之，他只需一個指令就可以編譯並執行程式。
 這都是程式語言的設計中的取捨。
 
@@ -338,8 +338,8 @@ Rust 是個 *事先編譯* (ahead-of-time compiled) 的語言，你可以編譯�
 ## Hello, Cargo!
 
 Cargo 是 Rust 的建置系統跟套件管理器，而且 Rustaceans 會使用 Cargo 去管理他們的 Rust 專案。
-Cargo 管理三件事：建置你的程式碼、下載你的程式碼所依賴的函式庫 (libraries)、以及建置這些函式庫。
-我們把這些你的程式所依賴的函式庫叫做 "dependencies"，因為你的程式碼依賴他們。
+Cargo 管理三件事：建置你的程式碼、下載你的程式碼所依賴的函式庫（libraries）、以及建置這些函式庫。
+我們把這些你的程式所依賴的函式庫叫做「dependencies」，因為你的程式碼依賴他們。
 
 最簡單的 Rust 程式不會有任何 dependencies，所以現在你只會用到第一部份的功能。
 當你撰寫更複雜的 Rust 程式後，你將會希望加入 dependencies，如果你從 Cargo 開始的話，那就會簡單很多。
@@ -362,7 +362,7 @@ $ cargo --version
 
 1. 把你的原始碼檔案放到正確的目錄。
 2. 去除舊的執行檔（在 Windows 是 `main.exe`，其他則是 `main`）， 並另外建一個新的。
-3. 建立 Cargo 配置 (configuration) 檔。
+3. 建立 Cargo 配置（configuration）檔。
 
 讓我們開始吧！
 
@@ -385,7 +385,7 @@ Cargo 預期原始碼會放在 *src* 目錄內，所以我們先弄好這部分�
 一如往常地， 在 Windows 下用 `main.exe` 取代 `main`。
 
 這個例子中保留 `main.rs` 作為原始碼檔名，是因為它可以建立執行檔。
-如果你想要建立一個函式庫 (library)，你應該把檔案命名為 `lib.rs`。
+如果你想要建立一個函式庫（library），你應該把檔案命名為 `lib.rs`。
 Cargo 使用這樣的慣例去編譯專案，但如果你想要的話，你還是可以更改它。
 
 #### 建立配置檔
@@ -394,7 +394,7 @@ Cargo 使用這樣的慣例去編譯專案，但如果你想要的話，你還�
 
 確保 `Cargo.toml` 的 `C` 是大寫，否則 Cargo 會無法處理這樣的配置檔。
 
-這個檔案使用 *[TOML]* (Tom's Obvious, Minimal Language) 格式。
+這個檔案使用 *[TOML]*（Tom's Obvious, Minimal Language）格式。
 TOML 跟 INI 很類似，但是有一些額外的好處，且被用來作為 Cargo 的配置格式。
 
 [TOML]: https://github.com/toml-lang/toml
@@ -409,8 +409,8 @@ version = "0.0.1"
 authors = [ "Your name <you@example.com>" ]
 ```
 
-第一行，`[package]` 表示以下的陳述是用來配置一個套件 (package)。
-當我們要加入更多資訊到這個檔案內，我們會增加其他的小節 (sections)，但是現在，我們只有套件的配置。
+第一行，`[package]` 表示以下的陳述是用來配置一個套件（package）。
+當我們要加入更多資訊到這個檔案內，我們會增加其他的小節（sections），但是現在，我們只有套件的配置。
 
 其他三行設定了三項 Cargo 在編譯程式時所需知道的配置：程式的名字、版本、和作者。
 
@@ -498,7 +498,7 @@ $ cargo new hello_world --bin
 ```
 
 這個指令傳遞了 `--bin`，因為它的目的是建立一個可執行的應用程式，而不是函式庫。
-執行檔也常被稱作 *二進位檔* (binaries)。
+執行檔也常被稱作 *二進位檔*（binaries）。
 
 Cargo 會產生兩個檔案和一個目錄給我們：`Cargo.toml` 檔案，*src* 目錄、和 src 下的 *main.rs* 檔案。
 它們看起來與前面手動建立的結構很像。
@@ -526,7 +526,7 @@ fn main() {
 }
 ```
 
-Cargo 會幫你產生 "Hello World!" 程式碼，接著你就可以開始寫程式了！
+Cargo 會幫你產生「Hello World!」程式碼，接著你就可以開始寫程式了！
 
 > 註：如果你想要閱覽更多 Cargo 的細節，可以查閱官方的 [Cargo 指南][Cargo guide]，其中包含有所有的功能。
 
@@ -537,8 +537,8 @@ Cargo 會幫你產生 "Hello World!" 程式碼，接著你就可以開始寫程�
 本章包含了在本書後述部分、及未來你的 Rust 時光的各種基礎。
 現在你已經學會了工具，我們接著將更多地論及 Rust 本身。
 
-你有兩個選擇：從 "[教學: 猜謎遊戲][guessinggame]" 深入一個專案，或從 "[語法及語意][syntax]" 由下而上開始。
-有經驗的系統程式設計師可能會傾向從 "教學: 猜謎遊戲" 開始，而動態語言背景的人也許兩者都可以。
+你有兩個選擇：從 [教學: 猜謎遊戲][guessinggame] 深入一個專案，或從 [語法及語意][syntax] 由下而上開始。
+有經驗的系統程式設計師可能會傾向從「教學: 猜謎遊戲」開始，而動態語言背景的人也許兩者都可以。
 不同人有不同的學習方式！
 請選擇適合自己的方式。
 
