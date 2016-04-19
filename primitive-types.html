@@ -71,10 +71,10 @@
 
                 <div id="content" class="content">
                     <h1>基本型別</h1>
-<p>Rust 語言有許多被認為是 &quot;基本&quot; (primitive) 的型別。
+<p>Rust 語言有許多被認為是「基本」（primitive）的型別。
 這代表它們是內建在語言內的。
 Rust 標準函式庫也提供許多基於這些基本型別的有用型別，它們也是基本型別。</p>
-<h2>布林 (Booleans)</h2>
+<h2>布林（Booleans）</h2>
 <p>Rust 內建布林型別，叫做 <code>bool</code>。
 他有兩種值，<code>true</code> 和 <code>false</code>：</p>
 <pre><code class="language-rust">let x = true;
@@ -82,7 +82,7 @@ Rust 標準函式庫也提供許多基於這些基本型別的有用型別，它
 let y: bool = false;
 </code></pre>
 <p>布林通常用在 <a href="if.html">if 條件運算式</a>。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.bool.html">標準函式庫文件</a>中找到更多關於 <code>bool</code> 的文件。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.bool.html">標準函式庫文件</a> 中找到更多關於 <code>bool</code> 的文件。</p>
 <h2><code>char</code></h2>
 <p><code>char</code> 型別代表一個 Unicode 值。
 你可以以單引號（<code>'</code>）建立 <code>char</code>：</p>
@@ -90,9 +90,9 @@ let y: bool = false;
 let two_hearts = '💕';
 </code></pre>
 <p>不像其他語言，這代表 Rust 的 <code>char</code> 並非一個位元組，而是四個。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.char.html">標準函式庫文件</a>中找到更多關於 <code>char</code> 的文件。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.char.html">標準函式庫文件</a> 中找到更多關於 <code>char</code> 的文件。</p>
 <h2>數字型別</h2>
-<p>Rust 有許多數字型別，分為一些不同類型：帶號 (signed) 和非帶號 (unsigned)，固定長度和可變長度，浮點數和整數。</p>
+<p>Rust 有許多數字型別，分為一些不同類型：帶號（signed）和非帶號（unsigned），固定長度和可變長度，浮點數和整數。</p>
 <p>這些型別包含兩部分：類型和大小。
 例如，<code>u16</code> 是一個 16 位元大小的非帶號型別。
 更多位元能讓你有更大的數字。</p>
@@ -117,14 +117,14 @@ let y = 1.0; // y has type f64
 <li><a href="https://doc.rust-lang.org/std/primitive.f64.html">f64</a></li>
 </ul>
 <p>讓我們依照分類走一輪吧：</p>
-<h3>帶號 (Signed) 及非帶號 (Unsigned)</h3>
+<h3>帶號（Signed）及非帶號（Unsigned）</h3>
 <p>整數型別有兩種變形：帶號跟非帶號。
 要了解差異之處，讓我們試想有一個 4 位元大小的數字。
 如果是帶號整數，4 位元可以讓你儲存 <code>-8</code> 到 <code>+7</code> 的數字。
-代號數字使用 &quot;二補數表示法&quot; (two's complement)。
+代號數字使用「二補數表示法」（two's complement）。
 一個非帶號的 4 位元數字因為不需要儲存負號，所以可以儲存 <code>0</code> 到 <code>+15</code> 的數字。</p>
 <p>非帶號型別使用 <code>u</code> 作為分類，而帶號型別使用 <code>i</code>。
-<code>i</code> 代表 &quot;integer&quot;。
+<code>i</code> 代表「integer」。
 所以 <code>u8</code> 代表一個 8 位元的非代號數字，而 <code>i8</code> 代表 8 位元的帶號數字。</p>
 <h3>固定大小型別</h3>
 <p>固定大小型別的表現方式有一些特定數量的位元。
@@ -132,20 +132,20 @@ let y = 1.0; // y has type f64
 所以 <code>u32</code> 是一個非帶號的 32 位元整數，而 <code>i64</code> 是一個帶號的 64 位元整數。</p>
 <h3>可變大小型別</h3>
 <p>Rust 也有提供一些大小依賴於底層機器的指標大小的型別。
-這些型別的分類是 &quot;size&quot;，且分為帶號跟非帶號。
+這些型別的分類是「size」，且分為帶號跟非帶號。
 他分為兩類：<code>isize</code> 和 <code>usize</code>。</p>
 <h3>浮點數型別</h3>
 <p>Rust 也有兩種浮點數：<code>f32</code> 與 <code>f64</code>。
 他們對應到 IEEE-754 的單精準度和雙精準度浮點數。</p>
-<h2>陣列 (Arrays)</h2>
+<h2>陣列（Arrays）</h2>
 <p>跟很多程式語言一樣，Rust 有用來表現一組事物的清單型別。
-最基本的就是 <em>陣列</em> (array)，一個固定大小、有相同型別的元素清單。
-陣列預設是不可變的 (immutable)。</p>
+最基本的就是 <em>陣列</em>（array），一個固定大小、有相同型別的元素清單。
+陣列預設是不可變的（immutable）。</p>
 <pre><code class="language-rust">let a = [1, 2, 3]; // a: [i32; 3]
 let mut m = [1, 2, 3]; // m: [i32; 3]
 </code></pre>
 <p>陣列的型別是 <code>[T; N]</code>。
-我們將在<a href="generics.html">泛型的章節</a>提到 <code>T</code> 標記。
+我們將在 <a href="generics.html">泛型的章節</a> 提到 <code>T</code> 標記。
 <code>N</code> 是一個編譯期的常數，代表陣列的長度。</p>
 <p>有一個可以初始化陣列中所有元素為同一個值的簡寫。
 在以下範例，所有 <code>a</code> 中的元素將被初始化為 <code>0</code>：</p>
@@ -156,7 +156,7 @@ let mut m = [1, 2, 3]; // m: [i32; 3]
 
 println!(&quot;a has {} elements&quot;, a.len());
 </code></pre>
-<p>你也可以使用 <em>下標</em> (subscript) 的標記方式存取陣列中特定元素：</p>
+<p>你也可以使用 <em>下標</em>（subscript）的標記方式存取陣列中特定元素：</p>
 <blockquote>
 <p>譯註：此處的 <em>下標</em> 應指 <code>[n]</code> 這個標記方式。</p>
 </blockquote>
@@ -167,33 +167,33 @@ println!(&quot;The second name is: {}&quot;, names[1]);
 <p>與其他大多數程式語言一樣，下標從零開始，所以第一個元素名稱是 <code>names[0]</code>，第二個名稱是 <code>names[1]</code>。
 上述範例會印出 <code>The second name is: Brian</code>。
 如果你嘗試使用超出陣列的下標，你會得到錯誤訊息：陣列存取會在執行期做邊界檢查。
-在其他系統程式語言中，這種不當存取是許多程式錯誤 (bug) 的根源。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.array.html">標準函式庫文件</a>中找到更多關於 <code>array</code> 的文件。</p>
+在其他系統程式語言中，這種不當存取是許多程式錯誤（bug）的根源。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.array.html">標準函式庫文件</a> 中找到更多關於 <code>array</code> 的文件。</p>
 <h2>Slices</h2>
-<p>一個 &quot;slice&quot; 是一個其他資料結構的 reference（或 &quot;視圖&quot;）。
+<p>一個「slice」是一個其他資料結構的 reference（或「視圖」）。
 它允許安全、有效的存取陣列的一部份而不用複製陣列。
 例如，你可能只想要參考讀到記憶體中的檔案中的某一行。
-本質上，一個 &quot;slice&quot; 不是直接建立的，而要從一個已經存在的變數綁定中建立。
-Slices 會定義長度，它可以是可變 (mutable) 或不可變 (immutable)。</p>
+本質上，一個「slice」不是直接建立的，而要從一個已經存在的變數綁定中建立。
+Slices 會定義長度，它可以是可變（mutable）或不可變（immutable）。</p>
 <p>從內部來看，slices 像是一個指向資料開頭的指標，和它的長度。</p>
 <h3>Slicing 語法</h3>
 <p>你可以使用 <code>&amp;</code> 和 <code>[]</code> 的組合去從許多資料結構建立 slice。
-<code>&amp;</code> 說明了 slices 跟<a href="references-and-borrowing.html">參照</a> (references) 很類似，我們會在本節的後面說到細節。
+<code>&amp;</code> 說明了 slices 跟 <a href="references-and-borrowing.html">參照</a>（references）很類似，我們會在本節的後面說到細節。
 <code>[]</code> 帶有範圍的資訊，讓你定義 slice 的長度。</p>
 <pre><code class="language-rust">let a = [0, 1, 2, 3, 4];
 let complete = &amp;a[..]; // A slice containing all of the elements in a
 let middle = &amp;a[1..4]; // A slice of a: only the elements 1, 2, and 3
 </code></pre>
 <p>Slices 的型別是 <code>&amp;[T]</code>。
-我們將會在<a href="generics.html">泛型</a>談到 <code>T</code>。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.slice.html">標準函式庫文件</a>中找到更多關於 slices 的文件。</p>
+我們將會在 <a href="generics.html">泛型</a> 談到 <code>T</code>。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.slice.html">標準函式庫文件</a> 中找到更多關於 slices 的文件。</p>
 <h2><code>str</code></h2>
 <p>Rust 的 <code>str</code> 型別是最基本的字串型別。
-跟<a href="unsized-types.html">動態大小型別</a>，它本身不是很有用，但當它放在 reference 之後就很有用了，像是 <code>$str</code>。
-當我們談到<a href="strings.html">字串</a>和<a href="references-and-borrowing.html">參照</a> (references) 的時候再來細說。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.str.html">標準函式庫文件</a>中找到更多關於 <code>str</code> 的文件。</p>
-<h2>多元組 (Tuples)</h2>
-<p>一個多元組 (tuple) 是一組固定大小的有序 (ordered) 清單。
+跟 <a href="unsized-types.html">動態大小型別</a> 一樣，它本身不是很有用，但當它放在 reference 之後就很有用了，像是 <code>&amp;str</code>。
+當我們談到 <a href="strings.html">字串</a> 和 <a href="references-and-borrowing.html">參照</a>（references）的時候再來細說。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.str.html">標準函式庫文件</a> 中找到更多關於 <code>str</code> 的文件。</p>
+<h2>多元組（Tuples）</h2>
+<p>一個多元組（tuple）是一組固定大小的有序（ordered）清單。
 就像：</p>
 <pre><code class="language-rust">let x = (1, &quot;hello&quot;);
 </code></pre>
@@ -202,10 +202,10 @@ let middle = &amp;a[1..4]; // A slice of a: only the elements 1, 2, and 3
 <pre><code class="language-rust">let x: (i32, &amp;str) = (1, &quot;hello&quot;);
 </code></pre>
 <p>如你所見，多元組的型別與多元組很像，只是各個位置是型別名稱而不是數值。
-心細的讀者會注意到多元組是異質的 (heterogeneous)：我們在一個多元組中同時有 <code>i32</code> 與 <code>&amp;str</code>。
+心細的讀者會注意到多元組是異質的（heterogeneous）：我們在一個多元組中同時有 <code>i32</code> 與 <code>&amp;str</code>。
 在系統程式語言中，字串會比其他語言複雜一點。
 現在，把 <code>&amp;str</code> 當作 <em>字串 slice</em>，我們很快就會說到。</p>
-<p>當兩個多元組有相同的型別和<a href="glossary.html#%E5%85%83%E6%95%B8%20(Arity)">元數</a> (arity) 時，你可以把一個多元組賦值給另一個。
+<p>當兩個多元組有相同的型別和 <a href="glossary.html#%E5%85%83%E6%95%B8%EF%BC%88Arity%EF%BC%89">元數</a>（arity）時，你可以把一個多元組賦值給另一個。
 相同長度的多元組有著相同的元數。</p>
 <pre><code class="language-rust">let mut x = (1, 2); // x: (i32, i32)
 let y = (2, 3); // y: (i32, i32)
@@ -218,16 +218,16 @@ x = y;
 
 println!(&quot;x is {}&quot;, x);
 </code></pre>
-<p>還記得<a href="variable-bindings.html">之前</a>當我提到 <code>let</code> 陳述式的左邊遠比賦值綁定還強大嗎？
+<p>還記得 <a href="variable-bindings.html">之前</a> 當我提到 <code>let</code> 陳述式的左邊遠比賦值綁定還強大嗎？
 這就是了。
-我們可以放一個模式 (pattern) 在 <code>let</code> 的左邊，然後如果它跟右邊相符，我們就可以一次賦值多個綁定。
-在這情形下，<code>let</code> &quot;解構&quot; 或 &quot;拆開&quot; 了多元組，然後賦值到三個綁定上。</p>
+我們可以放一個模式（pattern）在 <code>let</code> 的左邊，然後如果它跟右邊相符，我們就可以一次賦值多個綁定。
+在這情形下，<code>let</code>「解構」或「拆開」多元組，然後賦值到三個綁定上。</p>
 <p>這樣的模式非常強大，我們將會在後面一直看到。</p>
 <p>在括號中只有一個值時，在值後面加上逗號，可以消歧義確定它是一個單元素的多元組：</p>
 <pre><code class="language-rust">(0,); // single-element tuple
 (0); // zero in parentheses
 </code></pre>
-<h3>多元組索引 (Tuple Indexing)</h3>
+<h3>多元組索引（Tuple Indexing）</h3>
 <p>你也可以用索引語法去存取多元組的欄位：</p>
 <pre><code class="language-rust">let tuple = (1, 2, 3);
 
@@ -238,7 +238,7 @@ let z = tuple.2;
 println!(&quot;x is {}&quot;, x);
 </code></pre>
 <p>就像陣列的索引，它從零開始，但是不像陣列所以，它使用 <code>.</code> 而不是 <code>[]</code>。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.tuple.html">標準函式庫文件</a>中找到更多關於多元組的文件。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.tuple.html">標準函式庫文件</a> 中找到更多關於多元組的文件。</p>
 <h2>函式</h2>
 <p>函式也有型別！
 它們像這樣：</p>
@@ -246,7 +246,7 @@ println!(&quot;x is {}&quot;, x);
 
 let x: fn(i32) -&gt; i32 = foo;
 </code></pre>
-<p>在這個例子中，<code>x</code> 是 &quot;函式指標&quot; 指向一個有 <code>i32</code> 參數並回傳 <code>i32</code> 的函式。</p>
+<p>在這個例子中，<code>x</code> 是「函式指標」，指向一個有 <code>i32</code> 參數並回傳 <code>i32</code> 的函式。</p>
 <blockquote>
 <p><em>commit 228afd7</em></p>
 </blockquote>

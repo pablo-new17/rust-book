@@ -71,13 +71,28 @@
 
                 <div id="content" class="content">
                     <h1>字串</h1>
-<p>字串是每個軟體工程師都應該精通的重要概念。 Rust 因為著重在系統程式，所以它的字串處理系統與其他的程式語言有些不同。 每當你有大小不固定的資料結構時，事情就會變得很複雜，不巧的是字串最好是一個可以改變大小的資料結構。 Rust 的字串與其他系統程式語言，例如 C，也有所不同。</p>
-<p>讓我們深入的研究字串。 一個字串是一個編碼成 UTF-8 串流的萬國碼 (Unicode) 數值序列。所有的字串都保證是用合法的 UTF-8 編碼。 此外不同於其他的系統程式語言，字串並非由空字串結尾 (null-terminated) 而且可以含有空字串位元。</p>
-<p>Rust 有兩種主要的字串類型: <code>&amp;str</code> 和 <code>String</code>。 讓我們先講講 <code>&amp;str</code>。 他們叫做字串切片 (string slices) 。一個字串切片有固定的大小，而且是不可變的。他是一個指向 UTF-8 位元序列的參照。</p>
+<p>字串是每個軟體工程師都應該精通的重要概念。
+Rust 因為著重在系統程式，所以它的字串處理系統與其他的程式語言有些不同。
+每當你有大小不固定的資料結構時，事情就會變得很複雜，不巧的是字串最好是一個可以改變大小的資料結構。
+Rust 的字串與其他系統程式語言，例如 C，也有所不同。</p>
+<p>讓我們深入的研究字串。
+一個字串是一個編碼成 UTF-8 串流的萬國碼（Unicode）數值序列。
+所有的字串都保證是用合法的 UTF-8 編碼。
+此外不同於其他的系統程式語言，字串並非由空字串結尾（null-terminated）而且可以含有空字串位元。</p>
+<p>Rust 有兩種主要的字串類型: <code>&amp;str</code> 和 <code>String</code>。
+讓我們先講講 <code>&amp;str</code>。
+它們叫做字串切片（string slices）。
+一個字串切片有固定的大小，而且是不可變的。
+他是一個指向 UTF-8 位元序列的參照。</p>
 <pre><code class="language-rust">let greeting = &quot;Hello there.&quot;; // greeting: &amp;'static str
 </code></pre>
-<p><code>&quot;Hello there.&quot;</code>是一個字串常值 (string literial)，其型態是<code>&amp;'static str</code>。一個字串常值是一個靜態分配的字串切片，也就是說它儲存在我們編譯過的程式內，而且在整個運行的過程中都存在。 <code>greeting</code> 綁定是一個知道這個靜態字串的參照。任何一個接受字串切片的函數也同樣會接受字串常值。</p>
-<p>字串常值可以橫跨多行。 有兩種方法來表示多行的字串。第一種會包含換行符號還有每行開頭的空白：</p>
+<p><code>&quot;Hello there.&quot;</code>是一個字串常值（string literial），其型態是<code>&amp;'static str</code>。
+一個字串常值是一個靜態分配的字串切片，也就是說它儲存在我們編譯過的程式內，而且在整個運行的過程中都存在。
+<code>greeting</code> 綁定是一個知道這個靜態字串的參照。
+任何一個接受字串切片的函數也同樣會接受字串常值。</p>
+<p>字串常值可以橫跨多行。
+有兩種方法來表示多行的字串。
+第一種會包含換行符號還有每行開頭的空白：</p>
 <pre><code class="language-rust">let s = &quot;foo
     bar&quot;;
 
@@ -89,14 +104,17 @@ assert_eq!(&quot;foo\n        bar&quot;, s);
 
 assert_eq!(&quot;foobar&quot;, s);
 </code></pre>
-<p>但是 Rust 不只有 <code>&amp;str</code>。一個 <code>String</code>是分配在堆積上的一種字串。這種字串可以長大，而且也保證是 UTF-8 編碼. <code>String</code> 的產生方式常常是呼叫字串切片的 <code>to_string</code> 函式轉換而來。</p>
+<p>但是 Rust 不只有 <code>&amp;str</code>。
+一個 <code>String</code>是分配在堆積上的一種字串。
+這種字串可以長大，而且也保證是 UTF-8 編碼。
+<code>String</code> 的產生方式常常是呼叫字串切片的 <code>to_string</code> 函式轉換而來。</p>
 <pre><code class="language-rust">let mut s = &quot;Hello&quot;.to_string(); // mut s: String
 println!(&quot;{}&quot;, s);
 
 s.push_str(&quot;, world.&quot;);
 println!(&quot;{}&quot;, s);
 </code></pre>
-<p>使用 <code>&amp;</code> 符號會把 <code>String</code>  強制轉換成 <code>&amp;str</code>：</p>
+<p>使用 <code>&amp;</code> 符號會把 <code>String</code> 強制轉換成 <code>&amp;str</code>：</p>
 <pre><code class="language-rust">fn takes_slice(slice: &amp;str) {
     println!(&quot;Got: {}&quot;, slice);
 }
@@ -106,7 +124,9 @@ fn main() {
     takes_slice(&amp;s);
 }
 </code></pre>
-<p>當一個函數接受 <code>&amp;str</code> 的一種特徵 (trait) 作為參數而不是單純的 <code>&amp;str</code> 時，這種自動轉換並不會發生。例如， [<code>TcpStream::connect</code>]<a href="../std/net/struct.TcpStream.html#method.connect">connect</a> 有一個型態為<code>ToSocketAddrs</code> 的參數。這時傳入 <code>&amp;str</code> 是可以的，但是 <code>String</code> 就必須要明確的使用 <code>&amp;*</code> 轉換後才能傳入。</p>
+<p>當一個函數接受 <code>&amp;str</code> 的一種特徵（trait）作為參數而不是單純的 <code>&amp;str</code> 時，這種自動轉換並不會發生。
+例如， <a href="https://doc.rust-lang.org/std/net/struct.TcpStream.html#method.connect">TcpStream::connect</a> 有一個型態為 <code>ToSocketAddrs</code> 的參數。
+這時傳入 <code>&amp;str</code> 是可以的，但是 <code>String</code> 就必須要明確的使用 <code>&amp;*</code> 轉換後才能傳入。</p>
 <pre><code class="language-rust,no_run">use std::net::TcpStream;
 
 TcpStream::connect(&quot;192.168.0.1:3000&quot;); // &amp;str parameter
@@ -114,14 +134,19 @@ TcpStream::connect(&quot;192.168.0.1:3000&quot;); // &amp;str parameter
 let addr_string = &quot;192.168.0.1:3000&quot;.to_string();
 TcpStream::connect(&amp;*addr_string); // convert addr_string to &amp;str
 </code></pre>
-<p>把一個 <code>String</code> 轉換成 <code>&amp;str</code> 來讀取不需要什麼成本的，但是把 <code>&amp;str</code> 轉換為一個 <code>String</code> 就必須牽涉到分配記憶體。若是沒有強烈的理由千萬不要這樣做！</p>
+<p>把一個 <code>String</code> 轉換成 <code>&amp;str</code> 來讀取不需要什麼成本的，但是把 <code>&amp;str</code> 轉換為一個 <code>String</code> 就必須牽涉到分配記憶體。
+若是沒有強烈的理由千萬不要這樣做！</p>
 <h2>索引</h2>
 <p>因為字串是 UTF-8 串流，所以並不支援使用索引來存取：</p>
 <pre><code class="language-rust,ignore">let s = &quot;hello&quot;;
 
 println!(&quot;The first letter of s is {}&quot;, s[0]); // ERROR!!!
 </code></pre>
-<p>通常使用 <code>[]</code> 來存取向量是非常快的。但是因為字串是使用 UTF-8 編碼，每個字符可能有多個位元組，要找到第 N 個字符必須要從頭開始循序尋找。這是一個相對非常耗費資源的程序，所以我們不想誤導你。另外，字符 (letter) 並不是萬國碼的一個標準定義。我們可以選擇把字串看做單獨的位元組，和室單獨的編碼位置 (code point)：</p>
+<p>通常使用 <code>[]</code> 來存取向量是非常快的。
+但是因為字串是使用 UTF-8 編碼，每個字符可能有多個位元組，要找到第 N 個字符必須要從頭開始循序尋找。
+這是一個相對非常耗費資源的程序，所以我們不想誤導你。
+另外，字符（letter）並不是萬國碼的一個標準定義。
+我們可以選擇把字串看做單獨的位元組，或單獨的編碼位置（codepoints）：</p>
 <pre><code class="language-rust">let hachiko = &quot;忠犬ハチ公&quot;;
 
 for b in hachiko.as_bytes() {
@@ -146,12 +171,12 @@ println!(&quot;&quot;);
 let dog = hachiko.chars().nth(1); // kinda like hachiko[1]
 </code></pre>
 <p>這種方法強調我們必須從頭開始循序的尋找一連串的 <code>chars</code>。</p>
-<h2>切片 (Slicing)</h2>
+<h2>切片（Slicing）</h2>
 <p>你可以用切片語法得到一個字串的切片：</p>
 <pre><code class="language-rust">let dog = &quot;hachiko&quot;;
 let hachi = &amp;dog[0..5];
 </code></pre>
-<p>但是請注意這是<em>位元</em>的位置而非<em>字母</em>的位置。所以以下的程式會在執行時失敗：</p>
+<p>但是請注意這是 <em>位元</em> 的位置而非 <em>字母</em> 的位置。所以以下的程式會在執行時失敗：</p>
 <pre><code class="language-rust,should_panic">let dog = &quot;忠犬ハチ公&quot;;
 let hachi = &amp;dog[0..2];
 </code></pre>
@@ -159,7 +184,7 @@ let hachi = &amp;dog[0..2];
 <pre><code class="language-text">thread '&lt;main&gt;' panicked at 'index 0 and/or 2 in `忠犬ハチ公` do not lie on
 character boundary'
 </code></pre>
-<h2>接續 (Concatination)</h2>
+<h2>接續（Concatination）</h2>
 <p>如果你有一個 <code>String</code>, 你可以把一個 <code>&amp;str</code> 接續到它後面：</p>
 <pre><code class="language-rust">let hello = &quot;Hello &quot;.to_string();
 let world = &quot;world!&quot;;
@@ -172,7 +197,7 @@ let world = &quot;world!&quot;.to_string();
 
 let hello_world = hello + &amp;world;
 </code></pre>
-<p>這是因為 <code>&amp;String</code> 可以自動強迫轉型 (coerce) 成一個 <code>&amp;str</code>。這個功能被稱作「<a href="deref-coercions.html">取值強迫轉型</a>」 (<code>Deref</code> coercisons)。</p>
+<p>這是因為 <code>&amp;String</code> 可以自動強迫轉型（coerce）成一個 <code>&amp;str</code>。這個功能被稱作「<a href="deref-coercions.html">取值強迫轉型</a>」（<code>Deref</code> coercisons）。</p>
 <blockquote>
 <p><em>commit 310ab5e</em></p>
 </blockquote>

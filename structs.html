@@ -76,7 +76,7 @@
 <pre><code class="language-rust">let origin_x = 0;
 let origin_y = 0;
 </code></pre>
-<p>而 <code>struct</code> 讓我們可以將兩者合而為一，成為一個有 <code>x</code> 及 <code>y</code> 欄位 (field) 的統一資料型態：</p>
+<p>而 <code>struct</code> 讓我們可以將兩者合而為一，成為一個有 <code>x</code> 及 <code>y</code> 欄位（field）的統一資料型態：</p>
 <pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
@@ -90,7 +90,7 @@ fn main() {
 </code></pre>
 <p>這邊有許多東西，讓我們分開來解說。
 我們使用 <code>struct</code> 關鍵字及名字來宣告結構體。
-照慣例，<code>struct</code> 的命名用大寫開始，且使用駝峰式大小寫 (camel case) 規則：<code>PointInSpace</code>，而非 <code>Point_In_Space</code>。</p>
+照慣例，<code>struct</code> 的命名用大寫開始，且使用駝峰式大小寫（camel case）規則：<code>PointInSpace</code>，而非 <code>Point_In_Space</code>。</p>
 <p>我們可以透過 <code>let</code> 宣告我們 <code>struct</code> 的實體，但我們會使用 <code>key: value</code> 風格的語法去設定每一個欄位。
 順序不需與原始宣告中的排序相同。</p>
 <p>最後，因為欄位都有名字，我們可以透過點記號存取它們：<code>origin.x</code>。</p>
@@ -184,8 +184,8 @@ point = Point3d { y: 1, .. point };
 let origin = Point3d { x: 0, y: 0, z: 0 };
 let point = Point3d { z: 1, x: 2, .. origin };
 </code></pre>
-<h2>多元組結構體 (tuple struct)</h2>
-<p>Rust 還有其他類似<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%20(Tuples)">多元組</a> (tuple) 與 <code>struct</code> 混合體的資料型別，叫做 &quot;多元組結構體&quot; (tuple struct)。
+<h2>多元組結構體（tuple struct）</h2>
+<p>Rust 還有其他類似<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%EF%BC%88Tuples%EF%BC%89">多元組</a>（tuple）與 <code>struct</code> 混合體的資料型別，叫做「多元組結構體」（tuple struct）。
 多元組結構體本身有命名，但是它的欄位沒有。
 它也使用 <code>struct</code> 關鍵字宣告，在其後加上名字和多元組：</p>
 <pre><code class="language-rust">struct Color(i32, i32, i32);
@@ -209,12 +209,12 @@ struct Point {
     z: i32,
 }
 </code></pre>
-<p>好的命名是很重要的，雖然多元組結構體 (tuple struct) 也能使用點記號去參考它的值，但結構體 (struct) 使用的是真實的命名而不是位置。</p>
+<p>好的命名是很重要的，雖然多元組結構體（tuple struct）也能使用點記號去參考它的值，但結構體（struct）使用的是真實的命名而不是位置。</p>
 <blockquote>
 <p>譯註：多元組的存取是使用索引 <code>tuple.0</code>，而結構體可以使用欄位的名稱，比較具有意義，在程式碼的可讀性上會比較強。</p>
 </blockquote>
 <p>但有 <em>一種情況</em> 下多元組結構體非常有用，就是當他只有一個元素時。
-我們稱它為 &quot;新型別&quot; (newtype) 模式，因為它允許你建立與內含的值有所區別的新型別，同時又表達出我們所想表達的語意：</p>
+我們稱它為「新型別」（newtype）模式，因為它允許你建立與內含的值有所區別的新型別，同時又表達出我們所想表達的語意：</p>
 <pre><code class="language-rust">struct Inches(i32);
 
 let length = Inches(10);
@@ -224,16 +224,16 @@ println!(&quot;length is {} inches&quot;, integer_length);
 </code></pre>
 <p>如你所見，你能透過 <code>let</code> 解構內部的整數型態，跟一般的多元組一樣。
 在上述情況，<code>let Inches(integer_length)</code> 會把 <code>10</code> 賦值給 <code>integer_length</code>。</p>
-<h2>類單元結構體 (Unit-like structs)</h2>
+<h2>類單元結構體（Unit-like structs）</h2>
 <p>你可以定義一個沒有任何成員的 <code>struct</code>：</p>
 <pre><code class="language-rust">struct Electron;
 
 let x = Electron;
 </code></pre>
-<p>這樣的結構體被稱為 &quot;類單元&quot;，因為它類似空的多元組 <code>()</code>，有時候被稱為單元 (unit)。
+<p>這樣的結構體被稱為「類單元」，因為它類似空的多元組 <code>()</code>，有時候被稱為單元（unit）。
 跟多元組結構體一樣，它會定義新的型別。</p>
-<p>它很難得會有用處（雖然有時候它能用來當作標記型別 (marker type) ），但與其他功能組合時，它可以變得有用。
-例如，一個函式庫可能要你建立一個結構體去實作某個 <a href="traits.html">trait</a> 來處理事件 (events)。
+<p>它很難得會有用處（雖然有時候它能用來當作標記型別［marker type］），但與其他功能組合時，它可以變得有用。
+例如，一個函式庫可能要你建立一個結構體去實作某個 <a href="traits.html">trait</a> 來處理事件（events）。
 如果你並不需要再結構體中存入任何資料，你可以建立一個類單元結構體。</p>
 <blockquote>
 <p><em>commit 6ba9520</em></p>

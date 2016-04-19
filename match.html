@@ -89,15 +89,15 @@ match x {
 <p><code>match</code> 使用表達式，並根據它的值進行分支。
 每一條執行的分支都是以 <code>val =&gt; expression</code> 的形式表示。
 當值符合的時候，該分支的表達式就會被執行。
-它會被稱為 <code>match</code> 是因為 <code>match</code> 是 &quot;模式配對&quot; (pattern matching) 的實作。
-<a href="patterns.html">模式</a> (pattern) 有一個單獨的章節會涵蓋所有可能的模式。</p>
-<p><code>match</code> 的許多優點之一是它的強制 &quot;徹底檢查&quot; (exhaustiveness checking)。
+它會被稱為 <code>match</code> 是因為 <code>match</code> 是「模式配對」（pattern matching）的實作。
+<a href="patterns.html">模式</a>（pattern）有一個單獨的章節會涵蓋所有可能的模式。</p>
+<p><code>match</code> 的許多優點之一是它的強制「徹底檢查」（exhaustiveness checking）。
 舉例來說，當我們刪除最後一條有著 <code>_</code> 的執行分支，編譯器將會給我們錯誤訊息：</p>
 <pre><code class="language-text">error: non-exhaustive patterns: `_` not covered
 </code></pre>
 <p>Rust 告訴我們，我們忘了一個值。
 編譯器從 <code>x</code> 推斷出它可能是任何 32 位元正整數；從 1 到 2,147,483,647 都有可能。
-而 <code>_</code> 就像是 &quot;接住全部&quot; (catch-all) <em>沒有</em> 被特別列在 <code>match</code> 執行分支中的可能值。
+而 <code>_</code> 就像是「全部接住」（catch-all） <em>沒有</em> 被特別列在 <code>match</code> 執行分支中的可能值。
 在上述例子中可以看到，我們給 <code>match</code> 整數 1-5 的執行分支，當 <code>x</code> 是 6 或其他值的時候，就會被 <code>_</code> 接去執行。</p>
 <p><code>match</code> 也是表達式，這代表我們可以在 <code>let</code> 綁定的右邊使用它，或直接將它用在任何表達式可以使用的地方：</p>
 <pre><code class="language-rust">let x = 5;
@@ -113,7 +113,7 @@ let number = match x {
 </code></pre>
 <p>有時候這是把東西從一個型別轉換為另一個型別的好方法；上面的例子是把整數轉換為 <code>String</code>。</p>
 <h2>枚舉的配對</h2>
-<p>另一個 <code>match</code> 的重要作用是處理枚舉 (enum) 的可能變體們：</p>
+<p>另一個 <code>match</code> 的重要作用是處理枚舉（enum）的可能變體們：</p>
 <pre><code class="language-rust">enum Message {
     Quit,
     ChangeColor(i32, i32, i32),

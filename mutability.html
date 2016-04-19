@@ -71,7 +71,7 @@
 
                 <div id="content" class="content">
                     <h1>可變性</h1>
-<p>可變性 (mutability)，就是改變事物的能力，它在 Rust 中的運作方式跟其他語言不太一樣。
+<p>可變性（mutability），就是改變事物的能力，它在 Rust 中的運作方式跟其他語言不太一樣。
 第一個方面就是 Rust 的可變性並不是預設狀態：</p>
 <pre><code class="language-rust,ignore">let x = 5;
 x = 6; // error!
@@ -81,28 +81,28 @@ x = 6; // error!
 
 x = 6; // no problem!
 </code></pre>
-<p>這是一個可變的 (mutable) <a href="variable-bindings.html">變數綁定</a>。
+<p>這是一個可變的（mutable）<a href="variable-bindings.html">變數綁定</a>。
 當一個綁定是可變的，代表你被允許改變它所指向的內容。
 所以在上述範例中，<code>x</code> 的值並沒有太多改變，只是從一個 <code>i32</code> 換到另一個而已。</p>
-<p>如果你想改變綁定指向的東西，你需要<a href="references-and-borrowing.html">可變參照</a> (mutable reference)：</p>
+<p>如果你想改變綁定指向的東西，你需要 <a href="references-and-borrowing.html">可變參照</a>（mutable reference）：</p>
 <pre><code class="language-rust">let mut x = 5;
 let y = &amp;mut x;
 </code></pre>
-<p><code>y</code> 是個指向一個可變參照的不可變 (immutable) 綁定，這代表你不能把 <code>y</code> 綁定到其他東西上（例如 <code>y = &amp;mut z</code>），但你可以改變綁定到 <code>y</code> 上的變數的值（<code>*y = 5</code>）。
+<p><code>y</code> 是個指向一個可變 reference 的不可變（immutable）綁定，這代表你不能把 <code>y</code> 綁定到其他東西上（例如 <code>y = &amp;mut z</code>），但你可以改變綁定到 <code>y</code> 上的變數的值（<code>*y = 5</code>）。
 這有一些微妙的不同。</p>
 <p>當然，如果你兩種都想要可變：</p>
 <pre><code class="language-rust">let mut x = 5;
 let mut y = &amp;mut x;
 </code></pre>
 <p>現在 <code>y</code> 可以綁到其他變數上，且它所參照的值也可以被改變。</p>
-<p>很重要的是 <code>mut</code> 也是<a href="patterns.html">模式</a> (pattern) 的一部份，所以你可以像這樣做：</p>
+<p>很重要的是 <code>mut</code> 也是 <a href="patterns.html">模式</a>（pattern）的一部份，所以你可以像這樣做：</p>
 <pre><code class="language-rust">let (mut x, y) = (5, 6);
 
 fn foo(mut x: i32) {
 # }
 </code></pre>
-<h2>內部及外部可變性 (Interior vs. Exterior Mutability)</h2>
-<p>然而，當我們談及 Rust 中有些東西是 &quot;不可變&quot; 的同時，這不代表它不能真的被改變：我們說它有著 &quot;外部可變性&quot; (exterior mutability)。
+<h2>內部及外部可變性（Interior vs. Exterior Mutability）</h2>
+<p>然而，當我們提到 Rust 中有些東西是「不可變」的同時，這不代表它不能真的被改變：我們說它有著「外部可變性」（exterior mutability）。
 以 <a href="https://doc.rust-lang.org/std/sync/struct.Arc.html">Arc&lt;T&gt;</a> 為例：</p>
 <pre><code class="language-rust">use std::sync::Arc;
 
@@ -112,20 +112,20 @@ let y = x.clone();
 <p>當我們呼叫 <code>clone()</code> 時，<code>Arc&lt;T&gt;</code> 需要更新參照計數器。
 沒錯，我們在此處沒有使用任何 <code>mut</code>，<code>x</code> 是個不可變綁定，而且我們沒有使用 <code>&amp;mut 5</code> 或其他東西。
 那麼是為什麼呢？</p>
-<p>要明白這些，我們要回去看 Rust 的指導哲學的核心，記憶體的安全性，以及 Rust 用以保證其安全的機制，<a href="ownership.html">所有權</a>系統，和更特別的<a href="references-and-borrowing.html#borrowing">借用</a>：</p>
+<p>要明白這些，我們要回去看 Rust 的指導哲學的核心是什麼，就是記憶體安全性，以及 <a href="ownership.html">所有權</a> 系統，和更特別的 <a href="references-and-borrowing.html#borrowing">借用</a> 這些 Rust 用來保證其安全的機制：</p>
 <blockquote>
 <p>你可能有以下兩種借用的其中一種，但是不能同時使用兩者：</p>
 <ul>
-<li>一到多個對資源的參照（<code>&amp;T</code>）</li>
-<li>唯一一個可變參照（<code>&amp;mut T</code>）</li>
+<li>一到多個對資源的 references（<code>&amp;T</code>）</li>
+<li>唯一一個可變 reference（<code>&amp;mut T</code>）</li>
 </ul>
 </blockquote>
-<p>所以，這才是 &quot;不可變性&quot; (immutability) 的真正定義：當兩個參照指向同一個資源時安全嗎？
-在 <code>Arc&lt;T&gt;</code> 的例子中，是的：改變完全被包含在結構自身當中。
+<p>所以，「不可變性」（immutability）的真正定義是：當兩個參照指向同一個資源時安全嗎？
+在 <code>Arc&lt;T&gt;</code> 的例子中，是的沒錯：改變完全被包含在結構自身當中。
 與使用者無關。
 因為這個原因，它會在 <code>clone()</code> 時提供 <code>&amp;T</code>。
 如果它提供 <code>&amp;mut T</code>，那就會是個問題。</p>
-<p>其他型別，像是 [<code>std::cell</code>]<a href="https://doc.rust-lang.org/std/cell/index.html">stdcell</a> 模組中的這個，有相反的屬性：內部可變性 (interior mutability)。
+<p>其他型別，像是 [<code>std::cell</code>]<a href="https://doc.rust-lang.org/std/cell/index.html">stdcell</a> 模組中的這個，有相反的屬性：內部可變性（interior mutability）。
 例如：</p>
 <pre><code class="language-rust">use std::cell::RefCell;
 
@@ -148,9 +148,9 @@ let z = x.borrow_mut();
 這是 <code>RefCell</code> 做的事情：它在執行期強制使用 Rust 得借用規則，且在有違反規則時 <code>panic!</code>。
 這使我們可以繞開 Rust 的可變性規則的另一面。
 讓我們來說明它。</p>
-<h3>欄位等級的可變性 (Field-level mutability)</h3>
+<h3>欄位等級的可變性（Field-level mutability）</h3>
 <p>可變性，它不是借用（<code>&amp;mut</code>）就是綁定（<code>let mut</code>）的一個屬性。
-這代表你不可能有某些欄位可變、而某些欄位不可變的<a href="structs.html">結構體</a> (struct)。</p>
+這代表你不可能有某些欄位可變、而某些欄位不可變的 <a href="structs.html">結構體</a>（struct）。</p>
 <pre><code class="language-rust,ignore">struct Point {
     x: i32,
     mut y: i32, // nope

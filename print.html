@@ -72,10 +72,10 @@
                 <div id="content" class="content">
                     <h1>Rust 程式語言</h1>
 <p>歡迎光臨！本書將會讓你學會 <a href="https://www.rust-lang.org">Rust 程式語言</a>。
-Rust 是個專注在三項目標的系統程式語言：安全、速度、及並行 (concurrency)。
+Rust 是個專注在三項目標的系統程式語言：安全、速度、及並行（concurrency）。
 它無需透過垃圾回收機制去達成以上目標，這使它成為一種能在其他語言不擅長的方面大展身手的程式語言，例如：嵌入到其他語言中、在特定空間及時間的限制下撰寫程式、撰寫硬體驅動程式和作業系統之類的底層程式碼。
-它透過某些在執行期不會產生額外負擔的編譯期安全檢查，去增進現有程式語言的目標，並去除所有的資料競爭 (data races)。
-Rust 同時也旨在實現“無成本抽象化” (zero-cost abstractions) ，雖然，有些抽象化讓他看起來像是高階語言。
+它透過某些在執行期不會產生額外負擔的編譯期安全檢查，去增進現有程式語言的目標，並去除所有的資料競爭（data races）。
+Rust 同時也旨在實現「無成本抽象化」（zero-cost abstractions），雖然，有些抽象化讓他看起來像是高階語言。
 即便如此，Rust 仍允許像低階語言一樣進行精確控制。</p>
 <p>《Rust 程式語言》被分為數個章節。
 本簡介只是個開始。
@@ -101,7 +101,7 @@ Rust 同時也旨在實現“無成本抽象化” (zero-cost abstractions) ，�
 <h1>準備</h1>
 <p>本書第一章，將會帶領我們使用 Rust 及它的相關工具。
 首先，我們會安裝 Rust。
-接著，撰寫經典的 &quot;Hello World&quot; 程式。
+接著，撰寫經典的「Hello World」程式。
 最後，我們將談到 Cargo，它是 Rust 的建置系統跟套件管理器。</p>
 <h2>安裝 Rust</h2>
 <p>使用 Rust 的第一步就是安裝它。
@@ -112,14 +112,14 @@ Rust 同時也旨在實現“無成本抽象化” (zero-cost abstractions) ，�
 <h3>平台支援</h3>
 <p>Rust 編譯器能編譯並執行在大多數的平台上，但不是所有的平台都有相同的支援性。
 Rust 的支援程度被分為三級。每一級都有不同的保證。</p>
-<p>平台將以 &quot;target triple&quot; 的方式標識，這個字串是用來告知編譯器最終該產出怎樣的輸出。
+<p>平台將以「target triple」的方式標識，這個字串是用來告知編譯器最終該產出怎樣的輸出。
 而各列代表對應的元件在特定平台的支援性。</p>
 <blockquote>
 <p>譯註：<code>target triple</code> 通常會依 <code>&lt;arch&gt;&lt;sub&gt;-&lt;vendor&gt;-&lt;sys&gt;-&lt;abi&gt;</code> 的規則表示。
-可以參考 Clang 的<a href="http://clang.llvm.org/docs/CrossCompilation.html#target-triple">說明文件</a>。</p>
+可以參考 Clang 的 <a href="http://clang.llvm.org/docs/CrossCompilation.html#target-triple">說明文件</a>。</p>
 </blockquote>
 <h4>Tier 1 一級</h4>
-<p>一級平台可被認為是&quot;被保證可建置且運行&quot;的。
+<p>一級平台可被認為是「被保證可建置且運行」的。
 具體來說，它們都滿足以下要求：</p>
 <ul>
 <li>此平台的已建有自動化測試。</li>
@@ -138,7 +138,7 @@ Rust 的支援程度被分為三級。每一級都有不同的保證。</p>
 <tr><td> <code>x86_64-unknown-linux-gnu</code>    </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 64-bit Linux (2.6.18+)     </td></tr>
 </table>
 <h4>Tier 2 二級</h4>
-<p>二級平台可被認為是&quot;被保證可以建置&quot;的。
+<p>二級平台可被認為是「被保證可以建置」的。
 但因為沒有執行自動化測試，所以不保證能產生可以運行的 build，不過此平台通常運行良好，且永遠歡迎上 patches！
 具體來說，這些平台被要求要符合以下各項：</p>
 <ul>
@@ -205,7 +205,7 @@ Continue? (y/N)
 </code></pre>
 <p>接著按下 <code>y</code> 表示同意，接著按照提示安裝。</p>
 <h3>安裝在 Windows 上</h3>
-<p>如果你使用 Windows，請下載合適版本的<a href="https://www.rust-lang.org/install.html">安裝檔</a>。</p>
+<p>如果你使用 Windows，請下載合適版本的 <a href="https://www.rust-lang.org/install.html">安裝檔</a>。</p>
 <h3>移除</h3>
 <p>移除 Rust 就跟安裝一樣簡單。在 Linux 或 Mac 上，只需執行移除指令就可以了：</p>
 <pre><code class="language-bash">$ sudo /usr/local/lib/rustlib/uninstall.sh
@@ -218,19 +218,19 @@ Continue? (y/N)
 <p>你將會看到版本號碼、commit hash 及 commit 的日期。</p>
 <p>如果你成功了，代表 Rust 安裝成功了！恭喜你！</p>
 <p>如果沒有成功，而你是使用 Windows 作業系統，請確認 Rust 有設定在你的 %PATH% 系統環境變數內。
-如果沒有，重新執行安裝檔，在 &quot;Change, repair, or remove installation&quot; 頁面選擇 &quot;Change&quot;，接著確定 &quot;Add to PATH&quot; 有裝到本機端。</p>
+如果沒有，重新執行安裝檔，在「Change, repair, or remove installation」頁面選擇「Change」，接著確定「Add to PATH」有裝到本機端。</p>
 <p>Rust 不自己做 linking，所以你會需要安裝一個 linker。
 做這件事會相依於你所使用的作業系統，更多細節請查閱相關文件。</p>
 <p>如果仍然沒有成功，有許多地方可以獲得協助。
 最簡單的是使用 <a href="http://chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">Mibbit</a> 連上 <a href="irc://irc.mozilla.org/#rust">irc.mozilla.org 的 #rust IRC 頻道</a>。
 按下連結，然後就能跟可以幫助我們的 Rustaceans（我們用以自稱的暱稱）聊天。
-其他的資源還包括了<a href="https://users.rust-lang.org/">使用者論壇</a>和 <a href="http://stackoverflow.com/questions/tagged/rust">Stack Overflow</a>。</p>
+其他的資源還包括了 <a href="https://users.rust-lang.org/">使用者論壇</a> 和 <a href="http://stackoverflow.com/questions/tagged/rust">Stack Overflow</a>。</p>
 <p>安裝檔同時也安裝了一份文件的複本在本機，所以我們可以離線閱讀這份文件。
 在 UNIX 系統的位置是 <code>/usr/local/share/doc/rust</code>。
 在 Windows，文件則放在 Rust 安裝目錄下的 <code>share/doc</code> 目錄。</p>
 <h2>Hello, world!</h2>
 <p>現在 Rust 已經裝好了，我們將協助你開始寫你的第一個 Rust 程式。
-學習一個新語言的傳統是，撰寫一個小程式，並在螢幕上印出 &quot;Hello, world!&quot;。
+學習一個新語言的傳統是，撰寫一個小程式，並在螢幕上印出「Hello, world!」。
 本節我們會遵循這個傳統。</p>
 <p>從這樣一個簡單小程式開始的好處，是你能很快地驗證編譯器已經安裝完成，而且正常運行。
 把資訊印在螢幕上也是個未來會很常做的事情，早點練習沒什麼不好。</p>
@@ -238,7 +238,7 @@ Continue? (y/N)
 <p>註：本書假設你已經有基本的指令熟悉程度。
 Rust 對你的編輯器、工具、或程式碼放在何處沒有特別要求，所以如果你喜歡使用 IDE 而非 command line 介面，使用 IDE 也是個選擇。
 你也許會想嘗試專為 Rust 建立的 <a href="https://github.com/oakes/SolidOak">SolidOak</a>。
-社群也開發了許多擴充功能，而且 Rust 團隊也替<a href="https://github.com/rust-lang/rust/blob/master/src/etc/CONFIGS.md">許多編輯器</a>發佈了外掛。
+社群也開發了許多擴充功能，而且 Rust 團隊也替 <a href="https://github.com/rust-lang/rust/blob/master/src/etc/CONFIGS.md">許多編輯器</a> 發佈了外掛。
 配置你的編輯器或 IDE 不在本教學的範圍內，所以請依據你的設置查閱文件。</p>
 </blockquote>
 <h3>建立專案檔</h3>
@@ -275,15 +275,15 @@ Hello, world!
 你已正式地寫出了一個 Rust 程式。
 這讓你成為了 Rust 程式設計師！歡迎你！</p>
 <h3>剖析 Rust 程式</h3>
-<p>現在，讓我們來仔細檢視 &quot;Hello, world!&quot; 程式到底發生了什麼事。
+<p>現在，讓我們來仔細檢視「Hello, world!」程式到底發生了什麼事。
 這是第一塊謎團：</p>
 <pre><code class="language-rust">fn main() {
 
 }
 </code></pre>
-<p>這幾行定義了 Rust 中的 <em>函式</em> (function)。
+<p>這幾行定義了 Rust 中的 <em>函式</em>（function）。
 其中 <code>main</code> 函式比較特殊：他是所有 Rust 程式的起始點。
-第一行意指 &quot;我要定義一個叫 <code>main</code> 的函式，它沒有參數也沒有回傳值。&quot;
+第一行意指「我要定義一個叫 <code>main</code> 的函式，它沒有參數也沒有回傳值。」
 如果函式有參數的話，參數會放在括號（<code>(</code> 及 <code>)</code>）中，且因為我們不回傳值，所以可以省略回傳的型態。</p>
 <p>同時留意，函式的內容會被包在大括號（<code>{</code> 及 <code>}</code>）內。
 Rust 要求所有函式的內容都要用它包起來。
@@ -295,19 +295,19 @@ Rust 要求所有函式的內容都要用它包起來。
 這邊有許多很重要的細節。
 首先，縮排是四個空白，而不是 tabs。</p>
 <p>第二個重要的部分是 <code>println!()</code> 這行。
-這個在 Rust 中叫做 <em><a href="macros.html">巨集</a></em> (macro)，這是 Rust 達成 metaprogramming 的方式。
+這個在 Rust 中叫做 <em><a href="macros.html">巨集</a></em>（macro），這是 Rust 達成 metaprogramming 的方式。
 如果在此處改用函式的話，看起來會像是 <code>println()</code>（沒有 ! 符號）。
 我們將在之後討論 Rust 巨集的更多細節，但現在你只需知道，當看到 <code>!</code> 的時候，代表你正在呼叫一個巨集，而不是一般的函式。</p>
-<p>接著 <code>&quot;Hello, world!&quot;</code> 是一個 <em>字串</em> (string)。
-在系統程式語言中，字串是個複雜到令人驚訝的主題，在此處，這是一個 <em><a href="the-stack-and-the-heap.html">靜態分配</a></em> (statically allocated) 的字串。
+<p>接著 <code>&quot;Hello, world!&quot;</code> 是一個 <em>字串</em>（string）。
+在系統程式語言中，字串是個複雜到令人驚訝的主題，在此處，這是一個 <em><a href="the-stack-and-the-heap.html">靜態分配</a></em>（statically allocated）的字串。
 我們傳遞這個字串作為參數給 <code>println!</code>，然後它將字串印在螢幕上。
 夠簡單吧！</p>
 <p>程式中每一行都以分號（<code>;</code>）結尾。
-Rust 是個 <em><a href="glossary.html#expression-oriented-language">表達式導向語言</a></em> (expression-oriented language)，這代表大多數的東西都是表達式，而不是陳述式 (statements)。
+Rust 是個 <em><a href="glossary.html#expression-oriented-language">表達式導向語言</a></em>（expression-oriented language），這代表大多數的東西都是表達式，而不是陳述式（statements）。
 <code>;</code> 代表著這個表達式已經結束，而且下一個正準備開始。
 大多數 Rust 程式碼的行都是以 <code>;</code> 結尾。</p>
 <h3>編譯和執行是不同的步驟</h3>
-<p>在 &quot;撰寫並執行 Rust 程式&quot; 中，我們告訴你如何執行一個新建的程式。
+<p>在「撰寫並執行 Rust 程式」中，我們告訴你如何執行一個新建的程式。
 現在我們分解流程，檢查每一步。</p>
 <p>執行 Rust 程式之前，你需要編譯它。
 你可以使用 Rust 編譯器，輸入 <code>rustc</code> 指令並傳遞原始碼的檔名給它，像這樣</p>
@@ -326,17 +326,17 @@ main.exe  main.rs
 接著我們唯一要做的就只剩下執行 <code>main</code> 或 <code>main.exe</code> 了：</p>
 <pre><code class="language-bash">$ ./main  # or main.exe on Windows
 </code></pre>
-<p>如果 <em>main.rs</em> 是 &quot;Hello, world!&quot; 程式，那它會印出 <code>Hello, world!</code> 在終端機上。</p>
+<p>如果 <em>main.rs</em> 是「Hello, world!」程式，那它會印出 <code>Hello, world!</code> 在終端機上。</p>
 <p>如果你以前學的是動態語言，例如 Ruby、Python、或 JavaScript，你可能會不習慣把編譯程式和執行程式的動作分開。
-Rust 是個 <em>事先編譯</em> (ahead-of-time compiled) 的語言，你可以編譯程式，把程式給其他人，他們不用安裝 Rust 就能執行程式。
+Rust 是個 <em>事先編譯</em>（ahead-of-time compiled）的語言，你可以編譯程式，把程式給其他人，他們不用安裝 Rust 就能執行程式。
 如果你給一個人 <code>.rb</code> 或 <code>.py</code> 或 <code>.js</code> 檔，他則必須要先裝好 Ruby、Python、或 JavaScript 應用，不過反之，他只需一個指令就可以編譯並執行程式。
 這都是程式語言的設計中的取捨。</p>
 <p>簡單的程式只需要用 <code>rustc</code> 直接編譯就好了，但隨著你的專案成長，你會希望能夠管理專案的所有選項，並且能簡單的分享程式碼給其他人和專案。
 下一節，我們將會介紹給你一個叫做 Cargo 的工具，他可以幫你撰寫真實世界的 Rust 程式。</p>
 <h2>Hello, Cargo!</h2>
 <p>Cargo 是 Rust 的建置系統跟套件管理器，而且 Rustaceans 會使用 Cargo 去管理他們的 Rust 專案。
-Cargo 管理三件事：建置你的程式碼、下載你的程式碼所依賴的函式庫 (libraries)、以及建置這些函式庫。
-我們把這些你的程式所依賴的函式庫叫做 &quot;dependencies&quot;，因為你的程式碼依賴他們。</p>
+Cargo 管理三件事：建置你的程式碼、下載你的程式碼所依賴的函式庫（libraries）、以及建置這些函式庫。
+我們把這些你的程式所依賴的函式庫叫做「dependencies」，因為你的程式碼依賴他們。</p>
 <p>最簡單的 Rust 程式不會有任何 dependencies，所以現在你只會用到第一部份的功能。
 當你撰寫更複雜的 Rust 程式後，你將會希望加入 dependencies，如果你從 Cargo 開始的話，那就會簡單很多。</p>
 <p>許多主要的 Rust 專案都使用 Cargo，我們假設在本書後面的章節你都會使用它。
@@ -352,7 +352,7 @@ Cargo 管理三件事：建置你的程式碼、下載你的程式碼所依賴�
 <ol>
 <li>把你的原始碼檔案放到正確的目錄。</li>
 <li>去除舊的執行檔（在 Windows 是 <code>main.exe</code>，其他則是 <code>main</code>）， 並另外建一個新的。</li>
-<li>建立 Cargo 配置 (configuration) 檔。</li>
+<li>建立 Cargo 配置（configuration）檔。</li>
 </ol>
 <p>讓我們開始吧！</p>
 <h4>建立新的執行檔和原始碼目錄</h4>
@@ -368,12 +368,12 @@ $ rm main  # or 'del main.exe' on Windows
 <p>然後，複製 <em>main.rs</em> 到 <em>src</em> 目錄，然後刪除 <code>rustc</code> 所編譯出的檔案。
 一如往常地， 在 Windows 下用 <code>main.exe</code> 取代 <code>main</code>。</p>
 <p>這個例子中保留 <code>main.rs</code> 作為原始碼檔名，是因為它可以建立執行檔。
-如果你想要建立一個函式庫 (library)，你應該把檔案命名為 <code>lib.rs</code>。
+如果你想要建立一個函式庫（library），你應該把檔案命名為 <code>lib.rs</code>。
 Cargo 使用這樣的慣例去編譯專案，但如果你想要的話，你還是可以更改它。</p>
 <h4>建立配置檔</h4>
 <p>接著，在 <em>hello_world</em> 目錄下建立一個新的檔案，命名為 <code>Cargo.toml</code>。</p>
 <p>確保 <code>Cargo.toml</code> 的 <code>C</code> 是大寫，否則 Cargo 會無法處理這樣的配置檔。</p>
-<p>這個檔案使用 <em><a href="https://github.com/toml-lang/toml">TOML</a></em> (Tom's Obvious, Minimal Language) 格式。
+<p>這個檔案使用 <em><a href="https://github.com/toml-lang/toml">TOML</a></em>（Tom's Obvious, Minimal Language）格式。
 TOML 跟 INI 很類似，但是有一些額外的好處，且被用來作為 Cargo 的配置格式。</p>
 <p>在檔案內，輸入以下資訊：</p>
 <pre><code class="language-toml">[package]
@@ -382,8 +382,8 @@ name = &quot;hello_world&quot;
 version = &quot;0.0.1&quot;
 authors = [ &quot;Your name &lt;you@example.com&gt;&quot; ]
 </code></pre>
-<p>第一行，<code>[package]</code> 表示以下的陳述是用來配置一個套件 (package)。
-當我們要加入更多資訊到這個檔案內，我們會增加其他的小節 (sections)，但是現在，我們只有套件的配置。</p>
+<p>第一行，<code>[package]</code> 表示以下的陳述是用來配置一個套件（package）。
+當我們要加入更多資訊到這個檔案內，我們會增加其他的小節（sections），但是現在，我們只有套件的配置。</p>
 <p>其他三行設定了三項 Cargo 在編譯程式時所需知道的配置：程式的名字、版本、和作者。</p>
 <p>在 <em>Cargo.toml</em> 檔案內加入這些資訊後，存檔然後結束。</p>
 <h3>建立並執行 Cargo 專案</h3>
@@ -439,7 +439,7 @@ Cargo 可以快速的建立專案目錄骨架，然後你就可以開始開發�
 <pre><code class="language-bash">$ cargo new hello_world --bin
 </code></pre>
 <p>這個指令傳遞了 <code>--bin</code>，因為它的目的是建立一個可執行的應用程式，而不是函式庫。
-執行檔也常被稱作 <em>二進位檔</em> (binaries)。</p>
+執行檔也常被稱作 <em>二進位檔</em>（binaries）。</p>
 <p>Cargo 會產生兩個檔案和一個目錄給我們：<code>Cargo.toml</code> 檔案，<em>src</em> 目錄、和 src 下的 <em>main.rs</em> 檔案。
 它們看起來與前面手動建立的結構很像。</p>
 <p>這些就是我們全部所需的東西。
@@ -458,15 +458,15 @@ authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
     println!(&quot;Hello, world!&quot;);
 }
 </code></pre>
-<p>Cargo 會幫你產生 &quot;Hello World!&quot; 程式碼，接著你就可以開始寫程式了！</p>
+<p>Cargo 會幫你產生「Hello World!」程式碼，接著你就可以開始寫程式了！</p>
 <blockquote>
 <p>註：如果你想要閱覽更多 Cargo 的細節，可以查閱官方的 <a href="http://doc.crates.io/guide.html">Cargo 指南</a>，其中包含有所有的功能。</p>
 </blockquote>
 <h2>結語</h2>
 <p>本章包含了在本書後述部分、及未來你的 Rust 時光的各種基礎。
 現在你已經學會了工具，我們接著將更多地論及 Rust 本身。</p>
-<p>你有兩個選擇：從 &quot;<a href="guessing-game.html">教學: 猜謎遊戲</a>&quot; 深入一個專案，或從 &quot;<a href="syntax-and-semantics.html">語法及語意</a>&quot; 由下而上開始。
-有經驗的系統程式設計師可能會傾向從 &quot;教學: 猜謎遊戲&quot; 開始，而動態語言背景的人也許兩者都可以。
+<p>你有兩個選擇：從 <a href="guessing-game.html">教學: 猜謎遊戲</a> 深入一個專案，或從 <a href="syntax-and-semantics.html">語法及語意</a> 由下而上開始。
+有經驗的系統程式設計師可能會傾向從「教學: 猜謎遊戲」開始，而動態語言背景的人也許兩者都可以。
 不同人有不同的學習方式！
 請選擇適合自己的方式。</p>
 <blockquote>
@@ -474,14 +474,14 @@ authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
 </blockquote>
 <h1>猜數字遊戲</h1>
 <p>讓我們開始學習 Rust 吧！
-作為我們的第一個專案，我們會實作一個經典的新手程式問題：猜數字 (guessing game)。
+作為我們的第一個專案，我們會實作一個經典的新手程式問題：猜數字（guessing game）。
 它的規則是這樣：我們的程式會產生一個 1 到 100 間的亂數。
 然後提示我們輸入數字猜猜看。
 當我們輸入之後，它會告訴我們太大還是太小。
 當我們猜對了，它會恭喜我們。
 聽起來不錯吧？</p>
 <p>接下來，我們將會學到一些 Rust 的東西。
-下一章 &quot;語法及語意&quot; 將會更深入探究每一部份。</p>
+下一章「語法及語意」將會更深入探究每一部份。</p>
 <h2>準備</h2>
 <p>讓我們準備一個新專案。
 進到你的專案目錄。
@@ -502,7 +502,7 @@ authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
 </code></pre>
 <p>Cargo 會從你的環境設定中取得這些資訊。
 如果它不正確，就直接修改吧。</p>
-<p>最後，Cargo 幫我們產生了一個 &quot;Hello, world!&quot;。
+<p>最後，Cargo 幫我們產生了一個「Hello, world!」。
 看看 <code>src/main.rs</code> 檔案：</p>
 <pre><code class="language-rust">fn main() {
     println!(&quot;Hello, world!&quot;);
@@ -525,7 +525,7 @@ Hello, world!
 </code></pre>
 <p>很好！
 當我們需要快速地重複執行專案時，<code>run</code> 指令會很方便。
-我們的遊戲就是一個專案，我們需要在每個開發循環 (iteration) 做快速的測試後，才會進入下一個開發循環。</p>
+我們的遊戲就是一個專案，我們需要在每個開發循環（iteration）做快速的測試後，才會進入下一個開發循環。</p>
 <h2>處理猜測</h2>
 <p>讓我們開始吧！
 我們所要做的第一件事情是讓玩家可以輸入他的猜測值。
@@ -553,12 +553,12 @@ fn main() {
 因此，我們需要標準函式庫中的 <code>io</code> 函式庫。
 Rust 預設只會替所有程式 import 極少的東西，叫 <a href="https://doc.rust-lang.org/std/prelude/index.html">prelude</a>。
 如果有東西不在其中，你就必須直接 <code>use</code> 它。
-這邊還有第二種 &quot;prelude&quot;，叫做 <a href="https://doc.rust-lang.org/std/io/prelude/index.html">io prelude</a>，它提供類似的功能：import 它，然後它幫你 import 一些有用且跟 <code>io</code> 有關的東西。</p>
+這邊還有第二種「prelude」，叫做 <a href="https://doc.rust-lang.org/std/io/prelude/index.html">io prelude</a>，它提供類似的功能：import 它，然後它幫你 import 一些有用且跟 <code>io</code> 有關的東西。</p>
 <pre><code class="language-rust,ignore">fn main() {
 </code></pre>
 <p>如你之前所看過的，<code>main()</code> 函式是程式的進入點。
 <code>fn</code> 語法宣告一個新函式，<code>()</code> 指名了此處沒有傳入的參數，而 <code>{</code> 後面開始是函式的內容。
-因為沒有提到回傳型別，所以這裡的回傳會是 <code>()</code>，一個空的<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%20(Tuples)">多元組</a> (tuple)。</p>
+因為沒有提到回傳型別，所以這裡的回傳會是 <code>()</code>，一個空的<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%EF%BC%88Tuples%EF%BC%89">多元組</a>（tuple）。</p>
 <pre><code class="language-rust,ignore">    println!(&quot;Guess the number!&quot;);
 
     println!(&quot;Please input your guess.&quot;);
@@ -568,28 +568,28 @@ Rust 預設只會替所有程式 import 極少的東西，叫 <a href="https://d
 </code></pre>
 <p>現在遇到有趣的東西了！
 這一行有不少東西。
-第一個，請注意有一個 <a href="variable-bindings.html">let 陳述式</a>，它被用來建立 &quot;變數綁定&quot;。
+第一個，請注意有一個 <a href="variable-bindings.html">let 陳述式</a>，它被用來建立「變數綁定」。
 它的形式是：</p>
 <pre><code class="language-rust,ignore">let foo = bar;
 </code></pre>
 <p>這將會建立一個叫做 <code>foo</code> 的新綁定，然後把它綁定在 <code>bar</code> 的值上。
-在許多語言中，這叫做 &quot;變數&quot; (variable)，但 Rust 的變數綁定還暗藏玄機。</p>
-<p>舉例來說，它預設是<a href="mutability.html">不可變的</a> (immutable)。
-這也是為何我們的範例使用 <code>mut</code>：它使綁定變成可變的 (mutable)，而不再是不可變的。
-<code>let</code> 不會從左邊取得賦值 (assignment) 的名字，實際上他使用 &quot;<a href="patterns.html">模式</a>&quot; (pattern)。
+在許多語言中，這叫做「變數」（variable），但 Rust 的變數綁定還暗藏玄機。</p>
+<p>舉例來說，它預設是<a href="mutability.html">不可變的</a>（immutable）。
+這也是為何我們的範例使用 <code>mut</code>：它使綁定變成可變的（mutable），而不再是不可變的。
+<code>let</code> 不會從左邊取得賦值（assignment）的名字，實際上他使用「<a href="patterns.html">模式</a>」（pattern）。
 我們在後面會使用模式。
 對於我們的簡單情況，它已經夠用了：</p>
 <pre><code class="language-rust">let foo = 5; // immutable.
 let mut bar = 5; // mutable
 </code></pre>
 <p>噢，還有 <code>//</code> 會開始一段註解，一直到行末。
-Rust 會忽略所有<a href="comments.html">註解</a> (comment) 內的東西。</p>
+Rust 會忽略所有<a href="comments.html">註解</a>（comment）內的東西。</p>
 <p>所以現在我們知道 <code>let mut guess</code> 會宣告一個名為 <code>guess</code> 的可變變數綁定，但我們仍必須看看 <code>=</code> 另一邊所綁定的東西：<code>String::new()</code>。</p>
 <p><code>String</code> 是一個字串型別，由標準函式庫提供。
 一個<a href="https://doc.rust-lang.org/std/string/struct.String.html">字串</a>是一個以 UTF-8 編碼的可變長度的文字。</p>
-<p>而 <code>::new()</code> 語法使用 <code>::</code> 是因為它是一個特定型別的 &quot;關聯函式&quot; (associated function)。
-也就是說，它被關聯到 <code>String</code> 本身，而非特定的某個 <code>String</code> 的實體 (instance)。
-一些語言稱之為 &quot;靜態方法&quot; (static method)。</p>
+<p>而 <code>::new()</code> 語法使用 <code>::</code> 是因為它是一個特定型別的「關聯函式」（associated function）。
+也就是說，它被關聯到 <code>String</code> 本身，而非特定的某個 <code>String</code> 的實體（instance）。
+一些語言稱之為「靜態方法」（static method）。</p>
 <p>此函式被稱為 <code>new()</code>，因為它建立一個新的、空的 <code>String</code>。
 你可以在其他許多型別找到 <code>new()</code> 函式，因為它是建立某一些型別新值的通用名稱。</p>
 <p>讓我們繼續下去：</p>
@@ -605,18 +605,18 @@ Rust 會忽略所有<a href="comments.html">註解</a> (comment) 內的東西。
 <p>還記得在程式的第一行我們是怎麼 <code>use</code> 那個 <code>std::io</code> 的嗎？
 我們現在正在呼叫它的關聯函式。
 如果我們沒有 <code>use std::io</code> 的話，我們就必須把這行改成 <code>std::io::stdin()</code>。</p>
-<p>這個特殊的函式會回傳一個終端機標準輸入的控制代碼 (handle)。
+<p>這個特殊的函式會回傳一個終端機標準輸入的控制代碼（handle）。
 更具體的內容，可以參考 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html">std::io::Stdin</a>。</p>
-<p>下一部份會使用這個控制代碼 (handle) 來取得使用者的輸入：</p>
+<p>下一部份會使用這個控制代碼（handle）來取得使用者的輸入：</p>
 <pre><code class="language-rust,ignore">.read_line(&amp;mut guess)
 </code></pre>
-<p>此處，我們呼叫控制代碼 (handle) 的 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line">read_line()</a> 方法。
-<a href="method-syntax.html">方法</a> (method) 跟關聯函式很類似，但只能在特定型別的實體 (instance) 中取用，而不是從型別本身取用。
+<p>此處，我們呼叫控制代碼（handle）的 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line">read_line()</a> 方法。
+<a href="method-syntax.html">方法</a>（method）跟關聯函式很類似，但只能在特定型別的實體（instance）中取用，而不是從型別本身取用。
 我們也會傳遞一個參數給 <code>read_line()</code>：<code>&amp;mut guess</code>。</p>
 <p>還記得前面我們如何綁定 <code>guess</code> 嗎？
 我們有提到它是可變的。
 然而，<code>read_line</code> 不接受把 <code>String</code> 當作參數：它只接受 <code>&amp;mut String</code>。
-Rust 有一個叫做<a href="references-and-borrowing.html">參照</a> (references) 的功能，它允許你將多個參照指向同一塊資料，這樣可以降低複製的動作。
+Rust 有一個叫做<a href="references-and-borrowing.html">參照</a>（references）的功能，它允許你將多個參照指向同一塊資料，這樣可以降低複製的動作。
 參照是個複雜的功能，Rust 的主要賣點就是能安全、簡單的使用參照。
 現在我們不需要知道太多細節。
 我們只需知道參照與 <code>let</code> 綁定類似，它預設是不可變的。
@@ -652,7 +652,7 @@ src/main.rs:10     io::stdin().read_line(&amp;mut guess);
                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </code></pre>
 <p>Rust 會警告我們沒有使用 <code>Result</code> 的值。
-這個警告來自 <code>io::Result</code> 的特殊註釋 (annotation)。
+這個警告來自 <code>io::Result</code> 的特殊註釋（annotation）。
 Rust 會試圖告訴你你沒有處理可能的錯誤。
 處理錯誤的正確方式，應該是要撰寫錯誤處理的程式碼。
 幸運的是，如果我們只想在有問題時就當機，我們可以直接使用這兩個方法。
@@ -685,9 +685,9 @@ You guessed: 6
 <p>接著，我們需要產生一個祕密數字。
 Rust 的標準函式庫還沒有包含亂數功能。
 但是 Rust 團隊提供了 <a href="https://crates.io/crates/rand">rand crate</a>。
-這個 &quot;crate&quot; 是一包 Rust 程式碼。
-我們會建置可以執行的 &quot;binary crate&quot;。
-而 <code>rand</code> 是個 &quot;library crate&quot;，包含了可以被其他程式使用的程式碼。</p>
+這個「crate」是一包 Rust 程式碼。
+我們會建置可以執行的「binary crate」。
+而 <code>rand</code> 是個「library crate」，包含了可以被其他程式使用的程式碼。</p>
 <p>使用外部的 crates 是 Cargo 的亮點。
 在我們使用 <code>rand</code> 撰寫程式碼前，我們要修改 <code>Cargo.toml</code>。
 打開它，然後加入以下幾行：</p>
@@ -699,7 +699,7 @@ rand=&quot;0.3.0&quot;
 Cargo 透過 dependencies 來瞭解你所需的外部 crates 及版本。
 在這個例子中，我們特別指定版本 <code>0.3.0</code>，所以 Cargo 知道任何發行版都必須要跟這個版本相容。
 Cargo 能瞭解 <a href="http://semver.org">Semantic Versioning</a> 的版本編碼方式，這是撰寫版本號碼的一種標準。
-上面的版號實際上可以寫成 <code>^0.3.0</code>，代表 &quot;所有跟 0.3.0 相容的版本&quot;。
+上面的版號實際上可以寫成 <code>^0.3.0</code>，代表「所有跟 0.3.0 相容的版本」。
 如果我們想要確實的使用 <code>0.3.0</code>，我們可以寫成 <code>rand=&quot;=0.3.0&quot;</code>（請注意兩個等號）。
 而當我們想要使用最新版，我們可以使用 <code>*</code>。
 我們也可以使用一個範圍內的版本。
@@ -740,12 +740,12 @@ Cargo 知道我們的專案已經建置好了，而且所有的 dependencies 也
 這讓你有一個可以重複建置的環境。
 也就是說，我們會停在 <code>0.3.8</code> 直到我們確定要升級，這也對任何我們與之分享程式碼的人有效，感謝 lock 檔。</p>
 <p>當我們 <em>真的</em> 想要用 <code>0.3.9</code> 時怎麼辦？
-Cargo 有另一個指令 <code>update</code>，代表著 &quot;忽略 lock 檔，尋找所有符合指定條件的最新版。如果運行成功，把這些版本寫入 lock 檔&quot;。
+Cargo 有另一個指令 <code>update</code>，代表著「忽略 lock 檔，尋找所有符合指定條件的最新版。如果運行成功，把這些版本寫入 lock 檔」。
 但是，預設 Cargo 只會尋找大於 <code>0.3.0</code> 及小於 <code>0.4.0</code> 的版本。
 如果我們想要換到 <code>0.4.x</code>，我們必須直接更新 <code>Cargo.toml</code>。
 當我們這樣做時，下一次 <code>cargo build</code> Cargo 將會更新索引並重新評估 <code>rand</code> 的需求。</p>
 <p>關於 <a href="http://doc.crates.io">Cargo</a> 和其<a href="http://doc.crates.io/crates-io.html">生態系</a>還有很多可以說，但是現在，這就是我們所需知道的全部了。
-Cargo 讓重新使用函式庫變得很簡單，讓 Rustaceans 易於寫出由許多子套件 (sub-packages) 組成的小專案。</p>
+Cargo 讓重新使用函式庫變得很簡單，讓 Rustaceans 易於寫出由許多子套件（sub-packages）組成的小專案。</p>
 <p>接著讓我們真正的 <em>用用看</em> <code>rand</code> 吧。
 這是我們的下一步：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
@@ -775,15 +775,15 @@ fn main() {
 因為在 <code>[dependencies]</code> 中我們宣告了 <code>rand</code>，我們可以使用 <code>extern crate</code> 讓 Rust 知道我們要使用它。
 這也等同於 <code>use rand;</code>，所以我們可以透過 <code>rand::</code> 前綴詞來使用任何 <code>rand</code> crate 內的東西。</p>
 <p>接著，我們加入另一行 <code>use</code>：<code>use rand::Rng</code>。
-我們即將使用一個方法 (method)，這個方法需要 <code>Rng</code> 在有效範圍 (scope) 中才能運作。
-基本的概念是：方法被定義在某些被稱為 &quot;traits&quot; 的東西上，trait 必須要在有效範圍中，方法才能運作。
+我們即將使用一個方法（method），這個方法需要 <code>Rng</code> 在有效範圍（scope）中才能運作。
+基本的概念是：方法被定義在某些被稱為「traits」的東西上，trait 必須要在有效範圍中，方法才能運作。
 更多細節可以閱讀 <a href="traits.html">traits</a> 一節。</p>
 <p>我們還加入了另外兩行在中間：</p>
 <pre><code class="language-rust,ignore">    let secret_number = rand::thread_rng().gen_range(1, 101);
 
     println!(&quot;The secret number is: {}&quot;, secret_number);
 </code></pre>
-<p>我們使用 <code>rand::thread_rng()</code> 函式取得隨機數字產生器的複本，這個複本位於我們正在執行的特定<a href="concurrency.html">執行緒</a> (thread) 之上。
+<p>我們使用 <code>rand::thread_rng()</code> 函式取得隨機數字產生器的複本，這個複本位於我們正在執行的特定<a href="concurrency.html">執行緒</a>（thread）之上。
 因為我們前面已經 <code>use rand::Rng</code>，所以 <code>gen_rang()</code> 方法可以使用。
 這個方法需要兩個參數，然後會產生一個在兩個參數之間的數字。
 結果包含了下限，但不包含上限，所以我們需要傳遞 <code>1</code> 和 <code>101</code> 去取得 1 到 100 範圍內的數字。</p>
@@ -855,14 +855,14 @@ fn main() {
 <p><code>cmp()</code> 方法可以被任何能用來比較的東西呼叫，且它會要求傳入你想比較的東西的參照。
 它回傳我們前面 <code>use</code> 的 <code>Ordering</code> 型別。
 我們使用 <a href="match.html">match</a> 陳述去判定它實際上是哪種 <code>Ordering</code>。
-<code>Ordering</code> 是個 <a href="enums.html">enum</a>，是枚舉 (enumeration) 的簡寫，枚舉看起來會有點像這樣：</p>
+<code>Ordering</code> 是個 <a href="enums.html">enum</a>，是枚舉（enumeration）的簡寫，枚舉看起來會有點像這樣：</p>
 <pre><code class="language-rust">enum Foo {
     Bar,
     Baz,
 }
 </code></pre>
 <p>這裡定義了任何一個 <code>Foo</code>，要不是 <code>Foo::Bar</code>，就會是 <code>Foo::Baz</code>。
-我們使用 <code>::</code> 來表示特定 <code>enum</code> 變體的命名空間 (namespace)。</p>
+我們使用 <code>::</code> 來表示特定 <code>enum</code> 變體的命名空間（namespace）。</p>
 <p><a href="https://doc.rust-lang.org/std/cmp/enum.Ordering.html">Ordering</a> <code>enum</code> 有三個可能的變體：<code>Less</code>、<code>Equal</code>、及 <code>Greater</code>。
 <code>match</code> 陳述式取得型別的值，讓你能為每個可能的值建立一條執行的分支。
 因為 <code>Ordering</code> 有三種型別，我們就會有三個分支：</p>
@@ -889,11 +889,11 @@ error: aborting due to previous error
 Could not compile `guessing_game`.
 </code></pre>
 <p>噢！這裡有個大問題。
-它的核心問題是我們有 &quot;無法匹配的型別&quot; (mismatched types)。
-Rust 有個強大的靜態型別系統 (static type system)。
-但是，它也有型別推斷 (type inference) 系統。
+它的核心問題是我們有「無法匹配的型別」（mismatched types）。
+Rust 有個強大的靜態型別系統（static type system）。
+但是，它也有型別推斷（type inference）系統。
 當我們寫到 <code>let guess = String::new()</code> 時，Rust 會推斷 <code>guess</code> 應該是 <code>String</code>，因此不需要我們特別寫出型別。
-而我們的 <code>secret_number</code> 則有多種可能的型別，它們都可以存入 1 到 100 的值，有：32 位元整數 <code>i32</code>、非帶號 (unsigned) 32 位元整數 <code>u32</code>、64 位元整數 <code>i64</code> 或其他等等。
+而我們的 <code>secret_number</code> 則有多種可能的型別，它們都可以存入 1 到 100 的值，有：32 位元整數 <code>i32</code>、非帶號（unsigned）32 位元整數 <code>u32</code>、64 位元整數 <code>i64</code> 或其他等等。
 目前這些都不重要，所以 Rust 預設為 <code>i32</code>。
 然而，Rust 不知道怎麼去比對 <code>guess</code> 與 <code>secret_number</code>。
 它們必須是相同型別。
@@ -937,7 +937,7 @@ fn main() {
         .expect(&quot;Please type a number!&quot;);
 </code></pre>
 <p>等等，我想我們已經有 <code>guess</code> 了吧？
-沒錯，但 Rust 允許我們用新的 <code>guess</code> 去 &quot;遮蔽&quot; (shadow) 前一個。
+沒錯，但 Rust 允許我們用新的 <code>guess</code> 去「遮蔽」（shadow）前一個。
 一開始 <code>guess</code> 是 <code>String</code>，但我們希望能轉換為 <code>u32</code>，在類似這樣的情況下我們會很常用到。
 遮蔽讓我們可以重複利用 <code>guess</code> 的命名，而不是強迫我們想出兩個獨特的命名，像是 <code>guess_str</code> 和 <code>guess</code>，或其他的名稱。</p>
 <p>我們把 <code>guess</code> 綁定在我們前面所寫的表達式上：</p>
@@ -945,9 +945,9 @@ fn main() {
 </code></pre>
 <p>這邊的 <code>guess</code> 參考到存著輸入值的舊 <code>guess</code>。
 而 <code>String</code> 中的 <code>trim()</code> 方法則會去除任何字串開頭結尾的空白。
-這很重要，因為我們必須按下 &quot;Return&quot; 按鍵去符合 <code>read_line()</code> 的輸入條件。
+這很重要，因為我們必須按下「Return」按鍵去符合 <code>read_line()</code> 的輸入條件。
 也就是說如果我們輸入 <code>5</code> 然後按下 Return，那 <code>guess</code> 就會是：<code>5\n</code>。
-<code>\n</code> 代表 &quot;新的一行&quot; (newline)、enter 鍵。
+<code>\n</code> 代表「新的一行」（newline）、enter 鍵。
 <code>trim()</code> 會去除這些東西，只留下我們要的字串 <code>5</code>。
 而<a href="https://doc.rust-lang.org/std/primitive.str.html#method.parse">字串的 parse() 方法</a>則會把字串分析為數字。
 因為它可以被分析為很多種數字型別，我們必須給 Rust 我們確切想要的數字型別的提示。
@@ -975,7 +975,7 @@ Too big!
 你可以看到我在猜測值前面加入空白，它仍可以認出我猜的是 76。
 多執行程式幾次，然後驗證看看，猜正確的數字，並猜一個比較小的數字。</p>
 <p>現在我們的遊戲大致上能運作了，但是我們只能猜一次。
-讓我們加入迴圈 (loops) 來修改它。</p>
+讓我們加入迴圈（loops）來修改它。</p>
 <h2>迴圈</h2>
 <p>關鍵字 <code>loop</code> 會給我們一個無限迴圈。
 讓我們加上它：</p>
@@ -1129,12 +1129,12 @@ fn main() {
     Err(_) =&gt; continue,
 };
 </code></pre>
-<p>把 <code>expect()</code> 改為 <code>match</code> 陳述的方式，大致上就是如何把 &quot;錯誤時當機&quot; 改為 &quot;實際處理錯誤&quot; 的方法。
+<p>把 <code>expect()</code> 改為 <code>match</code> 陳述的方式，大致上就是如何把「錯誤時當機」改為「實際處理錯誤」的方法。
 <code>parse()</code> 回傳的 <code>Result</code> 是個跟 <code>Ordering</code> 類似的 <code>enum</code>，但是這裡的變體跟資料有關：<code>Ok</code> 代表成功，<code>Err</code> 則是錯誤。
 它們個別包含更多的資訊：成功的分析出整數，或是一個錯誤型別。
 在本例中，當我們 <code>match</code> 到 <code>Ok(num)</code> 時，會把 <code>Ok</code> 內的值設給 <code>num</code> 這個名稱，然後在右邊直接回傳它。
 在 <code>Err</code> 的情況，我們不在意發生了什麼錯誤，所以我們使用 <code>_</code> 沒有取名。
-這樣會忽略錯誤，接著 <code>continue</code> 讓我們可以繼續 <code>loop</code> 的下一次疊代 (iteration)。</p>
+這樣會忽略錯誤，接著 <code>continue</code> 讓我們可以繼續 <code>loop</code> 的下一次疊代（iteration）。</p>
 <p>現在應該弄好了！
 讓我們試試看：</p>
 <pre><code class="language-bash">$ cargo run
@@ -1203,7 +1203,7 @@ fn main() {
 <h2>完成！</h2>
 <p>此時此刻，你成功的建置了猜謎遊戲！
 恭喜你！</p>
-<p>這第一個專案告訴你不少東西：<code>let</code>、<code>match</code>、方法 (methods)、關聯函式 (associated functions)、使用外部的 crates、等等。
+<p>這第一個專案告訴你不少東西：<code>let</code>、<code>match</code>、方法（methods）、關聯函式（associated functions）、使用外部的 crates、等等。
 我們的下個專案會告訴你更多東西。</p>
 <blockquote>
 <p>譯註：實作 <code>dining-philosophers</code> 專案的章節已經被移除了，所以後續會接到語法的部分。</p>
@@ -1219,7 +1219,7 @@ fn main() {
 <p><em>commit 3a6dbb3</em></p>
 </blockquote>
 <h1>變數綁定</h1>
-<p>事實上所有不是 &quot;Hello World&quot; 的 Rust 程式都會用到 <em>變數綁定</em>。
+<p>事實上所有不是「Hello World」的 Rust 程式都會用到 <em>變數綁定</em>。
 他們將數值綁定到一個名字上，以便在之後使用它。
 <code>let</code> 被用來聲明一個綁定，就像：</p>
 <pre><code class="language-rust">fn main() {
@@ -1229,28 +1229,28 @@ fn main() {
 <p>在所有範例中寫上 <code>fn main() {</code> 有點冗餘，所以我們在後面都會省略它。
 如果你一路看下去，請記得要寫上 <code>main()</code> 函式，不要忘記了。
 否則你會得到錯誤訊息。</p>
-<h2>模式 (Patterns)</h2>
-<p>在很多語言，變數綁定被叫做 <em>變數</em> (variable)，但是 Rust 的變數綁定藏有秘招。
-例如 <code>let</code> 表達式左邊是一個<a href="patterns.html">模式</a>，而不是變數名稱。
+<h2>模式（Patterns）</h2>
+<p>在很多語言，變數綁定被叫做 <em>變數</em>（variable），但是 Rust 的變數綁定藏有秘招。
+例如 <code>let</code> 表達式左邊是一個 <a href="patterns.html">模式</a>，而不是變數名稱。
 這代表我們可以做一些如下的事：</p>
 <pre><code class="language-rust">let (x, y) = (1, 2);
 </code></pre>
 <p>在這個表達式計算後，<code>x</code> 會是 1，而 <code>y</code> 會是 2。
-模式非常強大，而且在本書中有著<a href="patterns.html">單獨的章節</a>。
+模式非常強大，而且在本書中有著 <a href="patterns.html">單獨的章節</a>。
 現在我們還不需要這些功能，所以我們只要記住有這個東西，然後繼續就可以了。</p>
-<h2>型別註釋 (Type annotations)</h2>
+<h2>型別註釋（Type annotations）</h2>
 <p>Rust 是靜態型別語言，這代表我們要先具體指定我們所需的型別，然後它們會在編譯期被檢查。
 那為什麼第一個例子可以編譯過呢？
-恩，因為 Rust 有一個 &quot;型別推斷&quot; (type inference) 的功能。
+恩，因為 Rust 有一個「型別推斷」（type inference）的功能。
 如果它能判斷某個東西的型別，你就不需要確切地指明出來。</p>
 <p>但如果我們想要，也可以加上型別。
-型別寫在冒號 (<code>:</code>) 後面：</p>
+型別寫在冒號（<code>:</code>）後面：</p>
 <pre><code class="language-rust">let x: i32 = 5;
 </code></pre>
-<p>如果我要求你大聲唸給班上同學聽，你應該唸成『<code>x</code> 被綁定為 <code>i32</code> 型別，而且數值是 <code>5</code>。』</p>
-<p>這個例子中我們宣稱 <code>x</code> 為一個 32 位元的帶號整數 (signed integer)。
+<p>如果我要求你大聲唸給班上同學聽，你應該唸成「<code>x</code> 被綁定為 <code>i32</code> 型別，而且數值是 <code>5</code>。」</p>
+<p>這個例子中我們宣稱 <code>x</code> 為一個 32 位元的帶號整數（signed integer）。
 Rust 有許多不同的基本整數型別。
-以 <code>i</code> 開頭的是帶號整數 (signed integers)，而以 <code>u</code> 開頭的是非帶號整數 (unsigned integers)。
+以 <code>i</code> 開頭的是帶號整數（signed integers），而以 <code>u</code> 開頭的是非帶號整數（unsigned integers）。
 整數可能的大小有 8、16、32、及 64 位元。</p>
 <p>之後的範例，我們會把型別註釋在註解中。
 範例會像這樣：</p>
@@ -1260,8 +1260,8 @@ Rust 有許多不同的基本整數型別。
 </code></pre>
 <p>注意，註釋和 <code>let</code> 語法很類似。
 Rust 習慣上不會寫上這些註解，但我們偶爾會加上它來幫助你理解 Rust 推斷出的是什麼型別。</p>
-<h2>可變性 (Mutability)</h2>
-<p>綁定預設是 <em>不可變的</em> (immutable)。
+<h2>可變性（Mutability）</h2>
+<p>綁定預設是 <em>不可變的</em>（immutable）。
 下面的原始碼無法編譯：</p>
 <pre><code class="language-rust,ignore">let x = 5;
 x = 10;
@@ -1271,7 +1271,7 @@ x = 10;
      x = 10;
      ^~~~~~~
 </code></pre>
-<p>如果你要將綁定成為可變的 (mutable)，你可以用 <code>mut</code>：</p>
+<p>如果你要將綁定成為可變的（mutable），你可以用 <code>mut</code>：</p>
 <pre><code class="language-rust">let mut x = 5; // mut x: i32
 x = 10;
 </code></pre>
@@ -1280,9 +1280,9 @@ x = 10;
 如果綁定預設是可變的，編譯器就無法告訴你了。
 如果你 <em>真的</em> 打算要改變，解決方式很簡單：加上 <code>mut</code>。</p>
 <p>盡可能的避免改變狀態有其他許多的好理由，但是它們並不在本指南的範圍內。
-一般來說，你會避免大辣辣的直接使用可變數 (mutation)，這也是 Rust 所希望的。
+一般來說，你會避免大辣辣的直接使用可變數（mutation），這也是 Rust 所希望的。
 雖然如此，有時候你還是會需要可變數，所以它並沒有被禁止使用。</p>
-<h2>初始化綁定 (Initializing bindings)</h2>
+<h2>初始化綁定（Initializing bindings）</h2>
 <p>Rust 的變數綁定有跟其他語言不同的一個部分：綁定要在使用前初始化一個值。</p>
 <p>讓我們試試看。
 把你的 <code>src/main.rs</code> 改成以下這樣：</p>
@@ -1293,7 +1293,7 @@ x = 10;
 }
 </code></pre>
 <p>你可以輸入 <code>cargo build</code> 去建構它。
-你將會得到警告訊息，但它仍會印出 &quot;Hello, world!&quot;：</p>
+你將會得到警告訊息，但它仍會印出「Hello, world!」：</p>
 <pre><code class="language-text">   Compiling hello_world v0.0.1 (file:///home/you/projects/hello_world)
 src/main.rs:2:9: 2:10 warning: unused variable: `x`, #[warn(unused_variable)]
    on by default
@@ -1327,19 +1327,19 @@ Could not compile `hello_world`.
 <p>Rust 不讓我們使用沒有被初始化的值。
 接著，讓我們討論我們加在 <code>println!</code> 的東西。</p>
 <p>如果你在要印出的字串中加入大括號，Rust 會理解為這是一個插入數值的要求。
-<em>字串插值</em> (string interpolation) 是個電腦科學術語，代表 &quot;插入到字串中&quot;。
+<em>字串插值</em>（string interpolation）是個電腦科學術語，代表「插入到字串中」。
 我們加上一個逗號和 <code>x</code>，來表示我們想要用 <code>x</code> 當成插入的值。
 逗號是當我們傳遞多個參數時，用來分隔我們傳遞給函式和巨集的參數用的。</p>
 <p>當你使用大括號時，Rust 會試著檢查型別，用有意義的方式顯示數值。
-如果你想用更詳細的方式去指定格式，這邊有<a href="../std/fmt/index.html">很多方式可供選擇</a>。
+如果你想用更詳細的方式去指定格式，這邊有 <a href="../std/fmt/index.html">很多方式可供選擇</a>。
 現在，我們使用預設方式插入：因為印出整數並不難。</p>
-<h2>有效範圍及遮蔽 (Scope and shadowing)</h2>
+<h2>有效範圍及遮蔽（Scope and shadowing）</h2>
 <p>讓我們回到綁定。
 變數綁定有有效範圍 - 它們被限制存活在它們被定義的區塊中。
-一個區塊 (block) 是一個被用 <code>{</code> 和 <code>}</code> 包起來的陳述式的集合。
+一個區塊（block）是一個被用 <code>{</code> 和 <code>}</code> 包起來的陳述式的集合。
 函式的定義也是一個區塊！
 在以下範例我們定義兩個變數綁定，<code>x</code> 和 <code>y</code>，他們存在於不同區塊中。
-<code>x</code> 可以在 <code>fn main() {}</code> 內存取，而 <code>y</code> 只能在內部區塊 (inner block) 存取。</p>
+<code>x</code> 可以在 <code>fn main() {}</code> 內存取，而 <code>y</code> 只能在內部區塊（inner block）存取。</p>
 <pre><code class="language-rust,ignore">fn main() {
     let x: i32 = 17;
     {
@@ -1349,7 +1349,7 @@ Could not compile `hello_world`.
     println!(&quot;The value of x is {} and value of y is {}&quot;, x, y); // This won't work
 }
 </code></pre>
-<p>第一個 <code>println!</code> 會印出 &quot;The value of x is 17 and the value of y is 3&quot;，但是本範例無法成功編譯，因為第二個 <code>println!</code> 不能存取 <code>y</code> 值，因為它已經不在有效範圍內了。
+<p>第一個 <code>println!</code> 會印出「The value of x is 17 and the value of y is 3」，但是本範例無法成功編譯，因為第二個 <code>println!</code> 不能存取 <code>y</code> 值，因為它已經不在有效範圍內了。
 我們會得到以下錯誤訊息：</p>
 <pre><code class="language-bash">$ cargo build
    Compiling hello v0.1.0 (file:///home/you/projects/hello_world)
@@ -1368,7 +1368,7 @@ Could not compile `hello`.
 
 To learn more, run the command again with --verbose.
 </code></pre>
-<p>另外，變數綁定可以被遮蔽 (shadowed)。
+<p>另外，變數綁定可以被遮蔽（shadowed）。
 這代表與其他變數綁定有同樣名稱的後一個變數綁定，在有效範圍內，將會覆蓋前一個綁定。</p>
 <pre><code class="language-rust">let x: i32 = 8;
 {
@@ -1380,7 +1380,7 @@ println!(&quot;{}&quot;, x); // Prints &quot;8&quot;
 let x =  42;
 println!(&quot;{}&quot;, x); // Prints &quot;42&quot;
 </code></pre>
-<p>遮蔽 (shadowing) 和可變綁定 (mutable bindings) 也許看似像一枚硬幣的兩面，但其實它們是兩種不同的概念，所以並不一定總是可以直接替換。
+<p>遮蔽（shadowing）和可變綁定（mutable bindings）也許看似像一枚硬幣的兩面，但其實它們是兩種不同的概念，所以並不一定總是可以直接替換。
 作為其中之一，遮蔽可以讓我們重新綁定名稱到不同型別的變數。
 它也可以改變綁定的可變性。</p>
 <pre><code class="language-rust">let mut x: i32 = 1;
@@ -1399,7 +1399,7 @@ let y = &quot;I can also be bound to text!&quot;; // y is now of a different typ
 }
 </code></pre>
 <p>這也許是最簡單的函式宣告了。
-像我們之前說的，<code>fn</code> 表示 &quot;這是一個函式&quot;，後面是名稱，有個括號，沒有參數，而且有大括號去標示函式的內容。
+像我們之前說的，<code>fn</code> 表示「這是一個函式」，後面是名稱，有個括號，沒有參數，而且有大括號去標示函式的內容。
 以下是一個名叫 <code>foo</code> 的函式：</p>
 <pre><code class="language-rust">fn foo() {
 }
@@ -1442,15 +1442,15 @@ fn print_sum(x: i32, y: i32) {
 fn print_sum(x, y) {
 </code></pre>
 <p>這是個深思熟慮後的設計決定。
-即使像 Haskell 這樣可以對整個程式推斷 (full-program inference) 的語言，在最佳做法中仍經常建議要明確地標註你的型別。
-我們認為在宣告函式時強制宣告型別，且允許在函式內容中允許推斷，是個在全推斷 (full-inference) 與無推斷間的最佳平衡。</p>
+即使像 Haskell 這樣可以對整個程式推斷（full-program inference）的語言，在最佳做法中仍經常建議要明確地標註你的型別。
+我們認為在宣告函式時強制宣告型別，且允許在函式內容中允許推斷，是個在全推斷（full-inference）與無推斷間的最佳平衡。</p>
 <p>那要如何回傳值呢？
 以下是一個把整數加一的函式：</p>
 <pre><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
     x + 1
 }
 </code></pre>
-<p>Rust 函式就只能回傳一個值，你可以在 &quot;箭頭&quot; 後面宣告型別，箭頭是一個破折號（<code>-</code>）加上一個大於符號（<code>&gt;</code>）。
+<p>Rust 函式就只能回傳一個值，你可以在「箭頭」後面宣告型別，箭頭是一個破折號（<code>-</code>）加上一個大於符號（<code>&gt;</code>）。
 函式的最後一行決定了回傳什麼。
 你會注意到這邊並沒有分號。
 如果我們加上分號：</p>
@@ -1468,15 +1468,15 @@ help: consider removing this semicolon:
      x + 1;
           ^
 </code></pre>
-<p>這展現出了 Rust 兩個有趣的點：它是以表達式為基礎的語言，而且分號的使用跟其他 &quot;大括號及分號&quot; 的語言不同。
+<p>這展現出了 Rust 兩個有趣的點：它是以表達式為基礎的語言，而且分號的使用跟其他「大括號及分號」的語言不同。
 這兩件事是息息相關的。</p>
 <h2>表達式 vs. 陳述式</h2>
 <p>Rust 主要是個以表達式為基礎的語言。
 它只有兩種陳述式，而其他的都是表達式。</p>
 <p>那這有什麼分別？
 表達式回傳值，而陳述式則否。
-這也是為什麼我們在這說 &quot;不是所有的控制路徑都回傳值&quot;：像是陳述式 <code>x + 1;</code> 就不傳回值。
-Rust 中有兩種陳述式：&quot;宣告陳述式&quot; (declaration statements) 和 &quot;表達陳述式&quot; (expression statements)。
+這也是為什麼我們在這說「不是所有的控制路徑都回傳值」：像是陳述式 <code>x + 1;</code> 就不傳回值。
+Rust 中有兩種陳述式：「宣告陳述式」（declaration statements）和「表達陳述式」（expression statements）。
 其他的都是表達式。
 讓我們先討論宣告陳述式。</p>
 <p>在一些語言中，變數綁定可以被寫成表達式，而非陳述式。
@@ -1489,17 +1489,17 @@ Rust 中有兩種陳述式：&quot;宣告陳述式&quot; (declaration statements
 </code></pre>
 <p>編譯器或告訴我們這裡預期會看到表達式的開頭，而 <code>let</code> 只能用於開始一個陳述式，不是表達式。</p>
 <p>請注意，賦值到一個已經綁定的變數（例如 <code>y = 5</code>）仍然是個表達式，雖然它的值沒有什麼用。
-不像其他語言的賦值會被當成賦予的數值（在前面的例子中會是 <code>5</code>），在 Rust 中賦值的回傳值會是一個空的多元組 (tuple) <code>()</code>，因為賦予的值<a href="ownership.html">只能有一個擁有者</a>，所以其他任何回傳值都會讓人感到意外：</p>
+不像其他語言的賦值會被當成賦予的數值（在前面的例子中會是 <code>5</code>），在 Rust 中賦值的回傳值會是一個空的多元組（tuple）<code>()</code>，因為賦予的值 <a href="ownership.html">只能有一個擁有者</a>，所以其他任何回傳值都會讓人感到意外：</p>
 <pre><code class="language-rust">let mut y = 5;
 
 let x = (y = 6);  // x has the value `()`, not `6`
 </code></pre>
-<p>Rust 中的第二種陳述式是 <em>表達陳述式</em> (expression statement)。
+<p>Rust 中的第二種陳述式是 <em>表達陳述式</em>（expression statement）。
 它的作用是把表達式轉為陳述式。
 實際上，Rust 的文法預期陳述式後面也是其他陳述式。
 這意味著你要使用分號去分隔表達式們。
 這代表 Rust 看起來跟要求在每行結果使用分號的大多數語言一樣，你幾乎將會在每行結尾看到分號。</p>
-<p>是什麼例外讓我們說 &quot;幾乎&quot;？
+<p>是什麼例外讓我們說「幾乎」？
 你早就看到了，就在以下程式碼中：</p>
 <pre><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
     x + 1
@@ -1507,7 +1507,7 @@ let x = (y = 6);  // x has the value `()`, not `6`
 </code></pre>
 <p>我們的函式聲明會回傳一個 <code>i32</code>，但是有分號時，它卻會回傳 <code>()</code>。
 Rust 覺得這應該不是我們想要的，所以在上面看到的錯誤訊息中建議我們移除分號。</p>
-<h2>提早回傳 (Early returns)</h2>
+<h2>提早回傳（Early returns）</h2>
 <p>那麼提早回傳又該怎樣做？
 Rust 的確有一個關鍵字 <code>return</code> 可以提早回傳：</p>
 <pre><code class="language-rust">fn foo(x: i32) -&gt; i32 {
@@ -1524,15 +1524,15 @@ Rust 的確有一個關鍵字 <code>return</code> 可以提早回傳：</p>
 </code></pre>
 <p>如果你過去沒有寫過以表達式為基礎的語言，那麼在之前沒有 <code>return</code> 的定義可能讓你覺得看起來有些奇怪。
 不過隨著時間過去，它會變得很直觀。</p>
-<h2>發散函式 (Diverging functions)</h2>
-<p>Rust 也有一些特別的語法叫做 &quot;發散函式&quot;，這種函式不回傳值：</p>
+<h2>發散函式（Diverging functions）</h2>
+<p>Rust 也有一些特別的語法叫做「發散函式」，這種函式不回傳值：</p>
 <pre><code class="language-rust">fn diverges() -&gt; ! {
     panic!(&quot;This function never returns!&quot;);
 }
 </code></pre>
 <p><code>panic!</code> 是一個巨集，跟我們看過的 <code>println!()</code> 類似。
-不像 <code>println!()</code>，<code>panic!()</code> 會讓當前的執行緒帶著指定的訊息當機 (crash)。
-因為這個函式將會導致當機，所以它不會回傳值，也因此它的型別是 &quot;<code>!</code>&quot;，它叫做 &quot;發散&quot; (diverges)。</p>
+不像 <code>println!()</code>，<code>panic!()</code> 會讓當前的執行緒帶著指定的訊息當機（crash）。
+因為這個函式將會導致當機，所以它不會回傳值，也因此它的型別是「<code>!</code>」，它叫做「發散」(diverges）。</p>
 <p>如果你加入一個主函式去呼叫 <code>diverges()</code> 並執行它，你將會得到像以下的輸出：</p>
 <pre><code class="language-text">thread ‘&lt;main&gt;’ panicked at ‘This function never returns!’, hello.rs:2
 </code></pre>
@@ -1580,7 +1580,7 @@ stack backtrace:
 let x: i32 = diverges();
 let x: String = diverges();
 </code></pre>
-<h2>函式指標 (Function pointers)</h2>
+<h2>函式指標（Function pointers）</h2>
 <p>我們也可以建立指向函式的變數綁定：</p>
 <pre><code class="language-rust">let f: fn(i32) -&gt; i32;
 </code></pre>
@@ -1605,10 +1605,10 @@ let six = f(5);
 <p><em>commit 3eebec6</em></p>
 </blockquote>
 <h1>基本型別</h1>
-<p>Rust 語言有許多被認為是 &quot;基本&quot; (primitive) 的型別。
+<p>Rust 語言有許多被認為是「基本」（primitive）的型別。
 這代表它們是內建在語言內的。
 Rust 標準函式庫也提供許多基於這些基本型別的有用型別，它們也是基本型別。</p>
-<h2>布林 (Booleans)</h2>
+<h2>布林（Booleans）</h2>
 <p>Rust 內建布林型別，叫做 <code>bool</code>。
 他有兩種值，<code>true</code> 和 <code>false</code>：</p>
 <pre><code class="language-rust">let x = true;
@@ -1616,7 +1616,7 @@ Rust 標準函式庫也提供許多基於這些基本型別的有用型別，它
 let y: bool = false;
 </code></pre>
 <p>布林通常用在 <a href="if.html">if 條件運算式</a>。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.bool.html">標準函式庫文件</a>中找到更多關於 <code>bool</code> 的文件。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.bool.html">標準函式庫文件</a> 中找到更多關於 <code>bool</code> 的文件。</p>
 <h2><code>char</code></h2>
 <p><code>char</code> 型別代表一個 Unicode 值。
 你可以以單引號（<code>'</code>）建立 <code>char</code>：</p>
@@ -1624,9 +1624,9 @@ let y: bool = false;
 let two_hearts = '💕';
 </code></pre>
 <p>不像其他語言，這代表 Rust 的 <code>char</code> 並非一個位元組，而是四個。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.char.html">標準函式庫文件</a>中找到更多關於 <code>char</code> 的文件。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.char.html">標準函式庫文件</a> 中找到更多關於 <code>char</code> 的文件。</p>
 <h2>數字型別</h2>
-<p>Rust 有許多數字型別，分為一些不同類型：帶號 (signed) 和非帶號 (unsigned)，固定長度和可變長度，浮點數和整數。</p>
+<p>Rust 有許多數字型別，分為一些不同類型：帶號（signed）和非帶號（unsigned），固定長度和可變長度，浮點數和整數。</p>
 <p>這些型別包含兩部分：類型和大小。
 例如，<code>u16</code> 是一個 16 位元大小的非帶號型別。
 更多位元能讓你有更大的數字。</p>
@@ -1651,14 +1651,14 @@ let y = 1.0; // y has type f64
 <li><a href="https://doc.rust-lang.org/std/primitive.f64.html">f64</a></li>
 </ul>
 <p>讓我們依照分類走一輪吧：</p>
-<h3>帶號 (Signed) 及非帶號 (Unsigned)</h3>
+<h3>帶號（Signed）及非帶號（Unsigned）</h3>
 <p>整數型別有兩種變形：帶號跟非帶號。
 要了解差異之處，讓我們試想有一個 4 位元大小的數字。
 如果是帶號整數，4 位元可以讓你儲存 <code>-8</code> 到 <code>+7</code> 的數字。
-代號數字使用 &quot;二補數表示法&quot; (two's complement)。
+代號數字使用「二補數表示法」（two's complement）。
 一個非帶號的 4 位元數字因為不需要儲存負號，所以可以儲存 <code>0</code> 到 <code>+15</code> 的數字。</p>
 <p>非帶號型別使用 <code>u</code> 作為分類，而帶號型別使用 <code>i</code>。
-<code>i</code> 代表 &quot;integer&quot;。
+<code>i</code> 代表「integer」。
 所以 <code>u8</code> 代表一個 8 位元的非代號數字，而 <code>i8</code> 代表 8 位元的帶號數字。</p>
 <h3>固定大小型別</h3>
 <p>固定大小型別的表現方式有一些特定數量的位元。
@@ -1666,20 +1666,20 @@ let y = 1.0; // y has type f64
 所以 <code>u32</code> 是一個非帶號的 32 位元整數，而 <code>i64</code> 是一個帶號的 64 位元整數。</p>
 <h3>可變大小型別</h3>
 <p>Rust 也有提供一些大小依賴於底層機器的指標大小的型別。
-這些型別的分類是 &quot;size&quot;，且分為帶號跟非帶號。
+這些型別的分類是「size」，且分為帶號跟非帶號。
 他分為兩類：<code>isize</code> 和 <code>usize</code>。</p>
 <h3>浮點數型別</h3>
 <p>Rust 也有兩種浮點數：<code>f32</code> 與 <code>f64</code>。
 他們對應到 IEEE-754 的單精準度和雙精準度浮點數。</p>
-<h2>陣列 (Arrays)</h2>
+<h2>陣列（Arrays）</h2>
 <p>跟很多程式語言一樣，Rust 有用來表現一組事物的清單型別。
-最基本的就是 <em>陣列</em> (array)，一個固定大小、有相同型別的元素清單。
-陣列預設是不可變的 (immutable)。</p>
+最基本的就是 <em>陣列</em>（array），一個固定大小、有相同型別的元素清單。
+陣列預設是不可變的（immutable）。</p>
 <pre><code class="language-rust">let a = [1, 2, 3]; // a: [i32; 3]
 let mut m = [1, 2, 3]; // m: [i32; 3]
 </code></pre>
 <p>陣列的型別是 <code>[T; N]</code>。
-我們將在<a href="generics.html">泛型的章節</a>提到 <code>T</code> 標記。
+我們將在 <a href="generics.html">泛型的章節</a> 提到 <code>T</code> 標記。
 <code>N</code> 是一個編譯期的常數，代表陣列的長度。</p>
 <p>有一個可以初始化陣列中所有元素為同一個值的簡寫。
 在以下範例，所有 <code>a</code> 中的元素將被初始化為 <code>0</code>：</p>
@@ -1690,7 +1690,7 @@ let mut m = [1, 2, 3]; // m: [i32; 3]
 
 println!(&quot;a has {} elements&quot;, a.len());
 </code></pre>
-<p>你也可以使用 <em>下標</em> (subscript) 的標記方式存取陣列中特定元素：</p>
+<p>你也可以使用 <em>下標</em>（subscript）的標記方式存取陣列中特定元素：</p>
 <blockquote>
 <p>譯註：此處的 <em>下標</em> 應指 <code>[n]</code> 這個標記方式。</p>
 </blockquote>
@@ -1701,33 +1701,33 @@ println!(&quot;The second name is: {}&quot;, names[1]);
 <p>與其他大多數程式語言一樣，下標從零開始，所以第一個元素名稱是 <code>names[0]</code>，第二個名稱是 <code>names[1]</code>。
 上述範例會印出 <code>The second name is: Brian</code>。
 如果你嘗試使用超出陣列的下標，你會得到錯誤訊息：陣列存取會在執行期做邊界檢查。
-在其他系統程式語言中，這種不當存取是許多程式錯誤 (bug) 的根源。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.array.html">標準函式庫文件</a>中找到更多關於 <code>array</code> 的文件。</p>
+在其他系統程式語言中，這種不當存取是許多程式錯誤（bug）的根源。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.array.html">標準函式庫文件</a> 中找到更多關於 <code>array</code> 的文件。</p>
 <h2>Slices</h2>
-<p>一個 &quot;slice&quot; 是一個其他資料結構的 reference（或 &quot;視圖&quot;）。
+<p>一個「slice」是一個其他資料結構的 reference（或「視圖」）。
 它允許安全、有效的存取陣列的一部份而不用複製陣列。
 例如，你可能只想要參考讀到記憶體中的檔案中的某一行。
-本質上，一個 &quot;slice&quot; 不是直接建立的，而要從一個已經存在的變數綁定中建立。
-Slices 會定義長度，它可以是可變 (mutable) 或不可變 (immutable)。</p>
+本質上，一個「slice」不是直接建立的，而要從一個已經存在的變數綁定中建立。
+Slices 會定義長度，它可以是可變（mutable）或不可變（immutable）。</p>
 <p>從內部來看，slices 像是一個指向資料開頭的指標，和它的長度。</p>
 <h3>Slicing 語法</h3>
 <p>你可以使用 <code>&amp;</code> 和 <code>[]</code> 的組合去從許多資料結構建立 slice。
-<code>&amp;</code> 說明了 slices 跟<a href="references-and-borrowing.html">參照</a> (references) 很類似，我們會在本節的後面說到細節。
+<code>&amp;</code> 說明了 slices 跟 <a href="references-and-borrowing.html">參照</a>（references）很類似，我們會在本節的後面說到細節。
 <code>[]</code> 帶有範圍的資訊，讓你定義 slice 的長度。</p>
 <pre><code class="language-rust">let a = [0, 1, 2, 3, 4];
 let complete = &amp;a[..]; // A slice containing all of the elements in a
 let middle = &amp;a[1..4]; // A slice of a: only the elements 1, 2, and 3
 </code></pre>
 <p>Slices 的型別是 <code>&amp;[T]</code>。
-我們將會在<a href="generics.html">泛型</a>談到 <code>T</code>。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.slice.html">標準函式庫文件</a>中找到更多關於 slices 的文件。</p>
+我們將會在 <a href="generics.html">泛型</a> 談到 <code>T</code>。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.slice.html">標準函式庫文件</a> 中找到更多關於 slices 的文件。</p>
 <h2><code>str</code></h2>
 <p>Rust 的 <code>str</code> 型別是最基本的字串型別。
-跟<a href="unsized-types.html">動態大小型別</a>，它本身不是很有用，但當它放在 reference 之後就很有用了，像是 <code>$str</code>。
-當我們談到<a href="strings.html">字串</a>和<a href="references-and-borrowing.html">參照</a> (references) 的時候再來細說。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.str.html">標準函式庫文件</a>中找到更多關於 <code>str</code> 的文件。</p>
-<h2>多元組 (Tuples)</h2>
-<p>一個多元組 (tuple) 是一組固定大小的有序 (ordered) 清單。
+跟 <a href="unsized-types.html">動態大小型別</a> 一樣，它本身不是很有用，但當它放在 reference 之後就很有用了，像是 <code>&amp;str</code>。
+當我們談到 <a href="strings.html">字串</a> 和 <a href="references-and-borrowing.html">參照</a>（references）的時候再來細說。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.str.html">標準函式庫文件</a> 中找到更多關於 <code>str</code> 的文件。</p>
+<h2>多元組（Tuples）</h2>
+<p>一個多元組（tuple）是一組固定大小的有序（ordered）清單。
 就像：</p>
 <pre><code class="language-rust">let x = (1, &quot;hello&quot;);
 </code></pre>
@@ -1736,10 +1736,10 @@ let middle = &amp;a[1..4]; // A slice of a: only the elements 1, 2, and 3
 <pre><code class="language-rust">let x: (i32, &amp;str) = (1, &quot;hello&quot;);
 </code></pre>
 <p>如你所見，多元組的型別與多元組很像，只是各個位置是型別名稱而不是數值。
-心細的讀者會注意到多元組是異質的 (heterogeneous)：我們在一個多元組中同時有 <code>i32</code> 與 <code>&amp;str</code>。
+心細的讀者會注意到多元組是異質的（heterogeneous）：我們在一個多元組中同時有 <code>i32</code> 與 <code>&amp;str</code>。
 在系統程式語言中，字串會比其他語言複雜一點。
 現在，把 <code>&amp;str</code> 當作 <em>字串 slice</em>，我們很快就會說到。</p>
-<p>當兩個多元組有相同的型別和<a href="glossary.html#%E5%85%83%E6%95%B8%20(Arity)">元數</a> (arity) 時，你可以把一個多元組賦值給另一個。
+<p>當兩個多元組有相同的型別和 <a href="glossary.html#%E5%85%83%E6%95%B8%EF%BC%88Arity%EF%BC%89">元數</a>（arity）時，你可以把一個多元組賦值給另一個。
 相同長度的多元組有著相同的元數。</p>
 <pre><code class="language-rust">let mut x = (1, 2); // x: (i32, i32)
 let y = (2, 3); // y: (i32, i32)
@@ -1752,16 +1752,16 @@ x = y;
 
 println!(&quot;x is {}&quot;, x);
 </code></pre>
-<p>還記得<a href="variable-bindings.html">之前</a>當我提到 <code>let</code> 陳述式的左邊遠比賦值綁定還強大嗎？
+<p>還記得 <a href="variable-bindings.html">之前</a> 當我提到 <code>let</code> 陳述式的左邊遠比賦值綁定還強大嗎？
 這就是了。
-我們可以放一個模式 (pattern) 在 <code>let</code> 的左邊，然後如果它跟右邊相符，我們就可以一次賦值多個綁定。
-在這情形下，<code>let</code> &quot;解構&quot; 或 &quot;拆開&quot; 了多元組，然後賦值到三個綁定上。</p>
+我們可以放一個模式（pattern）在 <code>let</code> 的左邊，然後如果它跟右邊相符，我們就可以一次賦值多個綁定。
+在這情形下，<code>let</code>「解構」或「拆開」多元組，然後賦值到三個綁定上。</p>
 <p>這樣的模式非常強大，我們將會在後面一直看到。</p>
 <p>在括號中只有一個值時，在值後面加上逗號，可以消歧義確定它是一個單元素的多元組：</p>
 <pre><code class="language-rust">(0,); // single-element tuple
 (0); // zero in parentheses
 </code></pre>
-<h3>多元組索引 (Tuple Indexing)</h3>
+<h3>多元組索引（Tuple Indexing）</h3>
 <p>你也可以用索引語法去存取多元組的欄位：</p>
 <pre><code class="language-rust">let tuple = (1, 2, 3);
 
@@ -1772,7 +1772,7 @@ let z = tuple.2;
 println!(&quot;x is {}&quot;, x);
 </code></pre>
 <p>就像陣列的索引，它從零開始，但是不像陣列所以，它使用 <code>.</code> 而不是 <code>[]</code>。</p>
-<p>你可以在<a href="https://doc.rust-lang.org/std/primitive.tuple.html">標準函式庫文件</a>中找到更多關於多元組的文件。</p>
+<p>你可以在 <a href="https://doc.rust-lang.org/std/primitive.tuple.html">標準函式庫文件</a> 中找到更多關於多元組的文件。</p>
 <h2>函式</h2>
 <p>函式也有型別！
 它們像這樣：</p>
@@ -1780,7 +1780,7 @@ println!(&quot;x is {}&quot;, x);
 
 let x: fn(i32) -&gt; i32 = foo;
 </code></pre>
-<p>在這個例子中，<code>x</code> 是 &quot;函式指標&quot; 指向一個有 <code>i32</code> 參數並回傳 <code>i32</code> 的函式。</p>
+<p>在這個例子中，<code>x</code> 是「函式指標」，指向一個有 <code>i32</code> 參數並回傳 <code>i32</code> 的函式。</p>
 <blockquote>
 <p><em>commit 228afd7</em></p>
 </blockquote>
@@ -1788,7 +1788,7 @@ let x: fn(i32) -&gt; i32 = foo;
 <p>現在我們有了一些函式，開始學習註解是個不錯的點子。
 註解是讓你留給其他程式設計師的備註，可以幫忙解釋你的程式碼。
 編譯器幾乎會直接忽略它們。</p>
-<p>Rust 有兩種註解方式：<em>行內註解</em> (line comments) 與 <em>文件註解</em> (doc comments)。</p>
+<p>Rust 有兩種註解方式：<em>行內註解</em>（line comments）與 <em>文件註解</em>（doc comments）。</p>
 <blockquote>
 <p>譯註：以下是行內註解。</p>
 </blockquote>
@@ -1837,7 +1837,7 @@ fn add_one(x: i32) -&gt; i32 {
 <h1>if</h1>
 <p>Rust 的 <code>if</code> 沒有特別複雜，但你會發現它更像動態型別語言的 <code>if</code> 而非傳統的系統程式語言。
 所以讓我們聊聊它，確定你領會了這些細微差別。</p>
-<p><code>if</code> 是一個更通用的概念 &quot;分支&quot; (branch) 的特殊形式。
+<p><code>if</code> 是一個更通用的概念「分支」（branch）的特殊形式。
 這個名字來自樹的分支：一個根據選擇而有不同路徑的決策點。</p>
 <p>在 <code>if</code> 的情況下，一個選擇會導向兩個路徑：</p>
 <pre><code class="language-rust">let x = 5;
@@ -1879,7 +1879,7 @@ let y = if x == 5 {
     15
 }; // y: i32
 </code></pre>
-<p>我們可以（且或許應該）寫成這樣：</p>
+<p>我們可以（或許本來就應該）寫成這樣：</p>
 <pre><code class="language-rust">let x = 5;
 
 let y = if x == 5 { 10 } else { 15 }; // y: i32
@@ -1894,7 +1894,7 @@ let y = if x == 5 { 10 } else { 15 }; // y: i32
 <p><em>commit 024aa9a</em></p>
 </blockquote>
 <h1>迴圈</h1>
-<p>Rust 目前提供三種方式去執行一些疊代行為 (iterative activity)。
+<p>Rust 目前提供三種方式去執行一些疊代行為（iterative activity）。
 它們是 <code>loop</code>、<code>while</code>、及 <code>for</code>。
 它們各有各自的用途。</p>
 <h2>loop</h2>
@@ -1948,7 +1948,7 @@ Rust 的 <code>for</code> 迴圈看起來不像 &quot;C 語言風格&quot; 的 <
     code
 }
 </code></pre>
-<p>這邊的表達式是一個能以 <a href="https://doc.rust-lang.org/std/iter/trait.IntoIterator.html">IntoIterator</a> 轉成<a href="iterators.html">疊代器</a> (iterator) 的東西。
+<p>這邊的表達式是一個能以 <a href="https://doc.rust-lang.org/std/iter/trait.IntoIterator.html">IntoIterator</a> 轉成 <a href="iterators.html">疊代器</a>（iterator）的東西。
 疊代器會傳回一系列的元素。
 每個元素是迴圈中的一次循環。
 在這次迴圈的有效範圍內，元素的值會跟 <code>var</code> 綁定。
@@ -1956,9 +1956,9 @@ Rust 的 <code>for</code> 迴圈看起來不像 &quot;C 語言風格&quot; 的 <
 當疊代器中沒有值了，<code>for</code> 迴圈就結束。</p>
 <p>在我們的範例中，<code>0..10</code> 表達式會根據開始和結束的值，給予一個含有兩者之間數字的疊代器。
 上限值不包含在其中，所以我們的迴圈會印出 <code>0</code> 到 <code>9</code>，沒有 <code>10</code>。</p>
-<p>Rust 特別不使用 &quot;C 語言風格&quot; 的 <code>for</code> 迴圈。
+<p>Rust 特別不使用「C 語言風格」的 <code>for</code> 迴圈。
 即使對有經驗的 C 語言程式設計師來說，手動控制迴圈中的每個元素仍是複雜且容易出錯的。</p>
-<h3>枚舉 (Enumerate)</h3>
+<h3>枚舉（Enumerate）</h3>
 <p>當你需要追蹤你已經循環了幾次，你可以使用 <code>.enumerate()</code> 函式。</p>
 <h4>對範圍</h4>
 <pre><code class="language-rust">for (i,j) in (5..10).enumerate() {
@@ -2025,7 +2025,7 @@ loop {
     println!(&quot;{}&quot;, x);
 }
 </code></pre>
-<h2>迴圈標籤 (Loop labels)</h2>
+<h2>迴圈標籤（Loop labels）</h2>
 <p>你可能也會遇到一些情況，例如當你有槽狀迴圈，且希望你的 <code>break</code> 或 <code>continue</code> 能指定做用到哪一個的時候。
 跟其他多數語言一樣，預設的 <code>break</code> 或 <code>continue</code> 會作用在最內層的迴圈。
 當你希望你的 <code>break</code> 或 <code>continue</code> 要作用在外層的某個迴圈時，你可以使用標籤去指定 <code>break</code> 或 <code>continue</code> 要作用在哪層迴圈。
@@ -2047,41 +2047,41 @@ loop {
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：</p>
 <ul>
-<li>所有權 (ownership)，你正在閱讀的章節</li>
-<li><a href="references-and-borrowing.html">借用</a> (borrowing)，及其相關功能 &quot;參照&quot; (references)</li>
-<li><a href="lifetimes.html">生命週期</a> (lifetime)，借用的進階概念</li>
+<li>所有權（ownership），你正在閱讀的章節</li>
+<li><a href="references-and-borrowing.html">借用</a>（borrowing），及其相關功能「參照」（references）</li>
+<li><a href="lifetimes.html">生命週期</a> （lifetime），借用的進階概念</li>
 </ul>
 <p>這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。</p>
 <h2>Meta</h2>
 <p>在我們開始細述前，有兩個所有權系統的重點。</p>
 <p>Rust 注重安全和速度。
-它透過許多 &quot;零成本抽象化&quot; 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 <em>編譯期完成的</em>。
 這些功能不需要花費你任何執行期的成本。</p>
 <p>然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 &quot;與借用檢查器 (borrow checker) 苦戰&quot; 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習所有權吧。</p>
-<h2>所有權 (Ownership)</h2>
-<p><a href="variable-bindings.html">變數綁定</a>在 Rust 中有個屬性：它們會有所綁定的值的 &quot;所有權&quot;。
+<h2>所有權（Ownership）</h2>
+<p><a href="variable-bindings.html">變數綁定</a> 在 Rust 中有個屬性：它們會有所綁定的值的「所有權」。
 這代表當綁定離開有效範圍，Rust 就會釋放所綁定的資源。
 例如：</p>
 <pre><code class="language-rust">fn foo() {
     let v = vec![1, 2, 3];
 }
 </code></pre>
-<p>當 <code>v</code> 進入有效範圍時，一個新的<a href="vectors.html">向量</a> (vector) 會在<a href="the-stack-and-the-heap.html#the-stack">堆疊</a> (stack) 中被建立，且在<a href="the-stack-and-the-heap.html">堆積</a> (heap) 中替其元素配置空間。
+<p>當 <code>v</code> 進入有效範圍時，一個新的 <a href="vectors.html">向量</a>（vector）會在 <a href="the-stack-and-the-heap.html#the-stack">堆疊</a>（stack）中被建立，且在 <a href="the-stack-and-the-heap.html">堆積</a>（heap）中替其元素配置空間。
 當 <code>v</code> 在 <code>foo()</code> 的最後離開有效範圍時，Rust 會清除任何與這個向量有關的東西，甚至是堆積內配置的記憶體。
 這在有效範圍結束後必定發生。</p>
-<p>我們會在後面章節詳細說明<a href="vectors.html">向量</a>；在此我們只以它來作為一個執行期配置堆積中空間的例子。
-除了它的大小可以透過 <code>push()</code> 加入元素而改變之外，它的行為跟<a href="primitive-types.html#arrays">陣列</a>類似。</p>
-<p>向量有個<a href="generics.html">泛型</a> <code>Vec&lt;T&gt;</code>，在本範例 <code>v</code> 是 <code>Vec&lt;i32&gt;</code> 型別。
+<p>我們會在後面章節詳細說明 <a href="vectors.html">向量</a>；在此我們只以它來作為一個執行期配置堆積中空間的例子。
+除了它的大小可以透過 <code>push()</code> 加入元素而改變之外，它的行為跟 <a href="primitive-types.html#arrays">陣列</a> 類似。</p>
+<p>向量有個 <a href="generics.html">泛型</a> <code>Vec&lt;T&gt;</code>，在本範例 <code>v</code> 是 <code>Vec&lt;i32&gt;</code> 型別。
 我們將會在本章後面提及泛型。</p>
-<h2>移動語意 (Move semantics)</h2>
+<h2>移動語意（Move semantics）</h2>
 <p>此處是更加神奇的部分：Rust 確保所有的資源都 <em>只有一個</em> 對應的綁定。
 例如，如果我們有個向量，我們可以賦值給另一個綁定：</p>
 <pre><code class="language-rust">let v = vec![1, 2, 3];
@@ -2111,29 +2111,29 @@ take(v);
 
 println!(&quot;v[0] is: {}&quot;, v[0]);
 </code></pre>
-<p>我們看到同樣的錯誤： &quot;use of moved value&quot;。
-當我們轉移所有權給其他綁定後，我們稱此為 &quot;移動&quot; (move) 了所引用的值。
+<p>我們看到同樣的錯誤：「use of moved value」。
+當我們轉移所有權給其他綁定後，我們稱此為「移動」（move）了所引用的值。
 這是 Rust 的預設行為，你不需特別註記什麼。</p>
 <h3>細節</h3>
 <p>在移動綁定後我們無法使用它的原因很神奇，也很重要。</p>
 <p>當我們寫了以下程式碼時：</p>
 <pre><code class="language-rust">let x = 10;
 </code></pre>
-<p>Rust 會替 <a href="primitive-types.html#%E6%95%B8%E5%AD%97%E5%9E%8B%E5%88%A5">i32</a> 配置記憶體在<a href="the-stack-and-the-heap.html">堆疊</a>上，把代表 10 的位元複製到配置好的記憶體中，並綁定變數名稱 <code>x</code> 到此區記憶體以便未來使用。</p>
+<p>Rust 會替 <a href="primitive-types.html#%E6%95%B8%E5%AD%97%E5%9E%8B%E5%88%A5">i32</a> 配置記憶體在 <a href="the-stack-and-the-heap.html">堆疊</a> 上，把代表 10 的位元複製到配置好的記憶體中，並綁定變數名稱 <code>x</code> 到此區記憶體以便未來使用。</p>
 <p>現在細想以下程式碼片段：</p>
 <pre><code class="language-rust">let v = vec![1, 2, 3];
 
 let mut v2 = v;
 </code></pre>
 <p>第一行就如同上述的 <code>x</code> 一樣，它替向量物件 <code>v</code> 配置記憶體到堆疊上。
-但它還配置一些<a href="the-stack-and-the-heap.html">堆積</a>上的記憶體，用來放實際的資料（<code>[1, 2, 3]</code>）。
+但它還配置一些 <a href="the-stack-and-the-heap.html">堆積</a> 上的記憶體，用來放實際的資料（<code>[1, 2, 3]</code>）。
 Rust 會複製堆積所配置的記憶體位址給內部指標，這個內部指標是向量物件實際存在堆疊上的部份（讓我們稱它資料指標 data pointer）。</p>
 <p>最重要的是，向量物件和它的資料分別放在不同的記憶體區塊，而不在單一連續的記憶體配置中（因為一些理由我們不會細說）。
 向量的這兩部分（一部份在堆疊、一部份在堆積）必須在任何時候都與對方一致，像長度、容量等。</p>
 <p>當我們移動 <code>v</code> 到 <code>v2</code> 時，Rust 實際上是把向量物件 <code>v</code> 中的位元一個一個地複製到堆疊中配置的 <code>v2</code>。
 這份複本並沒有建立堆積配置中的實際資料的複本。
 這也代表，會同時有指到向量實際內容的兩個指標，兩者都指向堆積中的同一塊記憶體配置。
-如果同時可以存取 <code>v</code> 跟 <code>v2</code> 將會有資料競爭 (data race) 問題，這將違背 Rust 的安全保證。</p>
+如果同時可以存取 <code>v</code> 跟 <code>v2</code> 將會有資料競爭（data race）問題，這將違背 Rust 的安全保證。</p>
 <blockquote>
 <p>譯註：當 <code>let mut v2 = v</code> 時，只是把 <code>v</code> 中的資料指標複製一份給 <code>v2</code>，所以 <code>v</code> 與 <code>v2</code> 同時指向堆積中的同一份資料。
 當兩者同時存取時就會出現資料競爭的可能性。</p>
@@ -2146,7 +2146,7 @@ v2.truncate(2);
 <p>而此時 <code>v</code> 仍可存取，因此我們最終將得到一個非法的向量，因為 <code>v</code> 並不知道堆積中的資料被截去了。
 所以 <code>v</code> 向量在堆疊上的部份會與堆積上的部分不一致。
 <code>v</code> 仍認為有三個元素在向量中，且仍然非常歡迎我們去存取早已不存在的元素 <code>v[2]</code>，但就如你早已知道的，這結果將會後患無窮。
-甚至這可能還會引起記憶體區段錯誤 (segmentation fault)，更糟的情況還會允許未經認證的使用者從記憶體中讀取不應存取的東西。</p>
+甚至這可能還會引起記憶體區段錯誤（segmentation fault），更糟的情況還會允許未經認證的使用者從記憶體中讀取不應存取的東西。</p>
 <blockquote>
 <p>譯註：此處原文為 <code>v1</code>，修正為 <code>v</code>。</p>
 </blockquote>
@@ -2165,10 +2165,10 @@ let v2 = v;
 println!(&quot;v is: {}&quot;, v);
 </code></pre>
 <p>在此情況下，<code>v</code> 是個有實作 <code>Copy</code> trait 的 <code>i32</code>。
-這代表著，當我們把 <code>v</code> 賦值給 <code>v2</code> 時，一個資料的複本會被建立，就跟 &quot;移動&quot; 一樣。
+這代表著，當我們把 <code>v</code> 賦值給 <code>v2</code> 時，一個資料的複本會被建立，就跟「移動」一樣。
 但與之不同的是，在之後我們仍可使用 <code>v</code>。
 這是因為 <code>i32</code> 並沒有指標指向其他資料，複製時就是個完整的複本。</p>
-<p>所有的基本型別都實作了 <code>Copy</code> trait，也因此它們的所有權並不會像 &quot;所有權規則&quot; 所假設的那樣被移動。
+<p>所有的基本型別都實作了 <code>Copy</code> trait，也因此它們的所有權並不會像「所有權規則」所假設的那樣被移動。
 以下兩個程式碼片段的範例都可以編譯，因為 <code>i32</code> 與 <code>bool</code> 型別都實作了 <code>Copy</code> trait。</p>
 <pre><code class="language-rust">fn main() {
     let a = 5;
@@ -2198,7 +2198,7 @@ println!(&quot;{}&quot;, a);
                ^
 </code></pre>
 <p>我們將在 <a href="traits.html">traits</a> 章節討論如何撰寫你自己型別的 <code>Copy</code>。</p>
-<h2>所有權以外 (More than ownership)</h2>
+<h2>所有權以外（More than ownership）</h2>
 <p>當然，如果我們必須在每個函式都交還所有權：</p>
 <pre><code class="language-rust">fn foo(v: Vec&lt;i32&gt;) -&gt; Vec&lt;i32&gt; {
     // do stuff with v
@@ -2223,7 +2223,7 @@ let (v1, v2, answer) = foo(v1, v2);
 </code></pre>
 <p>呃！
 回傳型別、回傳的那行程式碼、和呼叫函式都變得更複雜了。</p>
-<p>幸運的是，Rust 提供一個功能，借用 (borrowing)，可以幫助我們解決這個問題。
+<p>幸運的是，Rust 提供一個功能，借用（borrowing），可以幫助我們解決這個問題。
 這就是下一節的主題！</p>
 <blockquote>
 <p><em>commit 145190b</em></p>
@@ -2234,27 +2234,27 @@ let (v1, v2, answer) = foo(v1, v2);
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：</p>
 <ul>
-<li><a href="ownership.html">所有權</a> (ownership)，關鍵的概念</li>
-<li>借用 (borrowing)，你正在閱讀的章節</li>
-<li><a href="lifetimes.html">生命週期</a> (lifetime)，借用的進階概念</li>
+<li><a href="ownership.html">所有權</a> （ownership），關鍵的概念</li>
+<li>借用（borrowing），你正在閱讀的章節</li>
+<li><a href="lifetimes.html">生命週期</a>（lifetime），借用的進階概念</li>
 </ul>
 <p>這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。</p>
 <h2>Meta</h2>
 <p>在我們開始細述前，有兩個所有權系統的重點。</p>
 <p>Rust 注重安全和速度。
-它透過許多 &quot;零成本抽象化&quot; 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 <em>編譯期完成的</em>。
 這些功能不需要花費你任何執行期的成本。</p>
 <p>然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 &quot;與借用檢查器 (borrow checker) 苦戰&quot; 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習借用吧。</p>
-<h2>借用 (Borrowing)</h2>
-<p>在<a href="ownership.html">所有權</a>一節的最後，我們提到一個看起來頗糟的函式：</p>
+<h2>借用（Borrowing）</h2>
+<p>在 <a href="ownership.html">所有權</a> 一節的最後，我們提到一個看起來頗糟的函式：</p>
 <pre><code class="language-rust">fn foo(v1: Vec&lt;i32&gt;, v2: Vec&lt;i32&gt;) -&gt; (Vec&lt;i32&gt;, Vec&lt;i32&gt;, i32) {
     // do stuff with v1 and v2
 
@@ -2283,12 +2283,12 @@ let answer = foo(&amp;v1, &amp;v2);
 
 // we can use v1 and v2 here!
 </code></pre>
-<p>與其把 <code>Vec&lt;i32&gt;</code> 作為我們的參數，不如使用參照 (reference)：<code>&amp;Vec&lt;i32&gt;</code>。
+<p>與其把 <code>Vec&lt;i32&gt;</code> 作為我們的參數，不如使用參照（reference）：<code>&amp;Vec&lt;i32&gt;</code>。
 而且不要直接傳遞 <code>v1</code> 與 <code>v2</code>，我們傳遞 <code>&amp;v1</code> 與 <code>&amp;v2</code>。
-我們把 <code>&amp;T</code> 型別稱為 &quot;參照&quot; (reference)，它借用了所有權，而非掌握所有權。
+我們把 <code>&amp;T</code> 型別稱為「參照」（reference），它借用了所有權，而非掌握所有權。
 一個借用東西的綁定不會在離開有效範圍時把資源釋放掉。
 這代表在呼叫 <code>foo()</code> 完之後，我們仍可再度使用我們原始的綁定。</p>
-<p>跟綁定一樣，reference 是不可變的 (immutable)。
+<p>跟綁定一樣，reference 是不可變的（immutable）。
 這意味著在 <code>foo()</code> 內，向量完全不能更改：</p>
 <pre><code class="language-rust,ignore">fn foo(v: &amp;Vec&lt;i32&gt;) {
      v.push(5);
@@ -2306,7 +2306,7 @@ v.push(5);
 <p>因為放入一個值會改變向量，所以我們不被允許這樣做。</p>
 <h2>&amp;mut reference</h2>
 <p>還有第二種 reference：<code>&amp;mut T</code>。
-一個 &quot;可變的 reference&quot; 允許你改變所借用的資源。
+一個「可變的 reference」允許你改變所借用的資源。
 例如：</p>
 <pre><code class="language-rust">let mut x = 5;
 {
@@ -2341,7 +2341,7 @@ fn main() {
 </code></pre>
 <p>事實證明如此，所以以下是一些規則。</p>
 <h2>規則</h2>
-<p>以下是 Rust 中關於借用 (borrowing) 的規則：</p>
+<p>以下是 Rust 中關於借用（borrowing）的規則：</p>
 <p>首先，任何借用的有效範圍都必須比擁有者的有效範圍還要小。
 其次，你可以使用以下兩種借用，但是不能同時使用兩者：</p>
 <ul>
@@ -2350,13 +2350,13 @@ fn main() {
 </ul>
 <p>你可能有注意到有點類似、但不完全相同於資料競爭的定義：</p>
 <blockquote>
-<p>當兩個或多個指標同時存取相同的記憶體，其中至少有一個正在寫入，且操作沒有同步時，會出現 &quot;資料競爭&quot; (date race)。</p>
+<p>當兩個或多個指標同時存取相同的記憶體，其中至少有一個正在寫入，且操作沒有同步時，會出現「資料競爭」（date race）。</p>
 </blockquote>
 <p>使用 references 時，你想用多少個都可以，因為它們都沒有寫入的行為。
 然而，一次只能擁有一個 <code>&amp;mut</code>，才不會產生資料競爭。
 當我們違反規則時，會得到錯誤訊息，這就是 Rust 如何在編譯期預防資料競爭。</p>
 <p>記住這些之後，讓我們再次想想我們的範例。</p>
-<h3>對有效範圍的深思 (Thinking in scopes)</h3>
+<h3>對有效範圍的深思（Thinking in scopes）</h3>
 <p>以下是程式碼：</p>
 <pre><code class="language-rust,ignore">let mut x = 5;
 let y = &amp;mut x;
@@ -2382,7 +2382,7 @@ fn main() {
 }
 ^
 </code></pre>
-<p>換句話說，可變借用 (mutable borrow) 在我們的範例中一直存在。
+<p>換句話說，可變借用（mutable borrow）在我們的範例中一直存在。
 所以我們希望可變借用能在我們呼叫 <code>println!</code> 並建立不可變借用 <em>之前</em> 能結束掉。
 在 Rust 中，借用會綁定在借用的有效範圍中。
 我們的有效範圍看起來會像這樣：</p>
@@ -2409,13 +2409,13 @@ println!(&quot;{}&quot;, x);  // &lt;- try to borrow x here
 <p>這樣就沒有問題了。
 我們的可變借用會在我們建立不可變借用前離開有效範圍。
 有效範圍是個看清借用持續多久的關鍵。</p>
-<h3>借用所預防的問題 (Issues borrowing prevents)</h3>
+<h3>借用所預防的問題（Issues borrowing prevents）</h3>
 <p>為何我們需要這些限制規則？
 好吧，如同我們所說的，這些規則避免資料競爭。
 資料競爭會引發哪些問題？
 以下是一些例子。</p>
 <h4>疊代器失效</h4>
-<p>一個例子是 &quot;疊代器失效&quot; (Iterator invalidation)，當你試圖改變一個正在疊代的集合 (collection) 時會發生。
+<p>一個例子是「疊代器失效」（Iterator invalidation），當你試圖改變一個正在疊代的集合（collection）時會發生。
 Rust 的借用檢查器會預防這件事發生：</p>
 <pre><code class="language-rust">let mut v = vec![1, 2, 3];
 
@@ -2449,7 +2449,7 @@ for i in &amp;v {
 ^
 </code></pre>
 <p>我們不能修改 <code>v</code>，因為它已經被借給迴圈了。</p>
-<h4>在釋放之後使用 (use after free)</h4>
+<h4>在釋放之後使用（use after free）</h4>
 <p>References 不能存活得比所參考的資源還久。
 Rust 會檢查你的 references 的有效範圍來確保符合這個條件。</p>
 <p>如果 Rust 沒有檢查這個屬性，我們可能會意外地用到一個無效的 reference。
@@ -2482,7 +2482,7 @@ statement 0 at 4:18
 </code></pre>
 <p>換句話說，<code>y</code> 只在 <code>x</code> 存在的有效範圍內有效。
 當 <code>x</code> 消失，它就成為無效的 reference。
-這個錯誤訊息說，這個借用 &quot;存在得不夠久&quot; 就是因為它在還應該存在的時候就已經失效了。</p>
+這個錯誤訊息說，這個借用「存在得不夠久」就是因為它在還應該存在的時候就已經失效了。</p>
 <p>當一個 reference 在它所參考的變數 <em>之前</em> 宣告，也會發生一樣的問題。
 這是因為當資源在同樣的有效範圍之內時，它們被釋放的順序會跟它們的宣告順序相反：</p>
 <blockquote>
@@ -2525,39 +2525,39 @@ statement 1 at 3:14
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：</p>
 <ul>
-<li><a href="ownership.html">所有權</a> (ownership)，關鍵的概念</li>
-<li><a href="references-and-borrowing.html">借用</a> (borrowing)，及其相關功能 &quot;參照&quot; (references)</li>
-<li>生命週期 (lifetimes)，你正在閱讀的章節</li>
+<li><a href="ownership.html">所有權</a> （ownership），關鍵的概念</li>
+<li><a href="references-and-borrowing.html">借用</a>（borrowing），及其相關功能「參照」（references）</li>
+<li>生命週期（lifetimes），你正在閱讀的章節</li>
 </ul>
 <p>這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。</p>
 <h2>Meta</h2>
 <p>在我們開始細述前，有兩個所有權系統的重點。</p>
 <p>Rust 注重安全和速度。
-它透過許多 &quot;零成本抽象化&quot; 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 <em>編譯期完成的</em>。
 這些功能不需要花費你任何執行期的成本。</p>
 <p>然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 &quot;與借用檢查器 (borrow checker) 苦戰&quot; 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習生命週期吧。</p>
-<h2>生命週期 (Lifetimes)</h2>
+<h2>生命週期（Lifetimes）</h2>
 <p>借出一個指向他人擁有的資源的 reference 是很複雜的。
 舉例來說，想像一下以下的操作行為：</p>
 <ol>
-<li>我獲得一個某種資源的控制代碼 (handle)。</li>
+<li>我獲得一個某種資源的控制代碼（handle）。</li>
 <li>我把指向這個資源的 reference 借給你。</li>
 <li>我決定不再使用這個資源，釋放它，但你仍還有你那邊的 reference。</li>
 <li>你決定要使用此資源。</li>
 </ol>
 <p>噢！你的 reference 指向了一個無效的資源。
-如果資源是記憶體時，我們叫它迷途指標 (dangling pointer) 或 &quot;釋放後的使用&quot;。</p>
+如果資源是記憶體時，我們叫它迷途指標（dangling pointer）或「釋放後使用」。</p>
 <p>要修正這個問題，我們必須確保上述第四步不會在第三步之後發生。
-Rust 的所有權系統透過一個叫做生命週期 (lifetimes) 的概念達成這點，它會描述 reference 的有效範圍。</p>
-<p>當我們有一個函式透過參數取用了一個 reference，我們可以不言明 (implicit) 或言明 (explicit) reference 的生命週期：</p>
+Rust 的所有權系統透過一個叫做生命週期（lifetimes）的概念達成這點，它會描述 reference 的有效範圍。</p>
+<p>當我們有一個函式透過參數取用了一個 reference，我們可以不言明（implicit）或言明（explicit）reference 的生命週期：</p>
 <pre><code class="language-rust">// implicit
 fn foo(x: &amp;i32) {
 }
@@ -2566,14 +2566,14 @@ fn foo(x: &amp;i32) {
 fn bar&lt;'a&gt;(x: &amp;'a i32) {
 }
 </code></pre>
-<p><code>'a</code> 唸作 &quot;生命週期 a&quot;。
-技術上，所有 reference 都有其關聯的生命週期，但是編譯器通常可以讓你省略它（參考後述的 <a href="#%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F%E7%9C%81%E7%95%A5%20(Lifetime%20Elision)">&quot;生命週期省略&quot;</a>）。
+<p><code>'a</code> 唸作「生命週期 a」。
+技術上，所有 reference 都有其關聯的生命週期，但是編譯器通常可以讓你省略它（參考後述的 <a href="#%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F%E7%9C%81%E7%95%A5%EF%BC%88Lifetime%20Elision%EF%BC%89">生命週期省略</a>）。
 在我們講到省略之前，先讓我們拆解言明生命週期的範例：</p>
 <pre><code class="language-rust,ignore">fn bar&lt;'a&gt;(...)
 </code></pre>
-<p>我們之前談到了一些<a href="functions.html">函式語法</a>，但我們沒有討論到函式後面的 <code>&lt;&gt;</code>。
-一個函式可以在 <code>&lt;&gt;</code> 間放入 &quot;泛型參數&quot; (generic parameters)，生命週期也是其中一種。
-我們<a href="generics.html">在之後</a>會討論到其他的泛型，但現在讓我們專注在生命週期方面。</p>
+<p>我們之前談到了一些 <a href="functions.html">函式語法</a>，但我們沒有討論到函式後面的 <code>&lt;&gt;</code>。
+一個函式可以在 <code>&lt;&gt;</code> 間放入「泛型參數」（generic parameters），生命週期也是其中一種。
+我們 <a href="generics.html">在之後</a> 會討論到其他的泛型，但現在讓我們專注在生命週期方面。</p>
 <p>我們使用 <code>&lt;&gt;</code> 去宣告我們的生命週期。
 這代表 <code>bar</code> 有一個生命週期 <code>'a</code>。
 如果我們有兩個 reference 參數，那麼將會看起來像：</p>
@@ -2582,14 +2582,13 @@ fn bar&lt;'a&gt;(x: &amp;'a i32) {
 <p>然後在我們的參數列表中，我們使用我們所命名的生命週期：</p>
 <pre><code class="language-rust,ignore">...(x: &amp;'a i32)
 </code></pre>
-<p>如果我們想要一個 <code>&amp;mut</code> reference，這樣做：
-I</p>
+<p>如果我們想要一個 <code>&amp;mut</code> reference，這樣做：</p>
 <pre><code class="language-rust,ignore">...(x: &amp;'a mut i32)
 </code></pre>
 <p>如果你比較 <code>&amp;mut i32</code> 和 <code>&amp;'a mut i32</code> 兩者，除了在 <code>&amp;</code> 和 <code>mut i32</code> 間多出生命週期 <code>'a</code>，你會發現他們是一樣的。
-我們把 <code>&amp;mut i32</code> 叫做 &quot;一個 <code>i32</code> 可變 reference&quot;，而 <code>&amp;'a mut i32</code> 叫做 &quot;一個生命週期為 <code>'a</code> 的 <code>i32</code> 可變 reference&quot;</p>
+我們把 <code>&amp;mut i32</code> 叫做「一個 <code>i32</code> 可變 reference」，而 <code>&amp;'a mut i32</code> 叫做「一個生命週期為 <code>'a</code> 的 <code>i32</code> 可變 reference」。</p>
 <h2>在 <code>struct</code> 中</h2>
-<p>當處理含有參照的<a href="structs.html">結構體</a> (struct) 食，你也同樣需要言明生命週期：</p>
+<p>當處理含有參照的 <a href="structs.html">結構體</a>（struct）時，你也同樣需要言明生命週期：</p>
 <pre><code class="language-rust">struct Foo&lt;'a&gt; {
     x: &amp;'a i32,
 }
@@ -2649,7 +2648,7 @@ fn main() {
 # }
 </code></pre>
 <p>在此範例中，<code>x</code> 與 <code>y</code> 有不同的有效範圍，但回傳值的生命週期與 <code>x</code> 相同。</p>
-<h3>對有效範圍的深思 (Thinking in scopes)</h3>
+<h3>對有效範圍的深思（Thinking in scopes）</h3>
 <p>瞭解生命週期的一個方式是將 reference 的有效範圍視覺化。
 例如：</p>
 <pre><code class="language-rust">fn main() {
@@ -2706,15 +2705,15 @@ fn main() {
 let x: &amp;'static i32 = &amp;FOO;
 </code></pre>
 <p>這會加入一個 <code>i32</code> 到執行檔的資料區段，<code>x</code> 則是指向它的 reference。</p>
-<h3>生命週期省略 (Lifetime Elision)</h3>
-<p>Rust 在函式中支援強大的局部型別推斷 (local type inference)，但在 item signatures 中則被禁止，才能讓它根據 signature 去推論其型別。
-然而，為了人機工程的理由，第二種受限的推斷方式 &quot;生命週期省略&quot; 被允許用在 function signatures。
+<h3>生命週期省略（Lifetime Elision）</h3>
+<p>Rust 在函式中支援強大的局部型別推斷（local type inference），但在 item signatures 中則被禁止，才能讓它根據 signature 去推論其型別。
+然而，為了人機工程的理由，第二種受限的推斷方式「生命週期省略」被允許用在 function signatures。
 它只根據 signature 元件本身推斷，而不基於函式內容，而且只根據三個簡單易記、不易混淆的規則去推斷出生命週期參數。
 這使得撰寫 item signatures 時可以速寫生命週期省略，但不能隱藏它的實際型別，因為局部型別推斷時可能會需要它。</p>
 <blockquote>
 <p>譯註：<code>item signatures</code> 應是指宣告函式時的輸入參數們，以及回傳值的宣告。</p>
 </blockquote>
-<p>當我們談到生命週期省略，我們使用 <em>輸入生命週期</em> (input lifetime) 與 <em>輸出生命週期</em> (output lifetime) 的字眼。
+<p>當我們談到生命週期省略，我們使用 <em>輸入生命週期</em> （input lifetime）與 <em>輸出生命週期</em> （output lifetime）的字眼。
 <em>輸入生命週期</em> 是指函式的參數的生命週期，而 <em>輸出生命週期</em> 是指函式回傳值的生命週期。
 例如，以下函式有一個輸入生命週期：</p>
 <pre><code class="language-rust,ignore">fn foo&lt;'a&gt;(bar: &amp;'a str)
@@ -2766,7 +2765,7 @@ fn new&lt;'a&gt;(buf: &amp;'a mut [u8]) -&gt; BufWriter&lt;'a&gt;; // expanded
 <p><em>commit f4fac9b</em></p>
 </blockquote>
 <h1>可變性</h1>
-<p>可變性 (mutability)，就是改變事物的能力，它在 Rust 中的運作方式跟其他語言不太一樣。
+<p>可變性（mutability），就是改變事物的能力，它在 Rust 中的運作方式跟其他語言不太一樣。
 第一個方面就是 Rust 的可變性並不是預設狀態：</p>
 <pre><code class="language-rust,ignore">let x = 5;
 x = 6; // error!
@@ -2776,28 +2775,28 @@ x = 6; // error!
 
 x = 6; // no problem!
 </code></pre>
-<p>這是一個可變的 (mutable) <a href="variable-bindings.html">變數綁定</a>。
+<p>這是一個可變的（mutable）<a href="variable-bindings.html">變數綁定</a>。
 當一個綁定是可變的，代表你被允許改變它所指向的內容。
 所以在上述範例中，<code>x</code> 的值並沒有太多改變，只是從一個 <code>i32</code> 換到另一個而已。</p>
-<p>如果你想改變綁定指向的東西，你需要<a href="references-and-borrowing.html">可變參照</a> (mutable reference)：</p>
+<p>如果你想改變綁定指向的東西，你需要 <a href="references-and-borrowing.html">可變參照</a>（mutable reference）：</p>
 <pre><code class="language-rust">let mut x = 5;
 let y = &amp;mut x;
 </code></pre>
-<p><code>y</code> 是個指向一個可變參照的不可變 (immutable) 綁定，這代表你不能把 <code>y</code> 綁定到其他東西上（例如 <code>y = &amp;mut z</code>），但你可以改變綁定到 <code>y</code> 上的變數的值（<code>*y = 5</code>）。
+<p><code>y</code> 是個指向一個可變 reference 的不可變（immutable）綁定，這代表你不能把 <code>y</code> 綁定到其他東西上（例如 <code>y = &amp;mut z</code>），但你可以改變綁定到 <code>y</code> 上的變數的值（<code>*y = 5</code>）。
 這有一些微妙的不同。</p>
 <p>當然，如果你兩種都想要可變：</p>
 <pre><code class="language-rust">let mut x = 5;
 let mut y = &amp;mut x;
 </code></pre>
 <p>現在 <code>y</code> 可以綁到其他變數上，且它所參照的值也可以被改變。</p>
-<p>很重要的是 <code>mut</code> 也是<a href="patterns.html">模式</a> (pattern) 的一部份，所以你可以像這樣做：</p>
+<p>很重要的是 <code>mut</code> 也是 <a href="patterns.html">模式</a>（pattern）的一部份，所以你可以像這樣做：</p>
 <pre><code class="language-rust">let (mut x, y) = (5, 6);
 
 fn foo(mut x: i32) {
 # }
 </code></pre>
-<h2>內部及外部可變性 (Interior vs. Exterior Mutability)</h2>
-<p>然而，當我們談及 Rust 中有些東西是 &quot;不可變&quot; 的同時，這不代表它不能真的被改變：我們說它有著 &quot;外部可變性&quot; (exterior mutability)。
+<h2>內部及外部可變性（Interior vs. Exterior Mutability）</h2>
+<p>然而，當我們提到 Rust 中有些東西是「不可變」的同時，這不代表它不能真的被改變：我們說它有著「外部可變性」（exterior mutability）。
 以 <a href="https://doc.rust-lang.org/std/sync/struct.Arc.html">Arc&lt;T&gt;</a> 為例：</p>
 <pre><code class="language-rust">use std::sync::Arc;
 
@@ -2807,20 +2806,20 @@ let y = x.clone();
 <p>當我們呼叫 <code>clone()</code> 時，<code>Arc&lt;T&gt;</code> 需要更新參照計數器。
 沒錯，我們在此處沒有使用任何 <code>mut</code>，<code>x</code> 是個不可變綁定，而且我們沒有使用 <code>&amp;mut 5</code> 或其他東西。
 那麼是為什麼呢？</p>
-<p>要明白這些，我們要回去看 Rust 的指導哲學的核心，記憶體的安全性，以及 Rust 用以保證其安全的機制，<a href="ownership.html">所有權</a>系統，和更特別的<a href="references-and-borrowing.html#borrowing">借用</a>：</p>
+<p>要明白這些，我們要回去看 Rust 的指導哲學的核心是什麼，就是記憶體安全性，以及 <a href="ownership.html">所有權</a> 系統，和更特別的 <a href="references-and-borrowing.html#borrowing">借用</a> 這些 Rust 用來保證其安全的機制：</p>
 <blockquote>
 <p>你可能有以下兩種借用的其中一種，但是不能同時使用兩者：</p>
 <ul>
-<li>一到多個對資源的參照（<code>&amp;T</code>）</li>
-<li>唯一一個可變參照（<code>&amp;mut T</code>）</li>
+<li>一到多個對資源的 references（<code>&amp;T</code>）</li>
+<li>唯一一個可變 reference（<code>&amp;mut T</code>）</li>
 </ul>
 </blockquote>
-<p>所以，這才是 &quot;不可變性&quot; (immutability) 的真正定義：當兩個參照指向同一個資源時安全嗎？
-在 <code>Arc&lt;T&gt;</code> 的例子中，是的：改變完全被包含在結構自身當中。
+<p>所以，「不可變性」（immutability）的真正定義是：當兩個參照指向同一個資源時安全嗎？
+在 <code>Arc&lt;T&gt;</code> 的例子中，是的沒錯：改變完全被包含在結構自身當中。
 與使用者無關。
 因為這個原因，它會在 <code>clone()</code> 時提供 <code>&amp;T</code>。
 如果它提供 <code>&amp;mut T</code>，那就會是個問題。</p>
-<p>其他型別，像是 [<code>std::cell</code>]<a href="https://doc.rust-lang.org/std/cell/index.html">stdcell</a> 模組中的這個，有相反的屬性：內部可變性 (interior mutability)。
+<p>其他型別，像是 [<code>std::cell</code>]<a href="https://doc.rust-lang.org/std/cell/index.html">stdcell</a> 模組中的這個，有相反的屬性：內部可變性（interior mutability）。
 例如：</p>
 <pre><code class="language-rust">use std::cell::RefCell;
 
@@ -2843,9 +2842,9 @@ let z = x.borrow_mut();
 這是 <code>RefCell</code> 做的事情：它在執行期強制使用 Rust 得借用規則，且在有違反規則時 <code>panic!</code>。
 這使我們可以繞開 Rust 的可變性規則的另一面。
 讓我們來說明它。</p>
-<h3>欄位等級的可變性 (Field-level mutability)</h3>
+<h3>欄位等級的可變性（Field-level mutability）</h3>
 <p>可變性，它不是借用（<code>&amp;mut</code>）就是綁定（<code>let mut</code>）的一個屬性。
-這代表你不可能有某些欄位可變、而某些欄位不可變的<a href="structs.html">結構體</a> (struct)。</p>
+這代表你不可能有某些欄位可變、而某些欄位不可變的 <a href="structs.html">結構體</a>（struct）。</p>
 <pre><code class="language-rust,ignore">struct Point {
     x: i32,
     mut y: i32, // nope
@@ -2890,7 +2889,7 @@ println!(&quot;y: {:?}&quot;, point.y);
 <pre><code class="language-rust">let origin_x = 0;
 let origin_y = 0;
 </code></pre>
-<p>而 <code>struct</code> 讓我們可以將兩者合而為一，成為一個有 <code>x</code> 及 <code>y</code> 欄位 (field) 的統一資料型態：</p>
+<p>而 <code>struct</code> 讓我們可以將兩者合而為一，成為一個有 <code>x</code> 及 <code>y</code> 欄位（field）的統一資料型態：</p>
 <pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
@@ -2904,7 +2903,7 @@ fn main() {
 </code></pre>
 <p>這邊有許多東西，讓我們分開來解說。
 我們使用 <code>struct</code> 關鍵字及名字來宣告結構體。
-照慣例，<code>struct</code> 的命名用大寫開始，且使用駝峰式大小寫 (camel case) 規則：<code>PointInSpace</code>，而非 <code>Point_In_Space</code>。</p>
+照慣例，<code>struct</code> 的命名用大寫開始，且使用駝峰式大小寫（camel case）規則：<code>PointInSpace</code>，而非 <code>Point_In_Space</code>。</p>
 <p>我們可以透過 <code>let</code> 宣告我們 <code>struct</code> 的實體，但我們會使用 <code>key: value</code> 風格的語法去設定每一個欄位。
 順序不需與原始宣告中的排序相同。</p>
 <p>最後，因為欄位都有名字，我們可以透過點記號存取它們：<code>origin.x</code>。</p>
@@ -2998,8 +2997,8 @@ point = Point3d { y: 1, .. point };
 let origin = Point3d { x: 0, y: 0, z: 0 };
 let point = Point3d { z: 1, x: 2, .. origin };
 </code></pre>
-<h2>多元組結構體 (tuple struct)</h2>
-<p>Rust 還有其他類似<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%20(Tuples)">多元組</a> (tuple) 與 <code>struct</code> 混合體的資料型別，叫做 &quot;多元組結構體&quot; (tuple struct)。
+<h2>多元組結構體（tuple struct）</h2>
+<p>Rust 還有其他類似<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%EF%BC%88Tuples%EF%BC%89">多元組</a>（tuple）與 <code>struct</code> 混合體的資料型別，叫做「多元組結構體」（tuple struct）。
 多元組結構體本身有命名，但是它的欄位沒有。
 它也使用 <code>struct</code> 關鍵字宣告，在其後加上名字和多元組：</p>
 <pre><code class="language-rust">struct Color(i32, i32, i32);
@@ -3023,12 +3022,12 @@ struct Point {
     z: i32,
 }
 </code></pre>
-<p>好的命名是很重要的，雖然多元組結構體 (tuple struct) 也能使用點記號去參考它的值，但結構體 (struct) 使用的是真實的命名而不是位置。</p>
+<p>好的命名是很重要的，雖然多元組結構體（tuple struct）也能使用點記號去參考它的值，但結構體（struct）使用的是真實的命名而不是位置。</p>
 <blockquote>
 <p>譯註：多元組的存取是使用索引 <code>tuple.0</code>，而結構體可以使用欄位的名稱，比較具有意義，在程式碼的可讀性上會比較強。</p>
 </blockquote>
 <p>但有 <em>一種情況</em> 下多元組結構體非常有用，就是當他只有一個元素時。
-我們稱它為 &quot;新型別&quot; (newtype) 模式，因為它允許你建立與內含的值有所區別的新型別，同時又表達出我們所想表達的語意：</p>
+我們稱它為「新型別」（newtype）模式，因為它允許你建立與內含的值有所區別的新型別，同時又表達出我們所想表達的語意：</p>
 <pre><code class="language-rust">struct Inches(i32);
 
 let length = Inches(10);
@@ -3038,16 +3037,16 @@ println!(&quot;length is {} inches&quot;, integer_length);
 </code></pre>
 <p>如你所見，你能透過 <code>let</code> 解構內部的整數型態，跟一般的多元組一樣。
 在上述情況，<code>let Inches(integer_length)</code> 會把 <code>10</code> 賦值給 <code>integer_length</code>。</p>
-<h2>類單元結構體 (Unit-like structs)</h2>
+<h2>類單元結構體（Unit-like structs）</h2>
 <p>你可以定義一個沒有任何成員的 <code>struct</code>：</p>
 <pre><code class="language-rust">struct Electron;
 
 let x = Electron;
 </code></pre>
-<p>這樣的結構體被稱為 &quot;類單元&quot;，因為它類似空的多元組 <code>()</code>，有時候被稱為單元 (unit)。
+<p>這樣的結構體被稱為「類單元」，因為它類似空的多元組 <code>()</code>，有時候被稱為單元（unit）。
 跟多元組結構體一樣，它會定義新的型別。</p>
-<p>它很難得會有用處（雖然有時候它能用來當作標記型別 (marker type) ），但與其他功能組合時，它可以變得有用。
-例如，一個函式庫可能要你建立一個結構體去實作某個 <a href="traits.html">trait</a> 來處理事件 (events)。
+<p>它很難得會有用處（雖然有時候它能用來當作標記型別［marker type］），但與其他功能組合時，它可以變得有用。
+例如，一個函式庫可能要你建立一個結構體去實作某個 <a href="traits.html">trait</a> 來處理事件（events）。
 如果你並不需要再結構體中存入任何資料，你可以建立一個類單元結構體。</p>
 <blockquote>
 <p><em>commit 6ba9520</em></p>
@@ -3065,10 +3064,10 @@ let x = Electron;
 <blockquote>
 <p>譯註：<code>Quit</code> 是沒有資料的變體，<code>ChangeColor(i32, i32, i32)</code> 與 <code>Write(String)</code> 是有著沒名稱的資料的變體，<code>Move { x: i32, y: i32 }</code> 是著有名稱資料的變體。</p>
 </blockquote>
-<p>定義變體的語法跟定義結構體 (struct) 的語法類似：你可以定義沒有資料的變體（與類單元結構體類似）、有名稱的資料的變體、或沒有名稱的資料的變體（與多元組結構體類似）。
+<p>定義變體的語法跟定義結構體（struct）的語法類似：你可以定義沒有資料的變體（與類單元結構體類似）、有名稱的資料的變體、或沒有名稱的資料的變體（與多元組結構體類似）。
 然而，與各別結構體的定義不同，<code>enum</code> 是單一的型別。
 一個枚舉的值可以是任何可能的變量之一。
-也因為這個原因，枚舉有時候會被稱為 &quot;集合型別&quot; (sum type)：枚舉可能值的集合，是所有變體可能值的集合的總和。</p>
+也因為這個原因，枚舉有時候會被稱為「集合型別」（sum type）：枚舉可能值的集合，是所有變體可能值的集合的總和。</p>
 <p>我們使用 <code>::</code> 語法去使用各個變體的名稱：變體的有效範圍存在於 <code>enum</code> 自身的命名中。
 因此以下程式碼可以運作：</p>
 <pre><code class="language-rust"># enum Message {
@@ -3085,7 +3084,7 @@ let y: BoardGameTurn = BoardGameTurn::Move { squares: 1 };
 </code></pre>
 <p>兩個變體都名為 <code>Move</code>，但因為它們的有效範圍都各自存在於枚舉的命名中，因此它們可以毫無衝突的使用。</p>
 <p><code>enum</code> 型別的值包含了它是哪個變體的資訊，以及任何與變體有關的資料。
-有時候會被當成 &quot;tagged union&quot;，因為資料中包含了 &quot;tag&quot; 去標明它的型別。
+有時候會被當成「tagged union」，因為資料中包含了「tag」去標明它的型別。
 編譯器會使用這些資訊去確保你能安全的存取枚舉中的資料。
 例如，你不能像解構一個值一樣簡單的解構枚舉中可能變體之一的值：</p>
 <blockquote>
@@ -3096,10 +3095,10 @@ let y: BoardGameTurn = BoardGameTurn::Move { squares: 1 };
 }
 </code></pre>
 <p>不支援這些操作可能看起來像是限制，但我們可以克服這些限制。
-有兩種方式：透過自己實作等式 (equality)、或藉由下一節會學到的 <a href="match.html">match</a> 表達式去配對模式 (pattern) 與變體。
+有兩種方式：透過自己實作等式（equality）、或藉由下一節會學到的 <a href="match.html">match</a> 表達式去配對模式（pattern）與變體。
 我們對 Rust 還所知不多，所以不知道如何實作等式，但我們會在 <a href="traits.html">traits</a> 一節學到。</p>
 <h2>建構子當作函式</h2>
-<p><code>enum</code> 的建構子 (constructor) 也可以像函式一樣使用。
+<p><code>enum</code> 的建構子（constructor）也可以像函式一樣使用。
 例如：</p>
 <pre><code class="language-rust"># enum Message {
 # Write(String),
@@ -3117,7 +3116,7 @@ fn foo(x: String) -&gt; Message {
 let x = foo(&quot;Hello, world&quot;.to_string());
 </code></pre>
 <p>這現在對我們來說沒什麼用，但當我們談到 <a href="closures.html">closures</a> 時，我們將會談到將函式作為參數傳遞到其他函式中。
-舉例來說，使用<a href="iterators.html">疊代器</a> (iterators)，我們可以像這樣把 <code>String</code> 的向量 (vector) 轉換為 <code>Message::Write</code> 的向量：</p>
+舉例來說，使用 <a href="iterators.html">疊代器</a>（iterators），我們可以像這樣把 <code>String</code> 的向量（vector）轉換為 <code>Message::Write</code> 的向量：</p>
 <pre><code class="language-rust"># enum Message {
 # Write(String),
 # }
@@ -3148,15 +3147,15 @@ match x {
 <p><code>match</code> 使用表達式，並根據它的值進行分支。
 每一條執行的分支都是以 <code>val =&gt; expression</code> 的形式表示。
 當值符合的時候，該分支的表達式就會被執行。
-它會被稱為 <code>match</code> 是因為 <code>match</code> 是 &quot;模式配對&quot; (pattern matching) 的實作。
-<a href="patterns.html">模式</a> (pattern) 有一個單獨的章節會涵蓋所有可能的模式。</p>
-<p><code>match</code> 的許多優點之一是它的強制 &quot;徹底檢查&quot; (exhaustiveness checking)。
+它會被稱為 <code>match</code> 是因為 <code>match</code> 是「模式配對」（pattern matching）的實作。
+<a href="patterns.html">模式</a>（pattern）有一個單獨的章節會涵蓋所有可能的模式。</p>
+<p><code>match</code> 的許多優點之一是它的強制「徹底檢查」（exhaustiveness checking）。
 舉例來說，當我們刪除最後一條有著 <code>_</code> 的執行分支，編譯器將會給我們錯誤訊息：</p>
 <pre><code class="language-text">error: non-exhaustive patterns: `_` not covered
 </code></pre>
 <p>Rust 告訴我們，我們忘了一個值。
 編譯器從 <code>x</code> 推斷出它可能是任何 32 位元正整數；從 1 到 2,147,483,647 都有可能。
-而 <code>_</code> 就像是 &quot;接住全部&quot; (catch-all) <em>沒有</em> 被特別列在 <code>match</code> 執行分支中的可能值。
+而 <code>_</code> 就像是「全部接住」（catch-all） <em>沒有</em> 被特別列在 <code>match</code> 執行分支中的可能值。
 在上述例子中可以看到，我們給 <code>match</code> 整數 1-5 的執行分支，當 <code>x</code> 是 6 或其他值的時候，就會被 <code>_</code> 接去執行。</p>
 <p><code>match</code> 也是表達式，這代表我們可以在 <code>let</code> 綁定的右邊使用它，或直接將它用在任何表達式可以使用的地方：</p>
 <pre><code class="language-rust">let x = 5;
@@ -3172,7 +3171,7 @@ let number = match x {
 </code></pre>
 <p>有時候這是把東西從一個型別轉換為另一個型別的好方法；上面的例子是把整數轉換為 <code>String</code>。</p>
 <h2>枚舉的配對</h2>
-<p>另一個 <code>match</code> 的重要作用是處理枚舉 (enum) 的可能變體們：</p>
+<p>另一個 <code>match</code> 的重要作用是處理枚舉（enum）的可能變體們：</p>
 <pre><code class="language-rust">enum Message {
     Quit,
     ChangeColor(i32, i32, i32),
@@ -3201,10 +3200,10 @@ fn process_message(msg: Message) {
 <p><em>commit fc4bb5f</em></p>
 </blockquote>
 <h1>模式</h1>
-<p>模式 (pattern) 在 Rust 中很常見。
-我們在<a href="variable-bindings.html">變數綁定</a>、<a href="match.html">match 陳述式</a>、及其他地方都會用到。
+<p>模式（pattern）在 Rust 中很常見。
+我們在 <a href="variable-bindings.html">變數綁定</a>、<a href="match.html">match 陳述式</a>、及其他地方都會用到。
 讓我們開始快速地了解模式可以做到些什麼！</p>
-<p>快速複習一下：你可以直接配對變數，而 <code>_</code> 將會配對到 &quot;任何&quot; 沒列出來的其他情況：</p>
+<p>快速複習一下：你可以直接配對變數，而 <code>_</code> 將會配對到「任何」沒列出來的其他情況：</p>
 <pre><code class="language-rust">let x = 1;
 
 match x {
@@ -3215,7 +3214,7 @@ match x {
 }
 </code></pre>
 <p>這會印出 <code>one</code>。</p>
-<p>模式有個陷阱：它會產生遮蔽 (shadowing)，與其他會產生新的綁定的任何東西一樣。
+<p>模式有個陷阱：它會產生遮蔽（shadowing），與其他會產生新的綁定的任何東西一樣。
 舉例來說：</p>
 <pre><code class="language-rust">let x = 1;
 let c = 'c';
@@ -3234,7 +3233,7 @@ x: 1
 新綁定的有效範圍在該 match 的執行分支中，且它的值被賦予為 <code>c</code>。
 請注意，在 match 有效範圍之外的 <code>x</code> 的值不會影響到範圍內的 <code>x</code>。
 因為我們本來已經有了 <code>x</code> 綁定，而新的 <code>x</code> 遮蔽了它。</p>
-<h2>多重模式 (Multiple patterns)</h2>
+<h2>多重模式（Multiple patterns）</h2>
 <p>你可以使用 <code>|</code> 來配對多重模式：</p>
 <pre><code class="language-rust">let x = 1;
 
@@ -3245,8 +3244,8 @@ match x {
 }
 </code></pre>
 <p>這會印出 <code>one or two</code>。</p>
-<h2>解構 (Destructuring)</h2>
-<p>如果你有個複合的資料型別，像是<a href="structs.html">結構體</a> (struct)，你可以在模式中解構它：</p>
+<h2>解構（Destructuring）</h2>
+<p>如果你有個複合的資料型別，像是 <a href="structs.html">結構體</a>（struct），你可以在模式中解構它：</p>
 <pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
@@ -3296,7 +3295,7 @@ match origin {
 }
 </code></pre>
 <p>這會印出 <code>y is 0</code>。</p>
-<p>這種 &quot;解構&quot; 行為在任何複合資料型別上都可以運作，像<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%20(Tuples)">多元組</a> (tuple) 或<a href="enums.html">枚舉</a> (enum) 都可以。</p>
+<p>這種「解構」行為在任何複合資料型別上都可以運作，像 <a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%EF%BC%88Tuples%EF%BC%89">多元組</a>（tuple）或 <a href="enums.html">枚舉</a>（enum）都可以。</p>
 <h2>忽略綁定</h2>
 <p>你可以在模式中使用 <code>_</code> 忽略型別跟值。
 舉例來說，這是一個 <code>Result&lt;T, E&gt;</code> 的 <code>match</code> 例子：</p>
@@ -3361,7 +3360,7 @@ match x {
 </code></pre>
 <p>這會印出 <code>Got a tuple!</code>。</p>
 <h2>ref 與 ref mut</h2>
-<p>如果你想要獲得一個<a href="references-and-borrowing.html">參照</a> (reference)，可以使用 <code>ref</code> 關鍵字：</p>
+<p>如果你想要獲得一個 <a href="references-and-borrowing.html">參照</a>（reference），可以使用 <code>ref</code> 關鍵字：</p>
 <pre><code class="language-rust">let x = 5;
 
 match x {
@@ -3371,7 +3370,7 @@ match x {
 <p>這會印出 <code>Got a reference to 5</code>。</p>
 <p>這邊 <code>match</code> 中的 <code>r</code> 是一個 <code>&amp;i32</code> 型別。
 換句話說，<code>ref</code> 關鍵字 <em>建立</em> 了一個可在模式當中使用的參照。
-如果你需要一個可變的 (mutable) 參照，可以使用 <code>ref mut</code>：</p>
+如果你需要一個可變的（mutable）參照，可以使用 <code>ref mut</code>：</p>
 <pre><code class="language-rust">let mut x = 5;
 
 match x {
@@ -3430,8 +3429,8 @@ match x {
     _ =&gt; println!(&quot;anything&quot;),
 }
 </code></pre>
-<h2>守衛 (Guards)</h2>
-<p>你可以使用 <code>if</code> 來產生 &quot;配對守衛&quot; (match guards)：</p>
+<h2>守衛（Guards）</h2>
+<p>你可以使用 <code>if</code> 來產生「配對守衛」（match guards）：</p>
 <pre><code class="language-rust">enum OptionalInt {
     Value(i32),
     Missing,
@@ -3462,7 +3461,7 @@ match x {
 <p>而不是：</p>
 <pre><code class="language-text">4 | (5 if y) =&gt; ...
 </code></pre>
-<h2>混合與配對 (Mix and Match)</h2>
+<h2>混合與配對（Mix and Match）</h2>
 <p>恩！有非常多種方法可以進行配對，而且它們可以根據你想做的事情而組合使用：</p>
 <pre><code class="language-rust,ignore">match x {
     Foo { x: Some(ref name), y: None } =&gt; ...
@@ -3698,8 +3697,8 @@ our concerns: we can use the methods on <code>CircleBuilder</code> to constrain 
 <p><em>commit 6ba9520</em></p>
 </blockquote>
 <h1>向量</h1>
-<p>向量 <code>Vec&lt;T&gt;</code> 為標準函式庫中動態可增長的陣列，型別 <code>T</code> 表示我們可以宣告任何型別的向量（可參考<a href="generics.html">泛型</a>章節）。
-向量的資料一定會配置在堆積區 (heap) ，可以使用 <code>vec!</code> 巨集來生成向量。</p>
+<p>向量 <code>Vec&lt;T&gt;</code> 為標準函式庫中動態可增長的陣列，型別 <code>T</code> 表示我們可以宣告任何型別的向量（可參考 <a href="generics.html">泛型</a> 章節）。
+向量的資料一定會配置在堆積區 （heap），可以使用 <code>vec!</code> 巨集來生成向量。</p>
 <pre><code class="language-rust">let v = vec![1, 2, 3, 4, 5]; // v: Vec&lt;i32&gt;
 </code></pre>
 <p>（注意到不像之前使用的 <code>println!</code> 巨集，<code>vec!</code> 巨集使用方括號，Rust 允許我們使用圓括號或方括號。
@@ -3768,18 +3767,33 @@ for i in v {
     println!(&quot;Take ownership of the vector and its element {}&quot;, i);
 }
 </code></pre>
-<p>向量有許多有用的方法，可以參考<a href="http://doc.rust-lang.org/std/vec/index.html">向量的 API 文件</a>。</p>
+<p>向量有許多有用的方法，可以參考 <a href="http://doc.rust-lang.org/std/vec/index.html">向量的 API 文件</a>。</p>
 <blockquote>
 <p><em>commit f2bea1c</em></p>
 </blockquote>
 <h1>字串</h1>
-<p>字串是每個軟體工程師都應該精通的重要概念。 Rust 因為著重在系統程式，所以它的字串處理系統與其他的程式語言有些不同。 每當你有大小不固定的資料結構時，事情就會變得很複雜，不巧的是字串最好是一個可以改變大小的資料結構。 Rust 的字串與其他系統程式語言，例如 C，也有所不同。</p>
-<p>讓我們深入的研究字串。 一個字串是一個編碼成 UTF-8 串流的萬國碼 (Unicode) 數值序列。所有的字串都保證是用合法的 UTF-8 編碼。 此外不同於其他的系統程式語言，字串並非由空字串結尾 (null-terminated) 而且可以含有空字串位元。</p>
-<p>Rust 有兩種主要的字串類型: <code>&amp;str</code> 和 <code>String</code>。 讓我們先講講 <code>&amp;str</code>。 他們叫做字串切片 (string slices) 。一個字串切片有固定的大小，而且是不可變的。他是一個指向 UTF-8 位元序列的參照。</p>
+<p>字串是每個軟體工程師都應該精通的重要概念。
+Rust 因為著重在系統程式，所以它的字串處理系統與其他的程式語言有些不同。
+每當你有大小不固定的資料結構時，事情就會變得很複雜，不巧的是字串最好是一個可以改變大小的資料結構。
+Rust 的字串與其他系統程式語言，例如 C，也有所不同。</p>
+<p>讓我們深入的研究字串。
+一個字串是一個編碼成 UTF-8 串流的萬國碼（Unicode）數值序列。
+所有的字串都保證是用合法的 UTF-8 編碼。
+此外不同於其他的系統程式語言，字串並非由空字串結尾（null-terminated）而且可以含有空字串位元。</p>
+<p>Rust 有兩種主要的字串類型: <code>&amp;str</code> 和 <code>String</code>。
+讓我們先講講 <code>&amp;str</code>。
+它們叫做字串切片（string slices）。
+一個字串切片有固定的大小，而且是不可變的。
+他是一個指向 UTF-8 位元序列的參照。</p>
 <pre><code class="language-rust">let greeting = &quot;Hello there.&quot;; // greeting: &amp;'static str
 </code></pre>
-<p><code>&quot;Hello there.&quot;</code>是一個字串常值 (string literial)，其型態是<code>&amp;'static str</code>。一個字串常值是一個靜態分配的字串切片，也就是說它儲存在我們編譯過的程式內，而且在整個運行的過程中都存在。 <code>greeting</code> 綁定是一個知道這個靜態字串的參照。任何一個接受字串切片的函數也同樣會接受字串常值。</p>
-<p>字串常值可以橫跨多行。 有兩種方法來表示多行的字串。第一種會包含換行符號還有每行開頭的空白：</p>
+<p><code>&quot;Hello there.&quot;</code>是一個字串常值（string literial），其型態是<code>&amp;'static str</code>。
+一個字串常值是一個靜態分配的字串切片，也就是說它儲存在我們編譯過的程式內，而且在整個運行的過程中都存在。
+<code>greeting</code> 綁定是一個知道這個靜態字串的參照。
+任何一個接受字串切片的函數也同樣會接受字串常值。</p>
+<p>字串常值可以橫跨多行。
+有兩種方法來表示多行的字串。
+第一種會包含換行符號還有每行開頭的空白：</p>
 <pre><code class="language-rust">let s = &quot;foo
     bar&quot;;
 
@@ -3791,14 +3805,17 @@ assert_eq!(&quot;foo\n        bar&quot;, s);
 
 assert_eq!(&quot;foobar&quot;, s);
 </code></pre>
-<p>但是 Rust 不只有 <code>&amp;str</code>。一個 <code>String</code>是分配在堆積上的一種字串。這種字串可以長大，而且也保證是 UTF-8 編碼. <code>String</code> 的產生方式常常是呼叫字串切片的 <code>to_string</code> 函式轉換而來。</p>
+<p>但是 Rust 不只有 <code>&amp;str</code>。
+一個 <code>String</code>是分配在堆積上的一種字串。
+這種字串可以長大，而且也保證是 UTF-8 編碼。
+<code>String</code> 的產生方式常常是呼叫字串切片的 <code>to_string</code> 函式轉換而來。</p>
 <pre><code class="language-rust">let mut s = &quot;Hello&quot;.to_string(); // mut s: String
 println!(&quot;{}&quot;, s);
 
 s.push_str(&quot;, world.&quot;);
 println!(&quot;{}&quot;, s);
 </code></pre>
-<p>使用 <code>&amp;</code> 符號會把 <code>String</code>  強制轉換成 <code>&amp;str</code>：</p>
+<p>使用 <code>&amp;</code> 符號會把 <code>String</code> 強制轉換成 <code>&amp;str</code>：</p>
 <pre><code class="language-rust">fn takes_slice(slice: &amp;str) {
     println!(&quot;Got: {}&quot;, slice);
 }
@@ -3808,7 +3825,9 @@ fn main() {
     takes_slice(&amp;s);
 }
 </code></pre>
-<p>當一個函數接受 <code>&amp;str</code> 的一種特徵 (trait) 作為參數而不是單純的 <code>&amp;str</code> 時，這種自動轉換並不會發生。例如， [<code>TcpStream::connect</code>]<a href="../std/net/struct.TcpStream.html#method.connect">connect</a> 有一個型態為<code>ToSocketAddrs</code> 的參數。這時傳入 <code>&amp;str</code> 是可以的，但是 <code>String</code> 就必須要明確的使用 <code>&amp;*</code> 轉換後才能傳入。</p>
+<p>當一個函數接受 <code>&amp;str</code> 的一種特徵（trait）作為參數而不是單純的 <code>&amp;str</code> 時，這種自動轉換並不會發生。
+例如， <a href="https://doc.rust-lang.org/std/net/struct.TcpStream.html#method.connect">TcpStream::connect</a> 有一個型態為 <code>ToSocketAddrs</code> 的參數。
+這時傳入 <code>&amp;str</code> 是可以的，但是 <code>String</code> 就必須要明確的使用 <code>&amp;*</code> 轉換後才能傳入。</p>
 <pre><code class="language-rust,no_run">use std::net::TcpStream;
 
 TcpStream::connect(&quot;192.168.0.1:3000&quot;); // &amp;str parameter
@@ -3816,14 +3835,19 @@ TcpStream::connect(&quot;192.168.0.1:3000&quot;); // &amp;str parameter
 let addr_string = &quot;192.168.0.1:3000&quot;.to_string();
 TcpStream::connect(&amp;*addr_string); // convert addr_string to &amp;str
 </code></pre>
-<p>把一個 <code>String</code> 轉換成 <code>&amp;str</code> 來讀取不需要什麼成本的，但是把 <code>&amp;str</code> 轉換為一個 <code>String</code> 就必須牽涉到分配記憶體。若是沒有強烈的理由千萬不要這樣做！</p>
+<p>把一個 <code>String</code> 轉換成 <code>&amp;str</code> 來讀取不需要什麼成本的，但是把 <code>&amp;str</code> 轉換為一個 <code>String</code> 就必須牽涉到分配記憶體。
+若是沒有強烈的理由千萬不要這樣做！</p>
 <h2>索引</h2>
 <p>因為字串是 UTF-8 串流，所以並不支援使用索引來存取：</p>
 <pre><code class="language-rust,ignore">let s = &quot;hello&quot;;
 
 println!(&quot;The first letter of s is {}&quot;, s[0]); // ERROR!!!
 </code></pre>
-<p>通常使用 <code>[]</code> 來存取向量是非常快的。但是因為字串是使用 UTF-8 編碼，每個字符可能有多個位元組，要找到第 N 個字符必須要從頭開始循序尋找。這是一個相對非常耗費資源的程序，所以我們不想誤導你。另外，字符 (letter) 並不是萬國碼的一個標準定義。我們可以選擇把字串看做單獨的位元組，和室單獨的編碼位置 (code point)：</p>
+<p>通常使用 <code>[]</code> 來存取向量是非常快的。
+但是因為字串是使用 UTF-8 編碼，每個字符可能有多個位元組，要找到第 N 個字符必須要從頭開始循序尋找。
+這是一個相對非常耗費資源的程序，所以我們不想誤導你。
+另外，字符（letter）並不是萬國碼的一個標準定義。
+我們可以選擇把字串看做單獨的位元組，或單獨的編碼位置（codepoints）：</p>
 <pre><code class="language-rust">let hachiko = &quot;忠犬ハチ公&quot;;
 
 for b in hachiko.as_bytes() {
@@ -3848,12 +3872,12 @@ println!(&quot;&quot;);
 let dog = hachiko.chars().nth(1); // kinda like hachiko[1]
 </code></pre>
 <p>這種方法強調我們必須從頭開始循序的尋找一連串的 <code>chars</code>。</p>
-<h2>切片 (Slicing)</h2>
+<h2>切片（Slicing）</h2>
 <p>你可以用切片語法得到一個字串的切片：</p>
 <pre><code class="language-rust">let dog = &quot;hachiko&quot;;
 let hachi = &amp;dog[0..5];
 </code></pre>
-<p>但是請注意這是<em>位元</em>的位置而非<em>字母</em>的位置。所以以下的程式會在執行時失敗：</p>
+<p>但是請注意這是 <em>位元</em> 的位置而非 <em>字母</em> 的位置。所以以下的程式會在執行時失敗：</p>
 <pre><code class="language-rust,should_panic">let dog = &quot;忠犬ハチ公&quot;;
 let hachi = &amp;dog[0..2];
 </code></pre>
@@ -3861,7 +3885,7 @@ let hachi = &amp;dog[0..2];
 <pre><code class="language-text">thread '&lt;main&gt;' panicked at 'index 0 and/or 2 in `忠犬ハチ公` do not lie on
 character boundary'
 </code></pre>
-<h2>接續 (Concatination)</h2>
+<h2>接續（Concatination）</h2>
 <p>如果你有一個 <code>String</code>, 你可以把一個 <code>&amp;str</code> 接續到它後面：</p>
 <pre><code class="language-rust">let hello = &quot;Hello &quot;.to_string();
 let world = &quot;world!&quot;;
@@ -3874,13 +3898,13 @@ let world = &quot;world!&quot;.to_string();
 
 let hello_world = hello + &amp;world;
 </code></pre>
-<p>這是因為 <code>&amp;String</code> 可以自動強迫轉型 (coerce) 成一個 <code>&amp;str</code>。這個功能被稱作「<a href="deref-coercions.html">取值強迫轉型</a>」 (<code>Deref</code> coercisons)。</p>
+<p>這是因為 <code>&amp;String</code> 可以自動強迫轉型（coerce）成一個 <code>&amp;str</code>。這個功能被稱作「<a href="deref-coercions.html">取值強迫轉型</a>」（<code>Deref</code> coercisons）。</p>
 <blockquote>
 <p><em>commit 310ab5e</em></p>
 </blockquote>
 <h1>泛型</h1>
 <p>有時我們希望函式或資料型別能接受不同型別的參數，在 Rust 中提供了泛型來滿足這項需求。
-在型別論中，泛型又被稱為 &quot;參數式多型&quot;，係指型別或函式面對給定的參數 (parametric) 時具有多種型態（&quot;poly&quot; 為多，&quot;morph&quot;指型態）。</p>
+在型別論中，泛型又被稱為「參數式多型」，係指型別或函式面對給定的參數（parametric）時具有多種型態（「poly」為多，「morph」指型態）。</p>
 <p>總之不管理論，先來看一些泛型程式，Rust 標準函式庫提供了型別 <code>Option&lt;T&gt;</code> 即是泛型：</p>
 <pre><code class="language-rust">enum Option&lt;T&gt; {
     Some(T),
@@ -3921,7 +3945,7 @@ let y: Option&lt;f64&gt; = Some(5.0f64);
     Err(Z),
 }
 </code></pre>
-<p>慣例上第一個泛型參數會是 <code>T</code> 表示 &quot;type&quot;，然後我們用 <code>E</code> 表示 &quot;error&quot;。
+<p>慣例上第一個泛型參數會是 <code>T</code> 表示「type」，然後我們用 <code>E</code> 表示「error」。
 然而 Rust 實際上並不管這些東西。</p>
 <p>型別 <code>Result&lt;T, E&gt;</code> 用在回傳運算結果，也能夠在出錯時回傳錯誤。</p>
 <h2>泛型函式</h2>
@@ -3964,7 +3988,7 @@ impl&lt;T&gt; Point&lt;T&gt; {
     }
 }
 </code></pre>
-<p>目前為止，我們已經展示泛型可以用於任意型態。
+<p>目前為止，我們已經展示泛型可以用於任意型別。
 這在許多狀況下非常有用，例如先前看到的 <code>Option&lt;T&gt;</code>，以及接下來會看到通用容器型別，如 <a href="http://doc.rust-lang.org/std/vec/struct.Vec.html">Vec&lt;T&gt;</a>。
 另一方面，常常我們想要用這樣的彈性換取表現能力，
 參考 <a href="traits.html">trait bounds</a> 了解如何做到。</p>
@@ -13253,9 +13277,9 @@ libcore currently.</p>
 </blockquote>
 <h1>詞彙表</h1>
 <p>並非每位 Rustacean 都有系統程式設計或電腦科學的背景，所以我們加上了一些可能不易理解的名詞解釋。</p>
-<h2>抽象語法樹 (Abstract Syntax Tree)</h2>
+<h2>抽象語法樹（Abstract Syntax Tree）</h2>
 <p>當編譯器編譯程式時，它會做很多不同的事。
-其中之一就是轉換你的程式文字內容變成 &quot;抽象語法樹&quot;，或稱為 &quot;AST&quot;。
+其中之一就是轉換你的程式文字內容變成「抽象語法樹」，或稱為「AST」。
 這個樹展現了你的程式結構。
 例如， <code>2 + 3</code> 會轉換成這樣的樹：</p>
 <pre><code class="language-text">  +
@@ -13269,7 +13293,7 @@ libcore currently.</p>
    / \
   3   4
 </code></pre>
-<h2>元數 (Arity)</h2>
+<h2>元數（Arity）</h2>
 <p>元數是指函式或操作所需要的參數數量。</p>
 <pre><code class="language-rust">let x = (2, 3);
 let y = (4, 6);
@@ -13277,22 +13301,22 @@ let z = (8, 2, 6);
 </code></pre>
 <p>在範例中，<code>x</code> 和 <code>y</code> 的元數是 2。
 <code>z</code> 的元數是 3。</p>
-<h2>界線 (Bounds)</h2>
+<h2>界線（Bounds）</h2>
 <p>界線是型別或 <a href="traits.html">trait</a> 的限制。
 例如，如果界線在函式的參數，那麼傳遞給函式的參數型別必須遵守這樣的限制。</p>
-<h2>動態大小型別 (DST - Dynamically Sized Type)</h2>
+<h2>動態大小型別（DST - Dynamically Sized Type）</h2>
 <p>靜態大小或 alignment 未知的型別。（<a href="https://doc.rust-lang.org/nomicon/exotic-sizes.html#dynamically-sized-types-dsts">更多資訊</a>）</p>
-<h2>表達式 (Expression)</h2>
+<h2>表達式（Expression）</h2>
 <p>程式語言中，表達式是一組數值、常數、變數、運算子、及函式的組合，可以估出一個數值。
 例如 <code>2 + (3 * 4)</code> 是一個回傳數值 14 的表達式。
 值得注意的是，表達式可以有副作用。
 例如，一個包含表達式的函式可能會執行一些動作，而不只是單純的回傳值。</p>
-<h2>表達式導向語言 (Expression-Oriented Language)</h2>
+<h2>表達式導向語言（Expression-Oriented Language）</h2>
 <p>早期的程式語言中，<a href="glossary.html#expression">表達式</a> and <a href="glossary.html#statement">陳述式</a> 是兩種不同的語法類型：表達式有數值，而陳述式做事。
 然而，之後的語言模糊了界線，允許表達是做事，而陳述式有數值。
 在表達式導向語言中，（幾乎）所以陳述式都是表達式，且回傳值。
 因此，這些表達陳述式自身可以組成更大的表達式。</p>
-<h2>陳述式 (Statement)</h2>
+<h2>陳述式（Statement）</h2>
 <p>在程式語言中，陳述式是程式語言中最小的獨立元素，用來命令電腦執行動作。</p>
 <blockquote>
 <p>譯註：關於表達式及陳述式，可參考維基百科的 <a href="https://en.wikipedia.org/wiki/Expression_(computer_science)">Expression</a> 及 <a href="https://en.wikipedia.org/wiki/Statement_(computer_science)">Statement</a> 條目。</p>

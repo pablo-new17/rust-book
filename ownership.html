@@ -76,41 +76,41 @@
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：</p>
 <ul>
-<li>所有權 (ownership)，你正在閱讀的章節</li>
-<li><a href="references-and-borrowing.html">借用</a> (borrowing)，及其相關功能 &quot;參照&quot; (references)</li>
-<li><a href="lifetimes.html">生命週期</a> (lifetime)，借用的進階概念</li>
+<li>所有權（ownership），你正在閱讀的章節</li>
+<li><a href="references-and-borrowing.html">借用</a>（borrowing），及其相關功能「參照」（references）</li>
+<li><a href="lifetimes.html">生命週期</a> （lifetime），借用的進階概念</li>
 </ul>
 <p>這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。</p>
 <h2>Meta</h2>
 <p>在我們開始細述前，有兩個所有權系統的重點。</p>
 <p>Rust 注重安全和速度。
-它透過許多 &quot;零成本抽象化&quot; 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 <em>編譯期完成的</em>。
 這些功能不需要花費你任何執行期的成本。</p>
 <p>然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 &quot;與借用檢查器 (borrow checker) 苦戰&quot; 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習所有權吧。</p>
-<h2>所有權 (Ownership)</h2>
-<p><a href="variable-bindings.html">變數綁定</a>在 Rust 中有個屬性：它們會有所綁定的值的 &quot;所有權&quot;。
+<h2>所有權（Ownership）</h2>
+<p><a href="variable-bindings.html">變數綁定</a> 在 Rust 中有個屬性：它們會有所綁定的值的「所有權」。
 這代表當綁定離開有效範圍，Rust 就會釋放所綁定的資源。
 例如：</p>
 <pre><code class="language-rust">fn foo() {
     let v = vec![1, 2, 3];
 }
 </code></pre>
-<p>當 <code>v</code> 進入有效範圍時，一個新的<a href="vectors.html">向量</a> (vector) 會在<a href="the-stack-and-the-heap.html#the-stack">堆疊</a> (stack) 中被建立，且在<a href="the-stack-and-the-heap.html">堆積</a> (heap) 中替其元素配置空間。
+<p>當 <code>v</code> 進入有效範圍時，一個新的 <a href="vectors.html">向量</a>（vector）會在 <a href="the-stack-and-the-heap.html#the-stack">堆疊</a>（stack）中被建立，且在 <a href="the-stack-and-the-heap.html">堆積</a>（heap）中替其元素配置空間。
 當 <code>v</code> 在 <code>foo()</code> 的最後離開有效範圍時，Rust 會清除任何與這個向量有關的東西，甚至是堆積內配置的記憶體。
 這在有效範圍結束後必定發生。</p>
-<p>我們會在後面章節詳細說明<a href="vectors.html">向量</a>；在此我們只以它來作為一個執行期配置堆積中空間的例子。
-除了它的大小可以透過 <code>push()</code> 加入元素而改變之外，它的行為跟<a href="primitive-types.html#arrays">陣列</a>類似。</p>
-<p>向量有個<a href="generics.html">泛型</a> <code>Vec&lt;T&gt;</code>，在本範例 <code>v</code> 是 <code>Vec&lt;i32&gt;</code> 型別。
+<p>我們會在後面章節詳細說明 <a href="vectors.html">向量</a>；在此我們只以它來作為一個執行期配置堆積中空間的例子。
+除了它的大小可以透過 <code>push()</code> 加入元素而改變之外，它的行為跟 <a href="primitive-types.html#arrays">陣列</a> 類似。</p>
+<p>向量有個 <a href="generics.html">泛型</a> <code>Vec&lt;T&gt;</code>，在本範例 <code>v</code> 是 <code>Vec&lt;i32&gt;</code> 型別。
 我們將會在本章後面提及泛型。</p>
-<h2>移動語意 (Move semantics)</h2>
+<h2>移動語意（Move semantics）</h2>
 <p>此處是更加神奇的部分：Rust 確保所有的資源都 <em>只有一個</em> 對應的綁定。
 例如，如果我們有個向量，我們可以賦值給另一個綁定：</p>
 <pre><code class="language-rust">let v = vec![1, 2, 3];
@@ -140,29 +140,29 @@ take(v);
 
 println!(&quot;v[0] is: {}&quot;, v[0]);
 </code></pre>
-<p>我們看到同樣的錯誤： &quot;use of moved value&quot;。
-當我們轉移所有權給其他綁定後，我們稱此為 &quot;移動&quot; (move) 了所引用的值。
+<p>我們看到同樣的錯誤：「use of moved value」。
+當我們轉移所有權給其他綁定後，我們稱此為「移動」（move）了所引用的值。
 這是 Rust 的預設行為，你不需特別註記什麼。</p>
 <h3>細節</h3>
 <p>在移動綁定後我們無法使用它的原因很神奇，也很重要。</p>
 <p>當我們寫了以下程式碼時：</p>
 <pre><code class="language-rust">let x = 10;
 </code></pre>
-<p>Rust 會替 <a href="primitive-types.html#%E6%95%B8%E5%AD%97%E5%9E%8B%E5%88%A5">i32</a> 配置記憶體在<a href="the-stack-and-the-heap.html">堆疊</a>上，把代表 10 的位元複製到配置好的記憶體中，並綁定變數名稱 <code>x</code> 到此區記憶體以便未來使用。</p>
+<p>Rust 會替 <a href="primitive-types.html#%E6%95%B8%E5%AD%97%E5%9E%8B%E5%88%A5">i32</a> 配置記憶體在 <a href="the-stack-and-the-heap.html">堆疊</a> 上，把代表 10 的位元複製到配置好的記憶體中，並綁定變數名稱 <code>x</code> 到此區記憶體以便未來使用。</p>
 <p>現在細想以下程式碼片段：</p>
 <pre><code class="language-rust">let v = vec![1, 2, 3];
 
 let mut v2 = v;
 </code></pre>
 <p>第一行就如同上述的 <code>x</code> 一樣，它替向量物件 <code>v</code> 配置記憶體到堆疊上。
-但它還配置一些<a href="the-stack-and-the-heap.html">堆積</a>上的記憶體，用來放實際的資料（<code>[1, 2, 3]</code>）。
+但它還配置一些 <a href="the-stack-and-the-heap.html">堆積</a> 上的記憶體，用來放實際的資料（<code>[1, 2, 3]</code>）。
 Rust 會複製堆積所配置的記憶體位址給內部指標，這個內部指標是向量物件實際存在堆疊上的部份（讓我們稱它資料指標 data pointer）。</p>
 <p>最重要的是，向量物件和它的資料分別放在不同的記憶體區塊，而不在單一連續的記憶體配置中（因為一些理由我們不會細說）。
 向量的這兩部分（一部份在堆疊、一部份在堆積）必須在任何時候都與對方一致，像長度、容量等。</p>
 <p>當我們移動 <code>v</code> 到 <code>v2</code> 時，Rust 實際上是把向量物件 <code>v</code> 中的位元一個一個地複製到堆疊中配置的 <code>v2</code>。
 這份複本並沒有建立堆積配置中的實際資料的複本。
 這也代表，會同時有指到向量實際內容的兩個指標，兩者都指向堆積中的同一塊記憶體配置。
-如果同時可以存取 <code>v</code> 跟 <code>v2</code> 將會有資料競爭 (data race) 問題，這將違背 Rust 的安全保證。</p>
+如果同時可以存取 <code>v</code> 跟 <code>v2</code> 將會有資料競爭（data race）問題，這將違背 Rust 的安全保證。</p>
 <blockquote>
 <p>譯註：當 <code>let mut v2 = v</code> 時，只是把 <code>v</code> 中的資料指標複製一份給 <code>v2</code>，所以 <code>v</code> 與 <code>v2</code> 同時指向堆積中的同一份資料。
 當兩者同時存取時就會出現資料競爭的可能性。</p>
@@ -175,7 +175,7 @@ v2.truncate(2);
 <p>而此時 <code>v</code> 仍可存取，因此我們最終將得到一個非法的向量，因為 <code>v</code> 並不知道堆積中的資料被截去了。
 所以 <code>v</code> 向量在堆疊上的部份會與堆積上的部分不一致。
 <code>v</code> 仍認為有三個元素在向量中，且仍然非常歡迎我們去存取早已不存在的元素 <code>v[2]</code>，但就如你早已知道的，這結果將會後患無窮。
-甚至這可能還會引起記憶體區段錯誤 (segmentation fault)，更糟的情況還會允許未經認證的使用者從記憶體中讀取不應存取的東西。</p>
+甚至這可能還會引起記憶體區段錯誤（segmentation fault），更糟的情況還會允許未經認證的使用者從記憶體中讀取不應存取的東西。</p>
 <blockquote>
 <p>譯註：此處原文為 <code>v1</code>，修正為 <code>v</code>。</p>
 </blockquote>
@@ -194,10 +194,10 @@ let v2 = v;
 println!(&quot;v is: {}&quot;, v);
 </code></pre>
 <p>在此情況下，<code>v</code> 是個有實作 <code>Copy</code> trait 的 <code>i32</code>。
-這代表著，當我們把 <code>v</code> 賦值給 <code>v2</code> 時，一個資料的複本會被建立，就跟 &quot;移動&quot; 一樣。
+這代表著，當我們把 <code>v</code> 賦值給 <code>v2</code> 時，一個資料的複本會被建立，就跟「移動」一樣。
 但與之不同的是，在之後我們仍可使用 <code>v</code>。
 這是因為 <code>i32</code> 並沒有指標指向其他資料，複製時就是個完整的複本。</p>
-<p>所有的基本型別都實作了 <code>Copy</code> trait，也因此它們的所有權並不會像 &quot;所有權規則&quot; 所假設的那樣被移動。
+<p>所有的基本型別都實作了 <code>Copy</code> trait，也因此它們的所有權並不會像「所有權規則」所假設的那樣被移動。
 以下兩個程式碼片段的範例都可以編譯，因為 <code>i32</code> 與 <code>bool</code> 型別都實作了 <code>Copy</code> trait。</p>
 <pre><code class="language-rust">fn main() {
     let a = 5;
@@ -227,7 +227,7 @@ println!(&quot;{}&quot;, a);
                ^
 </code></pre>
 <p>我們將在 <a href="traits.html">traits</a> 章節討論如何撰寫你自己型別的 <code>Copy</code>。</p>
-<h2>所有權以外 (More than ownership)</h2>
+<h2>所有權以外（More than ownership）</h2>
 <p>當然，如果我們必須在每個函式都交還所有權：</p>
 <pre><code class="language-rust">fn foo(v: Vec&lt;i32&gt;) -&gt; Vec&lt;i32&gt; {
     // do stuff with v
@@ -252,7 +252,7 @@ let (v1, v2, answer) = foo(v1, v2);
 </code></pre>
 <p>呃！
 回傳型別、回傳的那行程式碼、和呼叫函式都變得更複雜了。</p>
-<p>幸運的是，Rust 提供一個功能，借用 (borrowing)，可以幫助我們解決這個問題。
+<p>幸運的是，Rust 提供一個功能，借用（borrowing），可以幫助我們解決這個問題。
 這就是下一節的主題！</p>
 <blockquote>
 <p><em>commit 145190b</em></p>

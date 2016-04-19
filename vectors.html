@@ -71,8 +71,8 @@
 
                 <div id="content" class="content">
                     <h1>向量</h1>
-<p>向量 <code>Vec&lt;T&gt;</code> 為標準函式庫中動態可增長的陣列，型別 <code>T</code> 表示我們可以宣告任何型別的向量（可參考<a href="generics.html">泛型</a>章節）。
-向量的資料一定會配置在堆積區 (heap) ，可以使用 <code>vec!</code> 巨集來生成向量。</p>
+<p>向量 <code>Vec&lt;T&gt;</code> 為標準函式庫中動態可增長的陣列，型別 <code>T</code> 表示我們可以宣告任何型別的向量（可參考 <a href="generics.html">泛型</a> 章節）。
+向量的資料一定會配置在堆積區 （heap），可以使用 <code>vec!</code> 巨集來生成向量。</p>
 <pre><code class="language-rust">let v = vec![1, 2, 3, 4, 5]; // v: Vec&lt;i32&gt;
 </code></pre>
 <p>（注意到不像之前使用的 <code>println!</code> 巨集，<code>vec!</code> 巨集使用方括號，Rust 允許我們使用圓括號或方括號。
@@ -141,7 +141,7 @@ for i in v {
     println!(&quot;Take ownership of the vector and its element {}&quot;, i);
 }
 </code></pre>
-<p>向量有許多有用的方法，可以參考<a href="http://doc.rust-lang.org/std/vec/index.html">向量的 API 文件</a>。</p>
+<p>向量有許多有用的方法，可以參考 <a href="http://doc.rust-lang.org/std/vec/index.html">向量的 API 文件</a>。</p>
 <blockquote>
 <p><em>commit f2bea1c</em></p>
 </blockquote>

@@ -71,10 +71,10 @@
 
                 <div id="content" class="content">
                     <h1>模式</h1>
-<p>模式 (pattern) 在 Rust 中很常見。
-我們在<a href="variable-bindings.html">變數綁定</a>、<a href="match.html">match 陳述式</a>、及其他地方都會用到。
+<p>模式（pattern）在 Rust 中很常見。
+我們在 <a href="variable-bindings.html">變數綁定</a>、<a href="match.html">match 陳述式</a>、及其他地方都會用到。
 讓我們開始快速地了解模式可以做到些什麼！</p>
-<p>快速複習一下：你可以直接配對變數，而 <code>_</code> 將會配對到 &quot;任何&quot; 沒列出來的其他情況：</p>
+<p>快速複習一下：你可以直接配對變數，而 <code>_</code> 將會配對到「任何」沒列出來的其他情況：</p>
 <pre><code class="language-rust">let x = 1;
 
 match x {
@@ -85,7 +85,7 @@ match x {
 }
 </code></pre>
 <p>這會印出 <code>one</code>。</p>
-<p>模式有個陷阱：它會產生遮蔽 (shadowing)，與其他會產生新的綁定的任何東西一樣。
+<p>模式有個陷阱：它會產生遮蔽（shadowing），與其他會產生新的綁定的任何東西一樣。
 舉例來說：</p>
 <pre><code class="language-rust">let x = 1;
 let c = 'c';
@@ -104,7 +104,7 @@ x: 1
 新綁定的有效範圍在該 match 的執行分支中，且它的值被賦予為 <code>c</code>。
 請注意，在 match 有效範圍之外的 <code>x</code> 的值不會影響到範圍內的 <code>x</code>。
 因為我們本來已經有了 <code>x</code> 綁定，而新的 <code>x</code> 遮蔽了它。</p>
-<h2>多重模式 (Multiple patterns)</h2>
+<h2>多重模式（Multiple patterns）</h2>
 <p>你可以使用 <code>|</code> 來配對多重模式：</p>
 <pre><code class="language-rust">let x = 1;
 
@@ -115,8 +115,8 @@ match x {
 }
 </code></pre>
 <p>這會印出 <code>one or two</code>。</p>
-<h2>解構 (Destructuring)</h2>
-<p>如果你有個複合的資料型別，像是<a href="structs.html">結構體</a> (struct)，你可以在模式中解構它：</p>
+<h2>解構（Destructuring）</h2>
+<p>如果你有個複合的資料型別，像是 <a href="structs.html">結構體</a>（struct），你可以在模式中解構它：</p>
 <pre><code class="language-rust">struct Point {
     x: i32,
     y: i32,
@@ -166,7 +166,7 @@ match origin {
 }
 </code></pre>
 <p>這會印出 <code>y is 0</code>。</p>
-<p>這種 &quot;解構&quot; 行為在任何複合資料型別上都可以運作，像<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%20(Tuples)">多元組</a> (tuple) 或<a href="enums.html">枚舉</a> (enum) 都可以。</p>
+<p>這種「解構」行為在任何複合資料型別上都可以運作，像 <a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%EF%BC%88Tuples%EF%BC%89">多元組</a>（tuple）或 <a href="enums.html">枚舉</a>（enum）都可以。</p>
 <h2>忽略綁定</h2>
 <p>你可以在模式中使用 <code>_</code> 忽略型別跟值。
 舉例來說，這是一個 <code>Result&lt;T, E&gt;</code> 的 <code>match</code> 例子：</p>
@@ -231,7 +231,7 @@ match x {
 </code></pre>
 <p>這會印出 <code>Got a tuple!</code>。</p>
 <h2>ref 與 ref mut</h2>
-<p>如果你想要獲得一個<a href="references-and-borrowing.html">參照</a> (reference)，可以使用 <code>ref</code> 關鍵字：</p>
+<p>如果你想要獲得一個 <a href="references-and-borrowing.html">參照</a>（reference），可以使用 <code>ref</code> 關鍵字：</p>
 <pre><code class="language-rust">let x = 5;
 
 match x {
@@ -241,7 +241,7 @@ match x {
 <p>這會印出 <code>Got a reference to 5</code>。</p>
 <p>這邊 <code>match</code> 中的 <code>r</code> 是一個 <code>&amp;i32</code> 型別。
 換句話說，<code>ref</code> 關鍵字 <em>建立</em> 了一個可在模式當中使用的參照。
-如果你需要一個可變的 (mutable) 參照，可以使用 <code>ref mut</code>：</p>
+如果你需要一個可變的（mutable）參照，可以使用 <code>ref mut</code>：</p>
 <pre><code class="language-rust">let mut x = 5;
 
 match x {
@@ -300,8 +300,8 @@ match x {
     _ =&gt; println!(&quot;anything&quot;),
 }
 </code></pre>
-<h2>守衛 (Guards)</h2>
-<p>你可以使用 <code>if</code> 來產生 &quot;配對守衛&quot; (match guards)：</p>
+<h2>守衛（Guards）</h2>
+<p>你可以使用 <code>if</code> 來產生「配對守衛」（match guards）：</p>
 <pre><code class="language-rust">enum OptionalInt {
     Value(i32),
     Missing,
@@ -332,7 +332,7 @@ match x {
 <p>而不是：</p>
 <pre><code class="language-text">4 | (5 if y) =&gt; ...
 </code></pre>
-<h2>混合與配對 (Mix and Match)</h2>
+<h2>混合與配對（Mix and Match）</h2>
 <p>恩！有非常多種方法可以進行配對，而且它們可以根據你想做的事情而組合使用：</p>
 <pre><code class="language-rust,ignore">match x {
     Foo { x: Some(ref name), y: None } =&gt; ...

@@ -76,27 +76,27 @@
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：</p>
 <ul>
-<li><a href="ownership.html">所有權</a> (ownership)，關鍵的概念</li>
-<li>借用 (borrowing)，你正在閱讀的章節</li>
-<li><a href="lifetimes.html">生命週期</a> (lifetime)，借用的進階概念</li>
+<li><a href="ownership.html">所有權</a> （ownership），關鍵的概念</li>
+<li>借用（borrowing），你正在閱讀的章節</li>
+<li><a href="lifetimes.html">生命週期</a>（lifetime），借用的進階概念</li>
 </ul>
 <p>這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。</p>
 <h2>Meta</h2>
 <p>在我們開始細述前，有兩個所有權系統的重點。</p>
 <p>Rust 注重安全和速度。
-它透過許多 &quot;零成本抽象化&quot; 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 <em>編譯期完成的</em>。
 這些功能不需要花費你任何執行期的成本。</p>
 <p>然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 &quot;與借用檢查器 (borrow checker) 苦戰&quot; 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習借用吧。</p>
-<h2>借用 (Borrowing)</h2>
-<p>在<a href="ownership.html">所有權</a>一節的最後，我們提到一個看起來頗糟的函式：</p>
+<h2>借用（Borrowing）</h2>
+<p>在 <a href="ownership.html">所有權</a> 一節的最後，我們提到一個看起來頗糟的函式：</p>
 <pre><code class="language-rust">fn foo(v1: Vec&lt;i32&gt;, v2: Vec&lt;i32&gt;) -&gt; (Vec&lt;i32&gt;, Vec&lt;i32&gt;, i32) {
     // do stuff with v1 and v2
 
@@ -125,12 +125,12 @@ let answer = foo(&amp;v1, &amp;v2);
 
 // we can use v1 and v2 here!
 </code></pre>
-<p>與其把 <code>Vec&lt;i32&gt;</code> 作為我們的參數，不如使用參照 (reference)：<code>&amp;Vec&lt;i32&gt;</code>。
+<p>與其把 <code>Vec&lt;i32&gt;</code> 作為我們的參數，不如使用參照（reference）：<code>&amp;Vec&lt;i32&gt;</code>。
 而且不要直接傳遞 <code>v1</code> 與 <code>v2</code>，我們傳遞 <code>&amp;v1</code> 與 <code>&amp;v2</code>。
-我們把 <code>&amp;T</code> 型別稱為 &quot;參照&quot; (reference)，它借用了所有權，而非掌握所有權。
+我們把 <code>&amp;T</code> 型別稱為「參照」（reference），它借用了所有權，而非掌握所有權。
 一個借用東西的綁定不會在離開有效範圍時把資源釋放掉。
 這代表在呼叫 <code>foo()</code> 完之後，我們仍可再度使用我們原始的綁定。</p>
-<p>跟綁定一樣，reference 是不可變的 (immutable)。
+<p>跟綁定一樣，reference 是不可變的（immutable）。
 這意味著在 <code>foo()</code> 內，向量完全不能更改：</p>
 <pre><code class="language-rust,ignore">fn foo(v: &amp;Vec&lt;i32&gt;) {
      v.push(5);
@@ -148,7 +148,7 @@ v.push(5);
 <p>因為放入一個值會改變向量，所以我們不被允許這樣做。</p>
 <h2>&amp;mut reference</h2>
 <p>還有第二種 reference：<code>&amp;mut T</code>。
-一個 &quot;可變的 reference&quot; 允許你改變所借用的資源。
+一個「可變的 reference」允許你改變所借用的資源。
 例如：</p>
 <pre><code class="language-rust">let mut x = 5;
 {
@@ -183,7 +183,7 @@ fn main() {
 </code></pre>
 <p>事實證明如此，所以以下是一些規則。</p>
 <h2>規則</h2>
-<p>以下是 Rust 中關於借用 (borrowing) 的規則：</p>
+<p>以下是 Rust 中關於借用（borrowing）的規則：</p>
 <p>首先，任何借用的有效範圍都必須比擁有者的有效範圍還要小。
 其次，你可以使用以下兩種借用，但是不能同時使用兩者：</p>
 <ul>
@@ -192,13 +192,13 @@ fn main() {
 </ul>
 <p>你可能有注意到有點類似、但不完全相同於資料競爭的定義：</p>
 <blockquote>
-<p>當兩個或多個指標同時存取相同的記憶體，其中至少有一個正在寫入，且操作沒有同步時，會出現 &quot;資料競爭&quot; (date race)。</p>
+<p>當兩個或多個指標同時存取相同的記憶體，其中至少有一個正在寫入，且操作沒有同步時，會出現「資料競爭」（date race）。</p>
 </blockquote>
 <p>使用 references 時，你想用多少個都可以，因為它們都沒有寫入的行為。
 然而，一次只能擁有一個 <code>&amp;mut</code>，才不會產生資料競爭。
 當我們違反規則時，會得到錯誤訊息，這就是 Rust 如何在編譯期預防資料競爭。</p>
 <p>記住這些之後，讓我們再次想想我們的範例。</p>
-<h3>對有效範圍的深思 (Thinking in scopes)</h3>
+<h3>對有效範圍的深思（Thinking in scopes）</h3>
 <p>以下是程式碼：</p>
 <pre><code class="language-rust,ignore">let mut x = 5;
 let y = &amp;mut x;
@@ -224,7 +224,7 @@ fn main() {
 }
 ^
 </code></pre>
-<p>換句話說，可變借用 (mutable borrow) 在我們的範例中一直存在。
+<p>換句話說，可變借用（mutable borrow）在我們的範例中一直存在。
 所以我們希望可變借用能在我們呼叫 <code>println!</code> 並建立不可變借用 <em>之前</em> 能結束掉。
 在 Rust 中，借用會綁定在借用的有效範圍中。
 我們的有效範圍看起來會像這樣：</p>
@@ -251,13 +251,13 @@ println!(&quot;{}&quot;, x);  // &lt;- try to borrow x here
 <p>這樣就沒有問題了。
 我們的可變借用會在我們建立不可變借用前離開有效範圍。
 有效範圍是個看清借用持續多久的關鍵。</p>
-<h3>借用所預防的問題 (Issues borrowing prevents)</h3>
+<h3>借用所預防的問題（Issues borrowing prevents）</h3>
 <p>為何我們需要這些限制規則？
 好吧，如同我們所說的，這些規則避免資料競爭。
 資料競爭會引發哪些問題？
 以下是一些例子。</p>
 <h4>疊代器失效</h4>
-<p>一個例子是 &quot;疊代器失效&quot; (Iterator invalidation)，當你試圖改變一個正在疊代的集合 (collection) 時會發生。
+<p>一個例子是「疊代器失效」（Iterator invalidation），當你試圖改變一個正在疊代的集合（collection）時會發生。
 Rust 的借用檢查器會預防這件事發生：</p>
 <pre><code class="language-rust">let mut v = vec![1, 2, 3];
 
@@ -291,7 +291,7 @@ for i in &amp;v {
 ^
 </code></pre>
 <p>我們不能修改 <code>v</code>，因為它已經被借給迴圈了。</p>
-<h4>在釋放之後使用 (use after free)</h4>
+<h4>在釋放之後使用（use after free）</h4>
 <p>References 不能存活得比所參考的資源還久。
 Rust 會檢查你的 references 的有效範圍來確保符合這個條件。</p>
 <p>如果 Rust 沒有檢查這個屬性，我們可能會意外地用到一個無效的 reference。
@@ -324,7 +324,7 @@ statement 0 at 4:18
 </code></pre>
 <p>換句話說，<code>y</code> 只在 <code>x</code> 存在的有效範圍內有效。
 當 <code>x</code> 消失，它就成為無效的 reference。
-這個錯誤訊息說，這個借用 &quot;存在得不夠久&quot; 就是因為它在還應該存在的時候就已經失效了。</p>
+這個錯誤訊息說，這個借用「存在得不夠久」就是因為它在還應該存在的時候就已經失效了。</p>
 <p>當一個 reference 在它所參考的變數 <em>之前</em> 宣告，也會發生一樣的問題。
 這是因為當資源在同樣的有效範圍之內時，它們被釋放的順序會跟它們的宣告順序相反：</p>
 <blockquote>

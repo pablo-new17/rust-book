@@ -72,9 +72,9 @@
                 <div id="content" class="content">
                     <h1>詞彙表</h1>
 <p>並非每位 Rustacean 都有系統程式設計或電腦科學的背景，所以我們加上了一些可能不易理解的名詞解釋。</p>
-<h2>抽象語法樹 (Abstract Syntax Tree)</h2>
+<h2>抽象語法樹（Abstract Syntax Tree）</h2>
 <p>當編譯器編譯程式時，它會做很多不同的事。
-其中之一就是轉換你的程式文字內容變成 &quot;抽象語法樹&quot;，或稱為 &quot;AST&quot;。
+其中之一就是轉換你的程式文字內容變成「抽象語法樹」，或稱為「AST」。
 這個樹展現了你的程式結構。
 例如， <code>2 + 3</code> 會轉換成這樣的樹：</p>
 <pre><code class="language-text">  +
@@ -88,7 +88,7 @@
    / \
   3   4
 </code></pre>
-<h2>元數 (Arity)</h2>
+<h2>元數（Arity）</h2>
 <p>元數是指函式或操作所需要的參數數量。</p>
 <pre><code class="language-rust">let x = (2, 3);
 let y = (4, 6);
@@ -96,22 +96,22 @@ let z = (8, 2, 6);
 </code></pre>
 <p>在範例中，<code>x</code> 和 <code>y</code> 的元數是 2。
 <code>z</code> 的元數是 3。</p>
-<h2>界線 (Bounds)</h2>
+<h2>界線（Bounds）</h2>
 <p>界線是型別或 <a href="traits.html">trait</a> 的限制。
 例如，如果界線在函式的參數，那麼傳遞給函式的參數型別必須遵守這樣的限制。</p>
-<h2>動態大小型別 (DST - Dynamically Sized Type)</h2>
+<h2>動態大小型別（DST - Dynamically Sized Type）</h2>
 <p>靜態大小或 alignment 未知的型別。（<a href="https://doc.rust-lang.org/nomicon/exotic-sizes.html#dynamically-sized-types-dsts">更多資訊</a>）</p>
-<h2>表達式 (Expression)</h2>
+<h2>表達式（Expression）</h2>
 <p>程式語言中，表達式是一組數值、常數、變數、運算子、及函式的組合，可以估出一個數值。
 例如 <code>2 + (3 * 4)</code> 是一個回傳數值 14 的表達式。
 值得注意的是，表達式可以有副作用。
 例如，一個包含表達式的函式可能會執行一些動作，而不只是單純的回傳值。</p>
-<h2>表達式導向語言 (Expression-Oriented Language)</h2>
+<h2>表達式導向語言（Expression-Oriented Language）</h2>
 <p>早期的程式語言中，<a href="glossary.html#expression">表達式</a> and <a href="glossary.html#statement">陳述式</a> 是兩種不同的語法類型：表達式有數值，而陳述式做事。
 然而，之後的語言模糊了界線，允許表達是做事，而陳述式有數值。
 在表達式導向語言中，（幾乎）所以陳述式都是表達式，且回傳值。
 因此，這些表達陳述式自身可以組成更大的表達式。</p>
-<h2>陳述式 (Statement)</h2>
+<h2>陳述式（Statement）</h2>
 <p>在程式語言中，陳述式是程式語言中最小的獨立元素，用來命令電腦執行動作。</p>
 <blockquote>
 <p>譯註：關於表達式及陳述式，可參考維基百科的 <a href="https://en.wikipedia.org/wiki/Expression_(computer_science)">Expression</a> 及 <a href="https://en.wikipedia.org/wiki/Statement_(computer_science)">Statement</a> 條目。</p>

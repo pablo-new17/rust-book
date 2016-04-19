@@ -76,39 +76,39 @@
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：</p>
 <ul>
-<li><a href="ownership.html">所有權</a> (ownership)，關鍵的概念</li>
-<li><a href="references-and-borrowing.html">借用</a> (borrowing)，及其相關功能 &quot;參照&quot; (references)</li>
-<li>生命週期 (lifetimes)，你正在閱讀的章節</li>
+<li><a href="ownership.html">所有權</a> （ownership），關鍵的概念</li>
+<li><a href="references-and-borrowing.html">借用</a>（borrowing），及其相關功能「參照」（references）</li>
+<li>生命週期（lifetimes），你正在閱讀的章節</li>
 </ul>
 <p>這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。</p>
 <h2>Meta</h2>
 <p>在我們開始細述前，有兩個所有權系統的重點。</p>
 <p>Rust 注重安全和速度。
-它透過許多 &quot;零成本抽象化&quot; 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 <em>編譯期完成的</em>。
 這些功能不需要花費你任何執行期的成本。</p>
 <p>然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 &quot;與借用檢查器 (borrow checker) 苦戰&quot; 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習生命週期吧。</p>
-<h2>生命週期 (Lifetimes)</h2>
+<h2>生命週期（Lifetimes）</h2>
 <p>借出一個指向他人擁有的資源的 reference 是很複雜的。
 舉例來說，想像一下以下的操作行為：</p>
 <ol>
-<li>我獲得一個某種資源的控制代碼 (handle)。</li>
+<li>我獲得一個某種資源的控制代碼（handle）。</li>
 <li>我把指向這個資源的 reference 借給你。</li>
 <li>我決定不再使用這個資源，釋放它，但你仍還有你那邊的 reference。</li>
 <li>你決定要使用此資源。</li>
 </ol>
 <p>噢！你的 reference 指向了一個無效的資源。
-如果資源是記憶體時，我們叫它迷途指標 (dangling pointer) 或 &quot;釋放後的使用&quot;。</p>
+如果資源是記憶體時，我們叫它迷途指標（dangling pointer）或「釋放後使用」。</p>
 <p>要修正這個問題，我們必須確保上述第四步不會在第三步之後發生。
-Rust 的所有權系統透過一個叫做生命週期 (lifetimes) 的概念達成這點，它會描述 reference 的有效範圍。</p>
-<p>當我們有一個函式透過參數取用了一個 reference，我們可以不言明 (implicit) 或言明 (explicit) reference 的生命週期：</p>
+Rust 的所有權系統透過一個叫做生命週期（lifetimes）的概念達成這點，它會描述 reference 的有效範圍。</p>
+<p>當我們有一個函式透過參數取用了一個 reference，我們可以不言明（implicit）或言明（explicit）reference 的生命週期：</p>
 <pre><code class="language-rust">// implicit
 fn foo(x: &amp;i32) {
 }
@@ -117,14 +117,14 @@ fn foo(x: &amp;i32) {
 fn bar&lt;'a&gt;(x: &amp;'a i32) {
 }
 </code></pre>
-<p><code>'a</code> 唸作 &quot;生命週期 a&quot;。
-技術上，所有 reference 都有其關聯的生命週期，但是編譯器通常可以讓你省略它（參考後述的 <a href="#%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F%E7%9C%81%E7%95%A5%20(Lifetime%20Elision)">&quot;生命週期省略&quot;</a>）。
+<p><code>'a</code> 唸作「生命週期 a」。
+技術上，所有 reference 都有其關聯的生命週期，但是編譯器通常可以讓你省略它（參考後述的 <a href="#%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F%E7%9C%81%E7%95%A5%EF%BC%88Lifetime%20Elision%EF%BC%89">生命週期省略</a>）。
 在我們講到省略之前，先讓我們拆解言明生命週期的範例：</p>
 <pre><code class="language-rust,ignore">fn bar&lt;'a&gt;(...)
 </code></pre>
-<p>我們之前談到了一些<a href="functions.html">函式語法</a>，但我們沒有討論到函式後面的 <code>&lt;&gt;</code>。
-一個函式可以在 <code>&lt;&gt;</code> 間放入 &quot;泛型參數&quot; (generic parameters)，生命週期也是其中一種。
-我們<a href="generics.html">在之後</a>會討論到其他的泛型，但現在讓我們專注在生命週期方面。</p>
+<p>我們之前談到了一些 <a href="functions.html">函式語法</a>，但我們沒有討論到函式後面的 <code>&lt;&gt;</code>。
+一個函式可以在 <code>&lt;&gt;</code> 間放入「泛型參數」（generic parameters），生命週期也是其中一種。
+我們 <a href="generics.html">在之後</a> 會討論到其他的泛型，但現在讓我們專注在生命週期方面。</p>
 <p>我們使用 <code>&lt;&gt;</code> 去宣告我們的生命週期。
 這代表 <code>bar</code> 有一個生命週期 <code>'a</code>。
 如果我們有兩個 reference 參數，那麼將會看起來像：</p>
@@ -133,14 +133,13 @@ fn bar&lt;'a&gt;(x: &amp;'a i32) {
 <p>然後在我們的參數列表中，我們使用我們所命名的生命週期：</p>
 <pre><code class="language-rust,ignore">...(x: &amp;'a i32)
 </code></pre>
-<p>如果我們想要一個 <code>&amp;mut</code> reference，這樣做：
-I</p>
+<p>如果我們想要一個 <code>&amp;mut</code> reference，這樣做：</p>
 <pre><code class="language-rust,ignore">...(x: &amp;'a mut i32)
 </code></pre>
 <p>如果你比較 <code>&amp;mut i32</code> 和 <code>&amp;'a mut i32</code> 兩者，除了在 <code>&amp;</code> 和 <code>mut i32</code> 間多出生命週期 <code>'a</code>，你會發現他們是一樣的。
-我們把 <code>&amp;mut i32</code> 叫做 &quot;一個 <code>i32</code> 可變 reference&quot;，而 <code>&amp;'a mut i32</code> 叫做 &quot;一個生命週期為 <code>'a</code> 的 <code>i32</code> 可變 reference&quot;</p>
+我們把 <code>&amp;mut i32</code> 叫做「一個 <code>i32</code> 可變 reference」，而 <code>&amp;'a mut i32</code> 叫做「一個生命週期為 <code>'a</code> 的 <code>i32</code> 可變 reference」。</p>
 <h2>在 <code>struct</code> 中</h2>
-<p>當處理含有參照的<a href="structs.html">結構體</a> (struct) 食，你也同樣需要言明生命週期：</p>
+<p>當處理含有參照的 <a href="structs.html">結構體</a>（struct）時，你也同樣需要言明生命週期：</p>
 <pre><code class="language-rust">struct Foo&lt;'a&gt; {
     x: &amp;'a i32,
 }
@@ -200,7 +199,7 @@ fn main() {
 # }
 </code></pre>
 <p>在此範例中，<code>x</code> 與 <code>y</code> 有不同的有效範圍，但回傳值的生命週期與 <code>x</code> 相同。</p>
-<h3>對有效範圍的深思 (Thinking in scopes)</h3>
+<h3>對有效範圍的深思（Thinking in scopes）</h3>
 <p>瞭解生命週期的一個方式是將 reference 的有效範圍視覺化。
 例如：</p>
 <pre><code class="language-rust">fn main() {
@@ -257,15 +256,15 @@ fn main() {
 let x: &amp;'static i32 = &amp;FOO;
 </code></pre>
 <p>這會加入一個 <code>i32</code> 到執行檔的資料區段，<code>x</code> 則是指向它的 reference。</p>
-<h3>生命週期省略 (Lifetime Elision)</h3>
-<p>Rust 在函式中支援強大的局部型別推斷 (local type inference)，但在 item signatures 中則被禁止，才能讓它根據 signature 去推論其型別。
-然而，為了人機工程的理由，第二種受限的推斷方式 &quot;生命週期省略&quot; 被允許用在 function signatures。
+<h3>生命週期省略（Lifetime Elision）</h3>
+<p>Rust 在函式中支援強大的局部型別推斷（local type inference），但在 item signatures 中則被禁止，才能讓它根據 signature 去推論其型別。
+然而，為了人機工程的理由，第二種受限的推斷方式「生命週期省略」被允許用在 function signatures。
 它只根據 signature 元件本身推斷，而不基於函式內容，而且只根據三個簡單易記、不易混淆的規則去推斷出生命週期參數。
 這使得撰寫 item signatures 時可以速寫生命週期省略，但不能隱藏它的實際型別，因為局部型別推斷時可能會需要它。</p>
 <blockquote>
 <p>譯註：<code>item signatures</code> 應是指宣告函式時的輸入參數們，以及回傳值的宣告。</p>
 </blockquote>
-<p>當我們談到生命週期省略，我們使用 <em>輸入生命週期</em> (input lifetime) 與 <em>輸出生命週期</em> (output lifetime) 的字眼。
+<p>當我們談到生命週期省略，我們使用 <em>輸入生命週期</em> （input lifetime）與 <em>輸出生命週期</em> （output lifetime）的字眼。
 <em>輸入生命週期</em> 是指函式的參數的生命週期，而 <em>輸出生命週期</em> 是指函式回傳值的生命週期。
 例如，以下函式有一個輸入生命週期：</p>
 <pre><code class="language-rust,ignore">fn foo&lt;'a&gt;(bar: &amp;'a str)

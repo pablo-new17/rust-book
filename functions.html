@@ -76,7 +76,7 @@
 }
 </code></pre>
 <p>這也許是最簡單的函式宣告了。
-像我們之前說的，<code>fn</code> 表示 &quot;這是一個函式&quot;，後面是名稱，有個括號，沒有參數，而且有大括號去標示函式的內容。
+像我們之前說的，<code>fn</code> 表示「這是一個函式」，後面是名稱，有個括號，沒有參數，而且有大括號去標示函式的內容。
 以下是一個名叫 <code>foo</code> 的函式：</p>
 <pre><code class="language-rust">fn foo() {
 }
@@ -119,15 +119,15 @@ fn print_sum(x: i32, y: i32) {
 fn print_sum(x, y) {
 </code></pre>
 <p>這是個深思熟慮後的設計決定。
-即使像 Haskell 這樣可以對整個程式推斷 (full-program inference) 的語言，在最佳做法中仍經常建議要明確地標註你的型別。
-我們認為在宣告函式時強制宣告型別，且允許在函式內容中允許推斷，是個在全推斷 (full-inference) 與無推斷間的最佳平衡。</p>
+即使像 Haskell 這樣可以對整個程式推斷（full-program inference）的語言，在最佳做法中仍經常建議要明確地標註你的型別。
+我們認為在宣告函式時強制宣告型別，且允許在函式內容中允許推斷，是個在全推斷（full-inference）與無推斷間的最佳平衡。</p>
 <p>那要如何回傳值呢？
 以下是一個把整數加一的函式：</p>
 <pre><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
     x + 1
 }
 </code></pre>
-<p>Rust 函式就只能回傳一個值，你可以在 &quot;箭頭&quot; 後面宣告型別，箭頭是一個破折號（<code>-</code>）加上一個大於符號（<code>&gt;</code>）。
+<p>Rust 函式就只能回傳一個值，你可以在「箭頭」後面宣告型別，箭頭是一個破折號（<code>-</code>）加上一個大於符號（<code>&gt;</code>）。
 函式的最後一行決定了回傳什麼。
 你會注意到這邊並沒有分號。
 如果我們加上分號：</p>
@@ -145,15 +145,15 @@ help: consider removing this semicolon:
      x + 1;
           ^
 </code></pre>
-<p>這展現出了 Rust 兩個有趣的點：它是以表達式為基礎的語言，而且分號的使用跟其他 &quot;大括號及分號&quot; 的語言不同。
+<p>這展現出了 Rust 兩個有趣的點：它是以表達式為基礎的語言，而且分號的使用跟其他「大括號及分號」的語言不同。
 這兩件事是息息相關的。</p>
 <h2>表達式 vs. 陳述式</h2>
 <p>Rust 主要是個以表達式為基礎的語言。
 它只有兩種陳述式，而其他的都是表達式。</p>
 <p>那這有什麼分別？
 表達式回傳值，而陳述式則否。
-這也是為什麼我們在這說 &quot;不是所有的控制路徑都回傳值&quot;：像是陳述式 <code>x + 1;</code> 就不傳回值。
-Rust 中有兩種陳述式：&quot;宣告陳述式&quot; (declaration statements) 和 &quot;表達陳述式&quot; (expression statements)。
+這也是為什麼我們在這說「不是所有的控制路徑都回傳值」：像是陳述式 <code>x + 1;</code> 就不傳回值。
+Rust 中有兩種陳述式：「宣告陳述式」（declaration statements）和「表達陳述式」（expression statements）。
 其他的都是表達式。
 讓我們先討論宣告陳述式。</p>
 <p>在一些語言中，變數綁定可以被寫成表達式，而非陳述式。
@@ -166,17 +166,17 @@ Rust 中有兩種陳述式：&quot;宣告陳述式&quot; (declaration statements
 </code></pre>
 <p>編譯器或告訴我們這裡預期會看到表達式的開頭，而 <code>let</code> 只能用於開始一個陳述式，不是表達式。</p>
 <p>請注意，賦值到一個已經綁定的變數（例如 <code>y = 5</code>）仍然是個表達式，雖然它的值沒有什麼用。
-不像其他語言的賦值會被當成賦予的數值（在前面的例子中會是 <code>5</code>），在 Rust 中賦值的回傳值會是一個空的多元組 (tuple) <code>()</code>，因為賦予的值<a href="ownership.html">只能有一個擁有者</a>，所以其他任何回傳值都會讓人感到意外：</p>
+不像其他語言的賦值會被當成賦予的數值（在前面的例子中會是 <code>5</code>），在 Rust 中賦值的回傳值會是一個空的多元組（tuple）<code>()</code>，因為賦予的值 <a href="ownership.html">只能有一個擁有者</a>，所以其他任何回傳值都會讓人感到意外：</p>
 <pre><code class="language-rust">let mut y = 5;
 
 let x = (y = 6);  // x has the value `()`, not `6`
 </code></pre>
-<p>Rust 中的第二種陳述式是 <em>表達陳述式</em> (expression statement)。
+<p>Rust 中的第二種陳述式是 <em>表達陳述式</em>（expression statement）。
 它的作用是把表達式轉為陳述式。
 實際上，Rust 的文法預期陳述式後面也是其他陳述式。
 這意味著你要使用分號去分隔表達式們。
 這代表 Rust 看起來跟要求在每行結果使用分號的大多數語言一樣，你幾乎將會在每行結尾看到分號。</p>
-<p>是什麼例外讓我們說 &quot;幾乎&quot;？
+<p>是什麼例外讓我們說「幾乎」？
 你早就看到了，就在以下程式碼中：</p>
 <pre><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
     x + 1
@@ -184,7 +184,7 @@ let x = (y = 6);  // x has the value `()`, not `6`
 </code></pre>
 <p>我們的函式聲明會回傳一個 <code>i32</code>，但是有分號時，它卻會回傳 <code>()</code>。
 Rust 覺得這應該不是我們想要的，所以在上面看到的錯誤訊息中建議我們移除分號。</p>
-<h2>提早回傳 (Early returns)</h2>
+<h2>提早回傳（Early returns）</h2>
 <p>那麼提早回傳又該怎樣做？
 Rust 的確有一個關鍵字 <code>return</code> 可以提早回傳：</p>
 <pre><code class="language-rust">fn foo(x: i32) -&gt; i32 {
@@ -201,15 +201,15 @@ Rust 的確有一個關鍵字 <code>return</code> 可以提早回傳：</p>
 </code></pre>
 <p>如果你過去沒有寫過以表達式為基礎的語言，那麼在之前沒有 <code>return</code> 的定義可能讓你覺得看起來有些奇怪。
 不過隨著時間過去，它會變得很直觀。</p>
-<h2>發散函式 (Diverging functions)</h2>
-<p>Rust 也有一些特別的語法叫做 &quot;發散函式&quot;，這種函式不回傳值：</p>
+<h2>發散函式（Diverging functions）</h2>
+<p>Rust 也有一些特別的語法叫做「發散函式」，這種函式不回傳值：</p>
 <pre><code class="language-rust">fn diverges() -&gt; ! {
     panic!(&quot;This function never returns!&quot;);
 }
 </code></pre>
 <p><code>panic!</code> 是一個巨集，跟我們看過的 <code>println!()</code> 類似。
-不像 <code>println!()</code>，<code>panic!()</code> 會讓當前的執行緒帶著指定的訊息當機 (crash)。
-因為這個函式將會導致當機，所以它不會回傳值，也因此它的型別是 &quot;<code>!</code>&quot;，它叫做 &quot;發散&quot; (diverges)。</p>
+不像 <code>println!()</code>，<code>panic!()</code> 會讓當前的執行緒帶著指定的訊息當機（crash）。
+因為這個函式將會導致當機，所以它不會回傳值，也因此它的型別是「<code>!</code>」，它叫做「發散」(diverges）。</p>
 <p>如果你加入一個主函式去呼叫 <code>diverges()</code> 並執行它，你將會得到像以下的輸出：</p>
 <pre><code class="language-text">thread ‘&lt;main&gt;’ panicked at ‘This function never returns!’, hello.rs:2
 </code></pre>
@@ -257,7 +257,7 @@ stack backtrace:
 let x: i32 = diverges();
 let x: String = diverges();
 </code></pre>
-<h2>函式指標 (Function pointers)</h2>
+<h2>函式指標（Function pointers）</h2>
 <p>我們也可以建立指向函式的變數綁定：</p>
 <pre><code class="language-rust">let f: fn(i32) -&gt; i32;
 </code></pre>

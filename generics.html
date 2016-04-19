@@ -72,7 +72,7 @@
                 <div id="content" class="content">
                     <h1>泛型</h1>
 <p>有時我們希望函式或資料型別能接受不同型別的參數，在 Rust 中提供了泛型來滿足這項需求。
-在型別論中，泛型又被稱為 &quot;參數式多型&quot;，係指型別或函式面對給定的參數 (parametric) 時具有多種型態（&quot;poly&quot; 為多，&quot;morph&quot;指型態）。</p>
+在型別論中，泛型又被稱為「參數式多型」，係指型別或函式面對給定的參數（parametric）時具有多種型態（「poly」為多，「morph」指型態）。</p>
 <p>總之不管理論，先來看一些泛型程式，Rust 標準函式庫提供了型別 <code>Option&lt;T&gt;</code> 即是泛型：</p>
 <pre><code class="language-rust">enum Option&lt;T&gt; {
     Some(T),
@@ -113,7 +113,7 @@ let y: Option&lt;f64&gt; = Some(5.0f64);
     Err(Z),
 }
 </code></pre>
-<p>慣例上第一個泛型參數會是 <code>T</code> 表示 &quot;type&quot;，然後我們用 <code>E</code> 表示 &quot;error&quot;。
+<p>慣例上第一個泛型參數會是 <code>T</code> 表示「type」，然後我們用 <code>E</code> 表示「error」。
 然而 Rust 實際上並不管這些東西。</p>
 <p>型別 <code>Result&lt;T, E&gt;</code> 用在回傳運算結果，也能夠在出錯時回傳錯誤。</p>
 <h2>泛型函式</h2>
@@ -156,7 +156,7 @@ impl&lt;T&gt; Point&lt;T&gt; {
     }
 }
 </code></pre>
-<p>目前為止，我們已經展示泛型可以用於任意型態。
+<p>目前為止，我們已經展示泛型可以用於任意型別。
 這在許多狀況下非常有用，例如先前看到的 <code>Option&lt;T&gt;</code>，以及接下來會看到通用容器型別，如 <a href="http://doc.rust-lang.org/std/vec/struct.Vec.html">Vec&lt;T&gt;</a>。
 另一方面，常常我們想要用這樣的彈性換取表現能力，
 參考 <a href="traits.html">trait bounds</a> 了解如何做到。</p>
