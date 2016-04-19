@@ -40,6 +40,8 @@ $ firefox book/index.html
 
 翻譯前請參考 [中英文字彙對照表](src/MappingTable.md) 及 [中文文案排版指南](https://github.com/sparanoid/chinese-copywriting-guidelines) 進行翻譯。
 
+目前的翻譯進度及認領請到 [已翻譯清單 & 章節認領區](https://github.com/askeing/rust-book/issues/16) 查詢。
+
 ## 貢獻名單
 
 [貢獻名單](src/CONTRIBUTORS.md)
