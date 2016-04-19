@@ -36,6 +36,10 @@ $ firefox book/index.html
 
 [中英文字彙對照表](src/MappingTable.md)
 
-## 貢獻
+## 貢獻本專案
+
+翻譯前請參考 [中英文字彙對照表](src/MappingTable.md) 及 [中文文案排版指南](https://github.com/sparanoid/chinese-copywriting-guidelines) 進行翻譯。
+
+## 貢獻名單
 
 [貢獻名單](src/CONTRIBUTORS.md)
