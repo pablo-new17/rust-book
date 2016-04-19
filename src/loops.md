@@ -1,6 +1,6 @@
 # 迴圈
 
-Rust 目前提供三種方式去執行一些疊代行為 (iterative activity)。
+Rust 目前提供三種方式去執行一些疊代行為（iterative activity）。
 它們是 `loop`、`while`、及 `for`。
 它們各有各自的用途。
 
@@ -81,7 +81,7 @@ for var in expression {
 }
 ```
 
-這邊的表達式是一個能以 [IntoIterator] 轉成[疊代器][iterator] (iterator) 的東西。
+這邊的表達式是一個能以 [IntoIterator] 轉成 [疊代器][iterator]（iterator）的東西。
 疊代器會傳回一系列的元素。
 每個元素是迴圈中的一次循環。
 在這次迴圈的有效範圍內，元素的值會跟 `var` 綁定。
@@ -94,10 +94,10 @@ for var in expression {
 在我們的範例中，`0..10` 表達式會根據開始和結束的值，給予一個含有兩者之間數字的疊代器。
 上限值不包含在其中，所以我們的迴圈會印出 `0` 到 `9`，沒有 `10`。
 
-Rust 特別不使用 "C 語言風格" 的 `for` 迴圈。
+Rust 特別不使用「C 語言風格」的 `for` 迴圈。
 即使對有經驗的 C 語言程式設計師來說，手動控制迴圈中的每個元素仍是複雜且容易出錯的。
 
-### 枚舉 (Enumerate)
+### 枚舉（Enumerate）
 
 當你需要追蹤你已經循環了幾次，你可以使用 `.enumerate()` 函式。
 
@@ -190,7 +190,7 @@ for x in 0..10 {
 }
 ```
 
-## 迴圈標籤 (Loop labels)
+## 迴圈標籤（Loop labels）
 
 你可能也會遇到一些情況，例如當你有槽狀迴圈，且希望你的 `break` 或 `continue` 能指定做用到哪一個的時候。
 跟其他多數語言一樣，預設的 `break` 或 `continue` 會作用在最內層的迴圈。

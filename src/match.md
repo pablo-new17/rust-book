@@ -23,12 +23,12 @@ match x {
 `match` 使用表達式，並根據它的值進行分支。
 每一條執行的分支都是以 `val => expression` 的形式表示。
 當值符合的時候，該分支的表達式就會被執行。
-它會被稱為 `match` 是因為 `match` 是 "模式配對" (pattern matching) 的實作。
-[模式][patterns] (pattern) 有一個單獨的章節會涵蓋所有可能的模式。
+它會被稱為 `match` 是因為 `match` 是「模式配對」（pattern matching）的實作。
+[模式][patterns]（pattern）有一個單獨的章節會涵蓋所有可能的模式。
 
 [patterns]: patterns.html
 
-`match` 的許多優點之一是它的強制 "徹底檢查" (exhaustiveness checking)。
+`match` 的許多優點之一是它的強制「徹底檢查」（exhaustiveness checking）。
 舉例來說，當我們刪除最後一條有著 `_` 的執行分支，編譯器將會給我們錯誤訊息：
 
 ```text
@@ -37,7 +37,7 @@ error: non-exhaustive patterns: `_` not covered
 
 Rust 告訴我們，我們忘了一個值。
 編譯器從 `x` 推斷出它可能是任何 32 位元正整數；從 1 到 2,147,483,647 都有可能。
-而 `_` 就像是 "接住全部" (catch-all) _沒有_ 被特別列在 `match` 執行分支中的可能值。
+而 `_` 就像是「全部接住」（catch-all） _沒有_ 被特別列在 `match` 執行分支中的可能值。
 在上述例子中可以看到，我們給 `match` 整數 1-5 的執行分支，當 `x` 是 6 或其他值的時候，就會被 `_` 接去執行。
 
 `match` 也是表達式，這代表我們可以在 `let` 綁定的右邊使用它，或直接將它用在任何表達式可以使用的地方：
@@ -59,7 +59,7 @@ let number = match x {
 
 ## 枚舉的配對
 
-另一個 `match` 的重要作用是處理枚舉 (enum) 的可能變體們：
+另一個 `match` 的重要作用是處理枚舉（enum）的可能變體們：
 
 ```rust
 enum Message {

@@ -1,7 +1,7 @@
 # 猜數字遊戲
 
 讓我們開始學習 Rust 吧！
-作為我們的第一個專案，我們會實作一個經典的新手程式問題：猜數字 (guessing game)。
+作為我們的第一個專案，我們會實作一個經典的新手程式問題：猜數字（guessing game）。
 它的規則是這樣：我們的程式會產生一個 1 到 100 間的亂數。
 然後提示我們輸入數字猜猜看。
 當我們輸入之後，它會告訴我們太大還是太小。
@@ -9,7 +9,7 @@
 聽起來不錯吧？
 
 接下來，我們將會學到一些 Rust 的東西。
-下一章 "語法及語意" 將會更深入探究每一部份。
+下一章「語法及語意」將會更深入探究每一部份。
 
 ## 準備
 
@@ -40,7 +40,7 @@ authors = ["Your Name <you@example.com>"]
 Cargo 會從你的環境設定中取得這些資訊。
 如果它不正確，就直接修改吧。
 
-最後，Cargo 幫我們產生了一個 "Hello, world!"。
+最後，Cargo 幫我們產生了一個「Hello, world!」。
 看看 `src/main.rs` 檔案：
 
 ```rust
@@ -73,7 +73,7 @@ Hello, world!
 
 很好！
 當我們需要快速地重複執行專案時，`run` 指令會很方便。
-我們的遊戲就是一個專案，我們需要在每個開發循環 (iteration) 做快速的測試後，才會進入下一個開發循環。
+我們的遊戲就是一個專案，我們需要在每個開發循環（iteration）做快速的測試後，才會進入下一個開發循環。
 
 ## 處理猜測
 
@@ -109,7 +109,7 @@ use std::io;
 因此，我們需要標準函式庫中的 `io` 函式庫。
 Rust 預設只會替所有程式 import 極少的東西，叫 [prelude][prelude]。
 如果有東西不在其中，你就必須直接 `use` 它。
-這邊還有第二種 "prelude"，叫做 [io prelude][ioprelude]，它提供類似的功能：import 它，然後它幫你 import 一些有用且跟 `io` 有關的東西。
+這邊還有第二種「prelude」，叫做 [io prelude][ioprelude]，它提供類似的功能：import 它，然後它幫你 import 一些有用且跟 `io` 有關的東西。
 
 [prelude]: https://doc.rust-lang.org/std/prelude/index.html
 [ioprelude]: https://doc.rust-lang.org/std/io/prelude/index.html
@@ -120,9 +120,9 @@ fn main() {
 
 如你之前所看過的，`main()` 函式是程式的進入點。
 `fn` 語法宣告一個新函式，`()` 指名了此處沒有傳入的參數，而 `{` 後面開始是函式的內容。
-因為沒有提到回傳型別，所以這裡的回傳會是 `()`，一個空的[多元組][tuples] (tuple)。
+因為沒有提到回傳型別，所以這裡的回傳會是 `()`，一個空的[多元組][tuples]（tuple）。
 
-[tuples]: primitive-types.html#多元組%20(Tuples)
+[tuples]: primitive-types.html#多元組（Tuples）
 
 ```rust,ignore
     println!("Guess the number!");
@@ -141,7 +141,7 @@ fn main() {
 
 現在遇到有趣的東西了！
 這一行有不少東西。
-第一個，請注意有一個 [let 陳述式][let]，它被用來建立 "變數綁定"。
+第一個，請注意有一個 [let 陳述式][let]，它被用來建立「變數綁定」。
 它的形式是：
 
 ```rust,ignore
@@ -151,11 +151,11 @@ let foo = bar;
 [let]: variable-bindings.html
 
 這將會建立一個叫做 `foo` 的新綁定，然後把它綁定在 `bar` 的值上。
-在許多語言中，這叫做 "變數" (variable)，但 Rust 的變數綁定還暗藏玄機。
+在許多語言中，這叫做「變數」（variable），但 Rust 的變數綁定還暗藏玄機。
 
-舉例來說，它預設是[不可變的][immutable] (immutable)。
-這也是為何我們的範例使用 `mut`：它使綁定變成可變的 (mutable)，而不再是不可變的。
-`let` 不會從左邊取得賦值 (assignment) 的名字，實際上他使用 "[模式][patterns]" (pattern)。
+舉例來說，它預設是[不可變的][immutable]（immutable）。
+這也是為何我們的範例使用 `mut`：它使綁定變成可變的（mutable），而不再是不可變的。
+`let` 不會從左邊取得賦值（assignment）的名字，實際上他使用「[模式][patterns]」（pattern）。
 我們在後面會使用模式。
 對於我們的簡單情況，它已經夠用了：
 
@@ -168,7 +168,7 @@ let mut bar = 5; // mutable
 [patterns]: patterns.html
 
 噢，還有 `//` 會開始一段註解，一直到行末。
-Rust 會忽略所有[註解][comments] (comment) 內的東西。
+Rust 會忽略所有[註解][comments]（comment）內的東西。
 
 [comments]: comments.html
 
@@ -179,9 +179,9 @@ Rust 會忽略所有[註解][comments] (comment) 內的東西。
 
 [string]: https://doc.rust-lang.org/std/string/struct.String.html
 
-而 `::new()` 語法使用 `::` 是因為它是一個特定型別的 "關聯函式" (associated function)。
-也就是說，它被關聯到 `String` 本身，而非特定的某個 `String` 的實體 (instance)。
-一些語言稱之為 "靜態方法" (static method)。
+而 `::new()` 語法使用 `::` 是因為它是一個特定型別的「關聯函式」（associated function）。
+也就是說，它被關聯到 `String` 本身，而非特定的某個 `String` 的實體（instance）。
+一些語言稱之為「靜態方法」（static method）。
 
 此函式被稱為 `new()`，因為它建立一個新的、空的 `String`。
 你可以在其他許多型別找到 `new()` 函式，因為它是建立某一些型別新值的通用名稱。
@@ -206,19 +206,19 @@ io::stdin()
 我們現在正在呼叫它的關聯函式。
 如果我們沒有 `use std::io` 的話，我們就必須把這行改成 `std::io::stdin()`。
 
-這個特殊的函式會回傳一個終端機標準輸入的控制代碼 (handle)。
+這個特殊的函式會回傳一個終端機標準輸入的控制代碼（handle）。
 更具體的內容，可以參考 [std::io::Stdin][iostdin]。
 
 [iostdin]: https://doc.rust-lang.org/std/io/struct.Stdin.html
 
-下一部份會使用這個控制代碼 (handle) 來取得使用者的輸入：
+下一部份會使用這個控制代碼（handle）來取得使用者的輸入：
 
 ```rust,ignore
 .read_line(&mut guess)
 ```
 
-此處，我們呼叫控制代碼 (handle) 的 [read_line()][read_line] 方法。
-[方法][method] (method) 跟關聯函式很類似，但只能在特定型別的實體 (instance) 中取用，而不是從型別本身取用。
+此處，我們呼叫控制代碼（handle）的 [read_line()][read_line] 方法。
+[方法][method]（method）跟關聯函式很類似，但只能在特定型別的實體（instance）中取用，而不是從型別本身取用。
 我們也會傳遞一個參數給 `read_line()`：`&mut guess`。
 
 [read_line]: https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line
@@ -227,7 +227,7 @@ io::stdin()
 還記得前面我們如何綁定 `guess` 嗎？
 我們有提到它是可變的。
 然而，`read_line` 不接受把 `String` 當作參數：它只接受 `&mut String`。
-Rust 有一個叫做[參照][references] (references) 的功能，它允許你將多個參照指向同一塊資料，這樣可以降低複製的動作。
+Rust 有一個叫做[參照][references]（references）的功能，它允許你將多個參照指向同一塊資料，這樣可以降低複製的動作。
 參照是個複雜的功能，Rust 的主要賣點就是能安全、簡單的使用參照。
 現在我們不需要知道太多細節。
 我們只需知道參照與 `let` 綁定類似，它預設是不可變的。
@@ -284,7 +284,7 @@ src/main.rs:10     io::stdin().read_line(&mut guess);
 ```
 
 Rust 會警告我們沒有使用 `Result` 的值。
-這個警告來自 `io::Result` 的特殊註釋 (annotation)。
+這個警告來自 `io::Result` 的特殊註釋（annotation）。
 Rust 會試圖告訴你你沒有處理可能的錯誤。
 處理錯誤的正確方式，應該是要撰寫錯誤處理的程式碼。
 幸運的是，如果我們只想在有問題時就當機，我們可以直接使用這兩個方法。
@@ -330,9 +330,9 @@ You guessed: 6
 接著，我們需要產生一個祕密數字。
 Rust 的標準函式庫還沒有包含亂數功能。
 但是 Rust 團隊提供了 [rand crate][randcrate]。
-這個 "crate" 是一包 Rust 程式碼。
-我們會建置可以執行的 "binary crate"。
-而 `rand` 是個 "library crate"，包含了可以被其他程式使用的程式碼。
+這個「crate」是一包 Rust 程式碼。
+我們會建置可以執行的「binary crate」。
+而 `rand` 是個「library crate」，包含了可以被其他程式使用的程式碼。
 
 [randcrate]: https://crates.io/crates/rand
 
@@ -350,7 +350,7 @@ rand="0.3.0"
 Cargo 透過 dependencies 來瞭解你所需的外部 crates 及版本。
 在這個例子中，我們特別指定版本 `0.3.0`，所以 Cargo 知道任何發行版都必須要跟這個版本相容。
 Cargo 能瞭解 [Semantic Versioning][semver] 的版本編碼方式，這是撰寫版本號碼的一種標準。
-上面的版號實際上可以寫成 `^0.3.0`，代表 "所有跟 0.3.0 相容的版本"。
+上面的版號實際上可以寫成 `^0.3.0`，代表「所有跟 0.3.0 相容的版本」。
 如果我們想要確實的使用 `0.3.0`，我們可以寫成 `rand="=0.3.0"`（請注意兩個等號）。
 而當我們想要使用最新版，我們可以使用 `*`。
 我們也可以使用一個範圍內的版本。
@@ -411,13 +411,13 @@ $ cargo build
 也就是說，我們會停在 `0.3.8` 直到我們確定要升級，這也對任何我們與之分享程式碼的人有效，感謝 lock 檔。
 
 當我們 _真的_ 想要用 `0.3.9` 時怎麼辦？
-Cargo 有另一個指令 `update`，代表著 "忽略 lock 檔，尋找所有符合指定條件的最新版。如果運行成功，把這些版本寫入 lock 檔"。
+Cargo 有另一個指令 `update`，代表著「忽略 lock 檔，尋找所有符合指定條件的最新版。如果運行成功，把這些版本寫入 lock 檔」。
 但是，預設 Cargo 只會尋找大於 `0.3.0` 及小於 `0.4.0` 的版本。
 如果我們想要換到 `0.4.x`，我們必須直接更新 `Cargo.toml`。
 當我們這樣做時，下一次 `cargo build` Cargo 將會更新索引並重新評估 `rand` 的需求。
 
 關於 [Cargo][doccargo] 和其[生態系][doccratesio]還有很多可以說，但是現在，這就是我們所需知道的全部了。
-Cargo 讓重新使用函式庫變得很簡單，讓 Rustaceans 易於寫出由許多子套件 (sub-packages) 組成的小專案。
+Cargo 讓重新使用函式庫變得很簡單，讓 Rustaceans 易於寫出由許多子套件（sub-packages）組成的小專案。
 
 [doccargo]: http://doc.crates.io
 [doccratesio]: http://doc.crates.io/crates-io.html
@@ -455,8 +455,8 @@ fn main() {
 這也等同於 `use rand;`，所以我們可以透過 `rand::` 前綴詞來使用任何 `rand` crate 內的東西。
 
 接著，我們加入另一行 `use`：`use rand::Rng`。
-我們即將使用一個方法 (method)，這個方法需要 `Rng` 在有效範圍 (scope) 中才能運作。
-基本的概念是：方法被定義在某些被稱為 "traits" 的東西上，trait 必須要在有效範圍中，方法才能運作。
+我們即將使用一個方法（method），這個方法需要 `Rng` 在有效範圍（scope）中才能運作。
+基本的概念是：方法被定義在某些被稱為「traits」的東西上，trait 必須要在有效範圍中，方法才能運作。
 更多細節可以閱讀 [traits][traits] 一節。
 
 [traits]: traits.html
@@ -469,7 +469,7 @@ fn main() {
     println!("The secret number is: {}", secret_number);
 ```
 
-我們使用 `rand::thread_rng()` 函式取得隨機數字產生器的複本，這個複本位於我們正在執行的特定[執行緒][concurrency] (thread) 之上。
+我們使用 `rand::thread_rng()` 函式取得隨機數字產生器的複本，這個複本位於我們正在執行的特定[執行緒][concurrency]（thread）之上。
 因為我們前面已經 `use rand::Rng`，所以 `gen_rang()` 方法可以使用。
 這個方法需要兩個參數，然後會產生一個在兩個參數之間的數字。
 結果包含了下限，但不包含上限，所以我們需要傳遞 `1` 和 `101` 去取得 1 到 100 範圍內的數字。
@@ -556,7 +556,7 @@ match guess.cmp(&secret_number) {
 `cmp()` 方法可以被任何能用來比較的東西呼叫，且它會要求傳入你想比較的東西的參照。
 它回傳我們前面 `use` 的 `Ordering` 型別。
 我們使用 [match][match] 陳述去判定它實際上是哪種 `Ordering`。
-`Ordering` 是個 [enum][enum]，是枚舉 (enumeration) 的簡寫，枚舉看起來會有點像這樣：
+`Ordering` 是個 [enum][enum]，是枚舉（enumeration）的簡寫，枚舉看起來會有點像這樣：
 
 ```rust
 enum Foo {
@@ -569,7 +569,7 @@ enum Foo {
 [enum]: enums.html
 
 這裡定義了任何一個 `Foo`，要不是 `Foo::Bar`，就會是 `Foo::Baz`。
-我們使用 `::` 來表示特定 `enum` 變體的命名空間 (namespace)。
+我們使用 `::` 來表示特定 `enum` 變體的命名空間（namespace）。
 
 [Ordering][ordering] `enum` 有三個可能的變體：`Less`、`Equal`、及 `Greater`。
 `match` 陳述式取得型別的值，讓你能為每個可能的值建立一條執行的分支。
@@ -606,11 +606,11 @@ Could not compile `guessing_game`.
 ```
 
 噢！這裡有個大問題。
-它的核心問題是我們有 "無法匹配的型別" (mismatched types)。
-Rust 有個強大的靜態型別系統 (static type system)。
-但是，它也有型別推斷 (type inference) 系統。
+它的核心問題是我們有「無法匹配的型別」（mismatched types）。
+Rust 有個強大的靜態型別系統（static type system）。
+但是，它也有型別推斷（type inference）系統。
 當我們寫到 `let guess = String::new()` 時，Rust 會推斷 `guess` 應該是 `String`，因此不需要我們特別寫出型別。
-而我們的 `secret_number` 則有多種可能的型別，它們都可以存入 1 到 100 的值，有：32 位元整數 `i32`、非帶號 (unsigned) 32 位元整數 `u32`、64 位元整數 `i64` 或其他等等。
+而我們的 `secret_number` 則有多種可能的型別，它們都可以存入 1 到 100 的值，有：32 位元整數 `i32`、非帶號（unsigned）32 位元整數 `u32`、64 位元整數 `i64` 或其他等等。
 目前這些都不重要，所以 Rust 預設為 `i32`。
 然而，Rust 不知道怎麼去比對 `guess` 與 `secret_number`。
 它們必須是相同型別。
@@ -660,7 +660,7 @@ fn main() {
 ```
 
 等等，我想我們已經有 `guess` 了吧？
-沒錯，但 Rust 允許我們用新的 `guess` 去 "遮蔽" (shadow) 前一個。
+沒錯，但 Rust 允許我們用新的 `guess` 去「遮蔽」（shadow）前一個。
 一開始 `guess` 是 `String`，但我們希望能轉換為 `u32`，在類似這樣的情況下我們會很常用到。
 遮蔽讓我們可以重複利用 `guess` 的命名，而不是強迫我們想出兩個獨特的命名，像是 `guess_str` 和 `guess`，或其他的名稱。
 
@@ -672,9 +672,9 @@ guess.trim().parse()
 
 這邊的 `guess` 參考到存著輸入值的舊 `guess`。
 而 `String` 中的 `trim()` 方法則會去除任何字串開頭結尾的空白。
-這很重要，因為我們必須按下 "Return" 按鍵去符合 `read_line()` 的輸入條件。
+這很重要，因為我們必須按下「Return」按鍵去符合 `read_line()` 的輸入條件。
 也就是說如果我們輸入 `5` 然後按下 Return，那 `guess` 就會是：`5\n`。
-`\n` 代表 "新的一行" (newline)、enter 鍵。
+`\n` 代表「新的一行」（newline）、enter 鍵。
 `trim()` 會去除這些東西，只留下我們要的字串 `5`。
 而[字串的 parse() 方法][parse]則會把字串分析為數字。
 因為它可以被分析為很多種數字型別，我們必須給 Rust 我們確切想要的數字型別的提示。
@@ -711,7 +711,7 @@ Too big!
 多執行程式幾次，然後驗證看看，猜正確的數字，並猜一個比較小的數字。
 
 現在我們的遊戲大致上能運作了，但是我們只能猜一次。
-讓我們加入迴圈 (loops) 來修改它。
+讓我們加入迴圈（loops）來修改它。
 
 ## 迴圈
 
@@ -882,12 +882,12 @@ let guess: u32 = match guess.trim().parse() {
 };
 ```
 
-把 `expect()` 改為 `match` 陳述的方式，大致上就是如何把 "錯誤時當機" 改為 "實際處理錯誤" 的方法。
+把 `expect()` 改為 `match` 陳述的方式，大致上就是如何把「錯誤時當機」改為「實際處理錯誤」的方法。
 `parse()` 回傳的 `Result` 是個跟 `Ordering` 類似的 `enum`，但是這裡的變體跟資料有關：`Ok` 代表成功，`Err` 則是錯誤。
 它們個別包含更多的資訊：成功的分析出整數，或是一個錯誤型別。
 在本例中，當我們 `match` 到 `Ok(num)` 時，會把 `Ok` 內的值設給 `num` 這個名稱，然後在右邊直接回傳它。
 在 `Err` 的情況，我們不在意發生了什麼錯誤，所以我們使用 `_` 沒有取名。
-這樣會忽略錯誤，接著 `continue` 讓我們可以繼續 `loop` 的下一次疊代 (iteration)。
+這樣會忽略錯誤，接著 `continue` 讓我們可以繼續 `loop` 的下一次疊代（iteration）。
 
 現在應該弄好了！
 讓我們試試看：
@@ -965,7 +965,7 @@ fn main() {
 此時此刻，你成功的建置了猜謎遊戲！
 恭喜你！
 
-這第一個專案告訴你不少東西：`let`、`match`、方法 (methods)、關聯函式 (associated functions)、使用外部的 crates、等等。
+這第一個專案告訴你不少東西：`let`、`match`、方法（methods）、關聯函式（associated functions）、使用外部的 crates、等等。
 我們的下個專案會告訴你更多東西。
 
 > 譯註：實作 `dining-philosophers` 專案的章節已經被移除了，所以後續會接到語法的部分。

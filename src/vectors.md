@@ -1,7 +1,7 @@
 # 向量
 
-向量 `Vec<T>` 為標準函式庫中動態可增長的陣列，型別 `T` 表示我們可以宣告任何型別的向量（可參考[泛型][generic]章節）。
-向量的資料一定會配置在堆積區 (heap) ，可以使用 `vec!` 巨集來生成向量。
+向量 `Vec<T>` 為標準函式庫中動態可增長的陣列，型別 `T` 表示我們可以宣告任何型別的向量（可參考 [泛型][generic] 章節）。
+向量的資料一定會配置在堆積區 （heap），可以使用 `vec!` 巨集來生成向量。
 
 ```rust
 let v = vec![1, 2, 3, 4, 5]; // v: Vec<i32>
@@ -104,7 +104,7 @@ for i in v {
 }
 ```
 
-向量有許多有用的方法，可以參考[向量的 API 文件][vec]。
+向量有許多有用的方法，可以參考 [向量的 API 文件][vec]。
 
 [vec]: http://doc.rust-lang.org/std/vec/index.html
 [box]: http://doc.rust-lang.org/std/boxed/index.html

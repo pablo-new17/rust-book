@@ -5,9 +5,9 @@
 所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
 它有幾個不同的概念，各自有各自的章節：
 
-* [所有權][ownership] (ownership)，關鍵的概念
-* [借用][borrowing] (borrowing)，及其相關功能 "參照" (references)
-* 生命週期 (lifetimes)，你正在閱讀的章節
+* [所有權][ownership] （ownership），關鍵的概念
+* [借用][borrowing]（borrowing），及其相關功能「參照」（references）
+* 生命週期（lifetimes），你正在閱讀的章節
 
 這三章依序相關。
 你需要了解全部三章來完整了解所有權系統。
@@ -20,36 +20,36 @@
 在我們開始細述前，有兩個所有權系統的重點。
 
 Rust 注重安全和速度。
-它透過許多 "零成本抽象化" 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+它透過許多「零成本抽象化」的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
 所有權系統是零成本抽象化的一個最佳範例。
 我們在本指南中談到的所有分析，都是在 _編譯期完成的_。
 這些功能不需要花費你任何執行期的成本。
 
 然而，這套系統仍有某些成本：學習曲線。
-許多 Rust 的新使用者會經歷我們所說的 "與借用檢查器 (borrow checker) 苦戰" 的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
+許多 Rust 的新使用者會經歷我們所說的「與借用檢查器（borrow checker）苦戰」的經驗，像是 Rust 編譯器無法編譯作者認為合理的程式。
 這常常在程式設計師內心的所有權運作模型與實際的 Rust 實作不相符的時候會發生。
 一開始你可能也會經歷類似的事情。
 然而有個好消息是：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的苦戰就越來越少了。
 
 記住這些之後，讓我們開始學習生命週期吧。
 
-## 生命週期 (Lifetimes)
+## 生命週期（Lifetimes）
 
 借出一個指向他人擁有的資源的 reference 是很複雜的。
 舉例來說，想像一下以下的操作行為：
 
-1. 我獲得一個某種資源的控制代碼 (handle)。
+1. 我獲得一個某種資源的控制代碼（handle）。
 2. 我把指向這個資源的 reference 借給你。
 3. 我決定不再使用這個資源，釋放它，但你仍還有你那邊的 reference。
 4. 你決定要使用此資源。
 
 噢！你的 reference 指向了一個無效的資源。
-如果資源是記憶體時，我們叫它迷途指標 (dangling pointer) 或 "釋放後的使用"。
+如果資源是記憶體時，我們叫它迷途指標（dangling pointer）或「釋放後使用」。
 
 要修正這個問題，我們必須確保上述第四步不會在第三步之後發生。
-Rust 的所有權系統透過一個叫做生命週期 (lifetimes) 的概念達成這點，它會描述 reference 的有效範圍。
+Rust 的所有權系統透過一個叫做生命週期（lifetimes）的概念達成這點，它會描述 reference 的有效範圍。
 
-當我們有一個函式透過參數取用了一個 reference，我們可以不言明 (implicit) 或言明 (explicit) reference 的生命週期：
+當我們有一個函式透過參數取用了一個 reference，我們可以不言明（implicit）或言明（explicit）reference 的生命週期：
 
 ```rust
 // implicit
@@ -61,19 +61,19 @@ fn bar<'a>(x: &'a i32) {
 }
 ```
 
-`'a` 唸作 "生命週期 a"。
-技術上，所有 reference 都有其關聯的生命週期，但是編譯器通常可以讓你省略它（參考後述的 ["生命週期省略"][lifetime-elision]）。
+`'a` 唸作「生命週期 a」。
+技術上，所有 reference 都有其關聯的生命週期，但是編譯器通常可以讓你省略它（參考後述的 [生命週期省略][lifetime-elision]）。
 在我們講到省略之前，先讓我們拆解言明生命週期的範例：
 
-[lifetime-elision]: #生命週期省略%20(Lifetime%20Elision)
+[lifetime-elision]: #生命週期省略（Lifetime%20Elision）
 
 ```rust,ignore
 fn bar<'a>(...)
 ```
 
-我們之前談到了一些[函式語法][functions]，但我們沒有討論到函式後面的 `<>`。
-一個函式可以在 `<>` 間放入 "泛型參數" (generic parameters)，生命週期也是其中一種。
-我們[在之後][generics]會討論到其他的泛型，但現在讓我們專注在生命週期方面。
+我們之前談到了一些 [函式語法][functions]，但我們沒有討論到函式後面的 `<>`。
+一個函式可以在 `<>` 間放入「泛型參數」（generic parameters），生命週期也是其中一種。
+我們 [在之後][generics] 會討論到其他的泛型，但現在讓我們專注在生命週期方面。
 
 [functions]: functions.html
 [generics]: generics.html
@@ -94,17 +94,17 @@ fn bar<'a, 'b>(...)
 ```
 
 如果我們想要一個 `&mut` reference，這樣做：
-I
+
 ```rust,ignore
 ...(x: &'a mut i32)
 ```
 
 如果你比較 `&mut i32` 和 `&'a mut i32` 兩者，除了在 `&` 和 `mut i32` 間多出生命週期 `'a`，你會發現他們是一樣的。
-我們把 `&mut i32` 叫做 "一個 `i32` 可變 reference"，而 `&'a mut i32` 叫做 "一個生命週期為 `'a` 的 `i32` 可變 reference"
+我們把 `&mut i32` 叫做「一個 `i32` 可變 reference」，而 `&'a mut i32` 叫做「一個生命週期為 `'a` 的 `i32` 可變 reference」。
 
 ## 在 `struct` 中
 
-當處理含有參照的[結構體][structs] (struct) 食，你也同樣需要言明生命週期：
+當處理含有參照的 [結構體][structs]（struct）時，你也同樣需要言明生命週期：
 
 ```rust
 struct Foo<'a> {
@@ -188,7 +188,7 @@ fn x_or_y<'a, 'b>(x: &'a str, y: &'b str) -> &'a str {
 
 在此範例中，`x` 與 `y` 有不同的有效範圍，但回傳值的生命週期與 `x` 相同。
 
-### 對有效範圍的深思 (Thinking in scopes)
+### 對有效範圍的深思（Thinking in scopes）
 
 瞭解生命週期的一個方式是將 reference 的有效範圍視覺化。
 例如：
@@ -265,16 +265,16 @@ let x: &'static i32 = &FOO;
 
 這會加入一個 `i32` 到執行檔的資料區段，`x` 則是指向它的 reference。
 
-### 生命週期省略 (Lifetime Elision)
+### 生命週期省略（Lifetime Elision）
 
-Rust 在函式中支援強大的局部型別推斷 (local type inference)，但在 item signatures 中則被禁止，才能讓它根據 signature 去推論其型別。
-然而，為了人機工程的理由，第二種受限的推斷方式 "生命週期省略" 被允許用在 function signatures。
+Rust 在函式中支援強大的局部型別推斷（local type inference），但在 item signatures 中則被禁止，才能讓它根據 signature 去推論其型別。
+然而，為了人機工程的理由，第二種受限的推斷方式「生命週期省略」被允許用在 function signatures。
 它只根據 signature 元件本身推斷，而不基於函式內容，而且只根據三個簡單易記、不易混淆的規則去推斷出生命週期參數。
 這使得撰寫 item signatures 時可以速寫生命週期省略，但不能隱藏它的實際型別，因為局部型別推斷時可能會需要它。
 
 > 譯註：`item signatures` 應是指宣告函式時的輸入參數們，以及回傳值的宣告。
 
-當我們談到生命週期省略，我們使用 *輸入生命週期* (input lifetime) 與 *輸出生命週期* (output lifetime) 的字眼。
+當我們談到生命週期省略，我們使用 *輸入生命週期* （input lifetime）與 *輸出生命週期* （output lifetime）的字眼。
 *輸入生命週期* 是指函式的參數的生命週期，而 *輸出生命週期* 是指函式回傳值的生命週期。
 例如，以下函式有一個輸入生命週期：
 

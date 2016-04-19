@@ -8,7 +8,7 @@ let origin_x = 0;
 let origin_y = 0;
 ```
 
-而 `struct` 讓我們可以將兩者合而為一，成為一個有 `x` 及 `y` 欄位 (field) 的統一資料型態：
+而 `struct` 讓我們可以將兩者合而為一，成為一個有 `x` 及 `y` 欄位（field）的統一資料型態：
 
 ```rust
 struct Point {
@@ -25,7 +25,7 @@ fn main() {
 
 這邊有許多東西，讓我們分開來解說。
 我們使用 `struct` 關鍵字及名字來宣告結構體。
-照慣例，`struct` 的命名用大寫開始，且使用駝峰式大小寫 (camel case) 規則：`PointInSpace`，而非 `Point_In_Space`。
+照慣例，`struct` 的命名用大寫開始，且使用駝峰式大小寫（camel case）規則：`PointInSpace`，而非 `Point_In_Space`。
 
 我們可以透過 `let` 宣告我們 `struct` 的實體，但我們會使用 `key: value` 風格的語法去設定每一個欄位。
 順序不需與原始宣告中的排序相同。
@@ -141,13 +141,13 @@ let origin = Point3d { x: 0, y: 0, z: 0 };
 let point = Point3d { z: 1, x: 2, .. origin };
 ```
 
-## 多元組結構體 (tuple struct)
+## 多元組結構體（tuple struct）
 
-Rust 還有其他類似[多元組][tuple] (tuple) 與 `struct` 混合體的資料型別，叫做 "多元組結構體" (tuple struct)。
+Rust 還有其他類似[多元組][tuple]（tuple）與 `struct` 混合體的資料型別，叫做「多元組結構體」（tuple struct）。
 多元組結構體本身有命名，但是它的欄位沒有。
 它也使用 `struct` 關鍵字宣告，在其後加上名字和多元組：
 
-[tuple]: primitive-types.html#多元組%20(Tuples)
+[tuple]: primitive-types.html#多元組（Tuples）
 
 ```rust
 struct Color(i32, i32, i32);
@@ -176,12 +176,12 @@ struct Point {
 }
 ```
 
-好的命名是很重要的，雖然多元組結構體 (tuple struct) 也能使用點記號去參考它的值，但結構體 (struct) 使用的是真實的命名而不是位置。
+好的命名是很重要的，雖然多元組結構體（tuple struct）也能使用點記號去參考它的值，但結構體（struct）使用的是真實的命名而不是位置。
 
 > 譯註：多元組的存取是使用索引 `tuple.0`，而結構體可以使用欄位的名稱，比較具有意義，在程式碼的可讀性上會比較強。
 
 但有 _一種情況_ 下多元組結構體非常有用，就是當他只有一個元素時。
-我們稱它為 "新型別" (newtype) 模式，因為它允許你建立與內含的值有所區別的新型別，同時又表達出我們所想表達的語意：
+我們稱它為「新型別」（newtype）模式，因為它允許你建立與內含的值有所區別的新型別，同時又表達出我們所想表達的語意：
 
 ```rust
 struct Inches(i32);
@@ -195,7 +195,7 @@ println!("length is {} inches", integer_length);
 如你所見，你能透過 `let` 解構內部的整數型態，跟一般的多元組一樣。
 在上述情況，`let Inches(integer_length)` 會把 `10` 賦值給 `integer_length`。
 
-## 類單元結構體 (Unit-like structs)
+## 類單元結構體（Unit-like structs）
 
 你可以定義一個沒有任何成員的 `struct`：
 
@@ -205,11 +205,11 @@ struct Electron;
 let x = Electron;
 ```
 
-這樣的結構體被稱為 "類單元"，因為它類似空的多元組 `()`，有時候被稱為單元 (unit)。
+這樣的結構體被稱為「類單元」，因為它類似空的多元組 `()`，有時候被稱為單元（unit）。
 跟多元組結構體一樣，它會定義新的型別。
 
-它很難得會有用處（雖然有時候它能用來當作標記型別 (marker type) ），但與其他功能組合時，它可以變得有用。
-例如，一個函式庫可能要你建立一個結構體去實作某個 [trait][trait] 來處理事件 (events)。
+它很難得會有用處（雖然有時候它能用來當作標記型別［marker type］），但與其他功能組合時，它可以變得有用。
+例如，一個函式庫可能要你建立一個結構體去實作某個 [trait][trait] 來處理事件（events）。
 如果你並不需要再結構體中存入任何資料，你可以建立一個類單元結構體。
 
 [trait]: traits.html

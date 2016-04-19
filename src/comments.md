@@ -4,7 +4,7 @@
 註解是讓你留給其他程式設計師的備註，可以幫忙解釋你的程式碼。
 編譯器幾乎會直接忽略它們。
 
-Rust 有兩種註解方式：*行內註解* (line comments) 與 *文件註解* (doc comments)。
+Rust 有兩種註解方式：*行內註解*（line comments）與 *文件註解*（doc comments）。
 
 > 譯註：以下是行內註解。
 
