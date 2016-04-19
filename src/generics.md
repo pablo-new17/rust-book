@@ -1,13 +1,9 @@
-% Generics
+% 泛型
 
-Sometimes, when writing a function or data type, we may want it to work for
-multiple types of arguments. In Rust, we can do this with generics.
-Generics are called ‘parametric polymorphism’ in type theory,
-which means that they are types or functions that have multiple forms (‘poly’
-is multiple, ‘morph’ is form) over a given parameter (‘parametric’).
+有時我們希望函式或資料型別能接受不同型別的參數，在Rust 中提供了泛型滿足這項要求
+在類型論中泛型又被稱為<參數式多型>，係指型別或函式面對給定的參數('parametric')時具有多種型態('poly' 為多，'morph'指型態)
 
-Anyway, enough type theory, let’s check out some generic code. Rust’s
-standard library provides a type, `Option<T>`, that’s generic:
+總之不管理論，先來看一些泛型程式，Rust 標準函式庫提供了型別 `Option<T>` 即是泛型：
 
 ```rust
 enum Option<T> {
@@ -16,20 +12,16 @@ enum Option<T> {
 }
 ```
 
-The `<T>` part, which you’ve seen a few times before, indicates that this is
-a generic data type. Inside the declaration of our `enum`, wherever we see a `T`,
-we substitute that type for the same type used in the generic. Here’s an
-example of using `Option<T>`, with some extra type annotations:
+其中我們曾見過數次的 `<T>` 即表示泛型資料型別，在 `enum` 的宣告中只要遇到 `T` 即會被替換成泛型中使用的型別
+以下是使用 `Option<T>` 附上額外型別註釋的範例：
 
 ```rust
 let x: Option<i32> = Some(5);
 ```
 
-In the type declaration, we say `Option<i32>`. Note how similar this looks to
-`Option<T>`. So, in this particular `Option`, `T` has the value of `i32`. On
-the right-hand side of the binding, we make a `Some(T)`, where `T` is `5`.
-Since that’s an `i32`, the two sides match, and Rust is happy. If they didn’t
-match, we’d get an error:
+在型別宣告中，我們使用與`Option<T>` 相似的 `Option<i32>`，因此在這個 `Option` 中 `T`
+即是 `i32`，等式右邊我們加上`T` 為 `5`的 `Some(T)`，因為 `5` 屬於型別 `i32`，兩邊相符可以通過編譯
+若兩邊不符會發生錯誤：
 
 ```rust,ignore
 let x: Option<f64> = Some(5);
@@ -37,17 +29,16 @@ let x: Option<f64> = Some(5);
 // found `core::option::Option<_>` (expected f64 but found integral variable)
 ```
 
-That doesn’t mean we can’t make `Option<T>`s that hold an `f64`! They have
-to match up:
+這不表示我們不能讓 `Option<T>` 對應為 `f64`，只是等式兩邊必須相符：
 
 ```rust
 let x: Option<i32> = Some(5);
 let y: Option<f64> = Some(5.0f64);
 ```
 
-This is just fine. One definition, multiple uses.
+這樣就行了，一個定義，多種使用方式。
 
-Generics don’t have to only be generic over one type. Consider another type from Rust’s standard library that’s similar, `Result<T, E>`:
+泛型並非只能有一個型別，讓我們看看Rust 標準函式庫另一個型別 `Result<T, E>`：
 
 ```rust
 enum Result<T, E> {
@@ -56,8 +47,7 @@ enum Result<T, E> {
 }
 ```
 
-This type is generic over _two_ types: `T` and `E`. By the way, the capital letters
-can be any letter you’d like. We could define `Result<T, E>` as:
+這是個針對 `T` 和 `E` 兩個型別泛型的型別，型別的大寫字可以是任何字，想要的話我們可以定義 `Result<T, E>`如下：
 
 ```rust
 enum Result<A, Z> {
@@ -66,15 +56,13 @@ enum Result<A, Z> {
 }
 ```
 
-if we wanted to. Convention says that the first generic parameter should be
-`T`, for ‘type’, and that we use `E` for ‘error’. Rust doesn’t care, however.
+慣例上第一個泛型參數會是 `T` 表示 'type'，我們用 `E` 表示 `error`，Rust 其實不管這個
 
-The `Result<T, E>` type is intended to be used to return the result of a
-computation, and to have the ability to return an error if it didn’t work out.
+型別 `Result<T, E>` 用在回傳運算結果，如果運算出錯時也保有回傳錯誤的能力
 
-## Generic functions
+## 泛型函式
 
-We can write functions that take generic types with a similar syntax:
+我們可以用相似的語法宣告接受泛型的函式：
 
 ```rust
 fn takes_anything<T>(x: T) {
@@ -82,10 +70,9 @@ fn takes_anything<T>(x: T) {
 }
 ```
 
-The syntax has two parts: the `<T>` says “this function is generic over one
-type, `T`”, and the `x: T` says “x has the type `T`.”
+語法包含兩個部分： `<T>` 表示"這個函式對型別 `T` 泛型"，而 `x: T` 表示" x的型別為 `T`"
 
-Multiple arguments can have the same generic type:
+一個泛型可以用在多個參數上：
 
 ```rust
 fn takes_two_of_the_same_things<T>(x: T, y: T) {
@@ -93,7 +80,7 @@ fn takes_two_of_the_same_things<T>(x: T, y: T) {
 }
 ```
 
-We could write a version that takes multiple types:
+我們也可以宣告接受多個泛型的版本：
 
 ```rust
 fn takes_two_things<T, U>(x: T, y: U) {
@@ -101,9 +88,9 @@ fn takes_two_things<T, U>(x: T, y: U) {
 }
 ```
 
-## Generic structs
+## 泛型結構體
 
-You can store a generic type in a `struct` as well:
+泛型也可以使用在 `struct` 中：
 
 ```rust
 struct Point<T> {
@@ -115,11 +102,9 @@ let int_origin = Point { x: 0, y: 0 };
 let float_origin = Point { x: 0.0, y: 0.0 };
 ```
 
-Similar to functions, the `<T>` is where we declare the generic parameters,
-and we then use `x: T` in the type declaration, too.
+與函式相似，`<T>` 宣告泛型參數，使用`x: T` 宣告型別。
 
-When you want to add an implementation for the generic `struct`, you
-declare the type parameter after the `impl`:
+當要加上泛型結構體的實作時，在 `impl` 之後宣告型別參數：
 
 ```rust
 # struct Point<T> {
@@ -134,14 +119,11 @@ impl<T> Point<T> {
 }
 ```
 
-So far you’ve seen generics that take absolutely any type. These are useful in
-many cases: you’ve already seen `Option<T>`, and later you’ll meet universal
-container types like [`Vec<T>`][Vec]. On the other hand, often you want to
-trade that flexibility for increased expressive power. Read about [trait
-bounds][traits] to see why and how.
+到目前為止，我們已經展示泛型可以用於任意型態，在許多狀況下非常有用，例如先前看到的 `Option<T>`
+及接下來會看到通用的容器如 [`Vec<T>`][Vec]，另一方面，常常我們想要用這樣的彈性換取表現能力，
+參考 [trait bounds][traits] 了解如何做到。
 
 [traits]: traits.html
 [Vec]: ../std/vec/struct.Vec.html
-
 
 > *commit 6ba9520*

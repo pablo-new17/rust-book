@@ -69,6 +69,7 @@ parser                 | 語法分析器                    | 參考：[維基�
 pattern                | 模式                          | 參考：[維基百科][pattern]
 plugins                | 外掛                          |
 pointer                | 指標                          | 參考：[維基百科][pointer]
+polymorphism           | 多型                          | 參考：[維基百科][polymorphism]
 primitive type         | 基本型別                      | 參考：[維基百科][primitive type]
 reference              | 參照、參考                    | 參考：[維基百科][reference]
 round bracket          | 圓括號                        | 參考：[維基百科][bracket]
@@ -138,6 +139,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [parser]: https://zh.wikipedia.org/zh-tw/%E8%AA%9E%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8
 [pattern]: https://zh.wikipedia.org/zh-tw/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA)
 [pointer]: https://zh.wikipedia.org/zh-tw/%E6%8C%87%E6%A8%99_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
+[polymorphism]: https://zh.wikipedia.org/wiki/%E5%A4%9A%E5%9E%8B_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 [primitive type]: https://zh.wikipedia.org/zh-tw/%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5
 [reference]: https://zh.wikipedia.org/zh-tw/%E5%8F%83%E7%85%A7
 [segment]: https://zh.wikipedia.org/zh-tw/%E8%A8%98%E6%86%B6%E9%AB%94%E5%88%86%E6%AE%B5
