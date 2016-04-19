@@ -1,6 +1,6 @@
 # 可變性
 
-可變性 (mutability)，就是改變事物的能力，它在 Rust 中的運作方式跟其他語言不太一樣。
+可變性（mutability），就是改變事物的能力，它在 Rust 中的運作方式跟其他語言不太一樣。
 第一個方面就是 Rust 的可變性並不是預設狀態：
 
 ```rust,ignore
@@ -16,13 +16,13 @@ let mut x = 5;
 x = 6; // no problem!
 ```
 
-這是一個可變的 (mutable) [變數綁定][vb]。
+這是一個可變的（mutable）[變數綁定][vb]。
 當一個綁定是可變的，代表你被允許改變它所指向的內容。
 所以在上述範例中，`x` 的值並沒有太多改變，只是從一個 `i32` 換到另一個而已。
 
 [vb]: variable-bindings.html
 
-如果你想改變綁定指向的東西，你需要[可變參照][mr] (mutable reference)：
+如果你想改變綁定指向的東西，你需要 [可變參照][mr]（mutable reference）：
 
 ```rust
 let mut x = 5;
@@ -31,7 +31,7 @@ let y = &mut x;
 
 [mr]: references-and-borrowing.html
 
-`y` 是個指向一個可變參照的不可變 (immutable) 綁定，這代表你不能把 `y` 綁定到其他東西上（例如 `y = &mut z`），但你可以改變綁定到 `y` 上的變數的值（`*y = 5`）。
+`y` 是個指向一個可變 reference 的不可變（immutable）綁定，這代表你不能把 `y` 綁定到其他東西上（例如 `y = &mut z`），但你可以改變綁定到 `y` 上的變數的值（`*y = 5`）。
 這有一些微妙的不同。
 
 當然，如果你兩種都想要可變：
@@ -43,7 +43,7 @@ let mut y = &mut x;
 
 現在 `y` 可以綁到其他變數上，且它所參照的值也可以被改變。
 
-很重要的是 `mut` 也是[模式][pattern] (pattern) 的一部份，所以你可以像這樣做：
+很重要的是 `mut` 也是 [模式][pattern]（pattern）的一部份，所以你可以像這樣做：
 
 ```rust
 let (mut x, y) = (5, 6);
@@ -54,9 +54,9 @@ fn foo(mut x: i32) {
 
 [pattern]: patterns.html
 
-## 內部及外部可變性 (Interior vs. Exterior Mutability)
+## 內部及外部可變性（Interior vs. Exterior Mutability）
 
-然而，當我們談及 Rust 中有些東西是 "不可變" 的同時，這不代表它不能真的被改變：我們說它有著 "外部可變性" (exterior mutability)。
+然而，當我們提到 Rust 中有些東西是「不可變」的同時，這不代表它不能真的被改變：我們說它有著「外部可變性」（exterior mutability）。
 以 [Arc&lt;T&gt;][arc] 為例：
 
 ```rust
@@ -72,23 +72,23 @@ let y = x.clone();
 沒錯，我們在此處沒有使用任何 `mut`，`x` 是個不可變綁定，而且我們沒有使用 `&mut 5` 或其他東西。
 那麼是為什麼呢？
 
-要明白這些，我們要回去看 Rust 的指導哲學的核心，記憶體的安全性，以及 Rust 用以保證其安全的機制，[所有權][ownership]系統，和更特別的[借用][borrowing]：
+要明白這些，我們要回去看 Rust 的指導哲學的核心是什麼，就是記憶體安全性，以及 [所有權][ownership] 系統，和更特別的 [借用][borrowing] 這些 Rust 用來保證其安全的機制：
 
 > 你可能有以下兩種借用的其中一種，但是不能同時使用兩者：
 >
-> * 一到多個對資源的參照（`&T`）
-> * 唯一一個可變參照（`&mut T`）
+> * 一到多個對資源的 references（`&T`）
+> * 唯一一個可變 reference（`&mut T`）
 
 [ownership]: ownership.html
 [borrowing]: references-and-borrowing.html#borrowing
 
-所以，這才是 "不可變性" (immutability) 的真正定義：當兩個參照指向同一個資源時安全嗎？
-在 `Arc<T>` 的例子中，是的：改變完全被包含在結構自身當中。
+所以，「不可變性」（immutability）的真正定義是：當兩個參照指向同一個資源時安全嗎？
+在 `Arc<T>` 的例子中，是的沒錯：改變完全被包含在結構自身當中。
 與使用者無關。
 因為這個原因，它會在 `clone()` 時提供 `&T`。
 如果它提供 `&mut T`，那就會是個問題。
 
-其他型別，像是 [`std::cell`][stdcell] 模組中的這個，有相反的屬性：內部可變性 (interior mutability)。
+其他型別，像是 [`std::cell`][stdcell] 模組中的這個，有相反的屬性：內部可變性（interior mutability）。
 例如：
 
 ```rust
@@ -120,10 +120,10 @@ let z = x.borrow_mut();
 這使我們可以繞開 Rust 的可變性規則的另一面。
 讓我們來說明它。
 
-### 欄位等級的可變性 (Field-level mutability)
+### 欄位等級的可變性（Field-level mutability）
 
 可變性，它不是借用（`&mut`）就是綁定（`let mut`）的一個屬性。
-這代表你不可能有某些欄位可變、而某些欄位不可變的[結構體][struct] (struct)。
+這代表你不可能有某些欄位可變、而某些欄位不可變的 [結構體][struct]（struct）。
 
 ```rust,ignore
 struct Point {
