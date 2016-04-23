@@ -120,7 +120,7 @@ fn main() {
 
 如你之前所看過的，`main()` 函式是程式的進入點。
 `fn` 語法宣告一個新函式，`()` 指名了此處沒有傳入的參數，而 `{` 後面開始是函式的內容。
-因為沒有提到回傳型別，所以這裡的回傳會是 `()`，一個空的[多元組][tuples]（tuple）。
+因為沒有提到回傳型別，所以這裡的回傳會是 `()`，一個空的 [多元組][tuples]（tuple）。
 
 [tuples]: primitive-types.html#多元組（Tuples）
 
@@ -130,7 +130,7 @@ fn main() {
     println!("Please input your guess.");
 ```
 
-我們之前學到 `println!()` 是個將[字串][strings]印到螢幕的[巨集][macros]。
+我們之前學到 `println!()` 是個將 [字串][strings] 印到螢幕的 [巨集][macros]。
 
 [macros]: macros.html
 [strings]: strings.html
@@ -153,7 +153,7 @@ let foo = bar;
 這將會建立一個叫做 `foo` 的新綁定，然後把它綁定在 `bar` 的值上。
 在許多語言中，這叫做「變數」（variable），但 Rust 的變數綁定還暗藏玄機。
 
-舉例來說，它預設是[不可變的][immutable]（immutable）。
+舉例來說，它預設是 [不可變的][immutable]（immutable）。
 這也是為何我們的範例使用 `mut`：它使綁定變成可變的（mutable），而不再是不可變的。
 `let` 不會從左邊取得賦值（assignment）的名字，實際上他使用「[模式][patterns]」（pattern）。
 我們在後面會使用模式。
@@ -168,14 +168,14 @@ let mut bar = 5; // mutable
 [patterns]: patterns.html
 
 噢，還有 `//` 會開始一段註解，一直到行末。
-Rust 會忽略所有[註解][comments]（comment）內的東西。
+Rust 會忽略所有 [註解][comments]（comment）內的東西。
 
 [comments]: comments.html
 
 所以現在我們知道 `let mut guess` 會宣告一個名為 `guess` 的可變變數綁定，但我們仍必須看看 `=` 另一邊所綁定的東西：`String::new()`。
 
 `String` 是一個字串型別，由標準函式庫提供。
-一個[字串][string]是一個以 UTF-8 編碼的可變長度的文字。
+一個 [字串][string] 是一個以 UTF-8 編碼的可變長度的文字。
 
 [string]: https://doc.rust-lang.org/std/string/struct.String.html
 
@@ -227,7 +227,7 @@ io::stdin()
 還記得前面我們如何綁定 `guess` 嗎？
 我們有提到它是可變的。
 然而，`read_line` 不接受把 `String` 當作參數：它只接受 `&mut String`。
-Rust 有一個叫做[參照][references]（references）的功能，它允許你將多個參照指向同一塊資料，這樣可以降低複製的動作。
+Rust 有一個叫做 [參照][references]（references）的功能，它允許你將多個參照指向同一塊資料，這樣可以降低複製的動作。
 參照是個複雜的功能，Rust 的主要賣點就是能安全、簡單的使用參照。
 現在我們不需要知道太多細節。
 我們只需知道參照與 `let` 綁定類似，它預設是不可變的。
@@ -416,7 +416,7 @@ Cargo 有另一個指令 `update`，代表著「忽略 lock 檔，尋找所有�
 如果我們想要換到 `0.4.x`，我們必須直接更新 `Cargo.toml`。
 當我們這樣做時，下一次 `cargo build` Cargo 將會更新索引並重新評估 `rand` 的需求。
 
-關於 [Cargo][doccargo] 和其[生態系][doccratesio]還有很多可以說，但是現在，這就是我們所需知道的全部了。
+關於 [Cargo][doccargo] 和其 [生態系][doccratesio] 還有很多東西可以說，但是現在，這就是我們所需知道的全部了。
 Cargo 讓重新使用函式庫變得很簡單，讓 Rustaceans 易於寫出由許多子套件（sub-packages）組成的小專案。
 
 [doccargo]: http://doc.crates.io
@@ -469,7 +469,7 @@ fn main() {
     println!("The secret number is: {}", secret_number);
 ```
 
-我們使用 `rand::thread_rng()` 函式取得隨機數字產生器的複本，這個複本位於我們正在執行的特定[執行緒][concurrency]（thread）之上。
+我們使用 `rand::thread_rng()` 函式取得隨機數字產生器的複本，這個複本位於我們正在執行的特定 [執行緒][concurrency]（thread）之上。
 因為我們前面已經 `use rand::Rng`，所以 `gen_rang()` 方法可以使用。
 這個方法需要兩個參數，然後會產生一個在兩個參數之間的數字。
 結果包含了下限，但不包含上限，所以我們需要傳遞 `1` 和 `101` 去取得 1 到 100 範圍內的數字。
@@ -676,12 +676,12 @@ guess.trim().parse()
 也就是說如果我們輸入 `5` 然後按下 Return，那 `guess` 就會是：`5\n`。
 `\n` 代表「新的一行」（newline）、enter 鍵。
 `trim()` 會去除這些東西，只留下我們要的字串 `5`。
-而[字串的 parse() 方法][parse]則會把字串分析為數字。
+而 [字串的 parse() 方法][parse] 則會把字串分析為數字。
 因為它可以被分析為很多種數字型別，我們必須給 Rust 我們確切想要的數字型別的提示。
-因次我們給它 `let guess: u32`。
+因此在這邊我們寫了 `let guess: u32`。
 `guess` 後面的冒號（`:`）告訴 Rust 我們要註釋它的型別。
 `u32` 是沒有帶正負號的 32 位元整數。
-Rust 有[許多內建的數字型別][number]，我們選了 `u32`。
+Rust 有 [許多內建的數字型別][number]，我們選了 `u32`。
 對於不大的正整數來說，它是個好選擇。
 
 [parse]: https://doc.rust-lang.org/std/primitive.str.html#method.parse
