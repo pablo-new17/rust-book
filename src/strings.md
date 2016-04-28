@@ -159,7 +159,7 @@ thread '<main>' panicked at 'index 0 and/or 2 in `忠犬ハチ公` do not lie on
 character boundary'
 ```
 
-## 接續（Concatination）
+## 接續（Concatenation）
 
 如果你有一個 `String`, 你可以把一個 `&str` 接續到它後面：
 
