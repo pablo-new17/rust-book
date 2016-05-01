@@ -32,6 +32,7 @@ data race              | 資料競爭                      |
 declaration statements | 宣告陳述式                    |
 deque                  | 雙向佇列                      | Double-ended queue
 dereference            | 取值                          | 即 `*` 運算子
+dispatch               | 分派                          | 參考：[維基百科][multiple dispatch]
 diverging functions    | 發散函式                      | 不回傳值的函式
 enumerate              | 枚舉                          | 參考：[維基百科][enumerate]
 equality               | 等式                          |
@@ -51,6 +52,8 @@ instance               | 實體                          |
 iterative              | 疊代                          | 參考：[維基百科][iterative]
 iterator               | 疊代器                        | 參考：[維基百科][iterator]
 immutable              | 不可變                        | 參考：[維基百科][immutable]
+inheritance            | 繼承　                        |
+language feature       | 語言特徵                      | 參考：[中華民國資訊學會][language feature]
 library                | 函式庫                        | 參考：[維基百科][library]
 lifetimes              | 生命週期                      |
 loop                   | 迴圈、循環                    | 參考：[維基百科][loop]
@@ -58,6 +61,7 @@ macro                  | 巨集                          | 參考：[維基百�
 main function          | 主函式                        | 參考：[維基百科][main function]
 method                 | 方法                          | 參考：[維基百科][method]
 module                 | 模組                          | 參考：[維基百科][module]
+monomorphism           | 單型                          |
 mutable                | 可變                          | 參考：[維基百科][immutable]
 mutability             | 可變性                        |
 mutation               | 可變數                        |
@@ -129,12 +133,14 @@ zero-cost abstractions | 無成本抽象化                  |
 [iterative]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3
 [iterator]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3%E5%99%A8
 [immutable]: https://zh.wikipedia.org/zh-tw/%E4%B8%8D%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6
+[language feature]: http://www.iicm.org.tw/term/termb_L.htm
 [library]: https://zh.wikipedia.org/zh-tw/%E5%87%BD%E5%BC%8F%E5%BA%AB
 [loop]: https://zh.wikipedia.org/zh-tw/%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B#.E8.BF.B4.E5.9C.88
 [macro]: https://zh.wikipedia.org/zh-tw/%E5%B7%A8%E9%9B%86
 [main function]: https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%87%BD%E5%BC%8F
 [method]: https://zh.wikipedia.org/zh-tw/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
 [module]: https://zh.wikipedia.org/zh-tw/%E6%A8%A1%E7%B5%84_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)
+[multiple dispatch]: https://zh.wikipedia.org/wiki/%E5%A4%9A%E5%88%86%E6%B4%BE
 [namespace]: https://zh.wikipedia.org/zh-tw/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4
 [operators]: https://zh.wikipedia.org/zh-tw/C%E5%92%8CC%2B%2B%E9%81%8B%E7%AE%97%E5%AD%90
 [package]: https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85
