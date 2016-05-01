@@ -1,8 +1,8 @@
 # Traits
 
-trait 為Rust 語言特徵，告知Rust compiler 一個型別必須滿足的功能性
+trait 為 Rust 語言特徵，告知 Rust compiler 一個型別必須滿足的功能性。
 
-記得提過的 `impl` 關鍵字，用在使用[method syntax][methodsyntax]
+記得提過的 `impl` 關鍵字，用在使用 [method syntax][methodsyntax] 
 呼叫函數：
 
 ```rust
@@ -21,8 +21,8 @@ impl Circle {
 
 [methodsyntax]: method-syntax.html
 
-Traits 很相似，除了我們首先先定義包含一個函式特徵的trait，接著為型別實作該trait
-在本例中，我們為型別 `Circle` 實作 trait `HasArea`：
+Traits 很相似，除了我們首先先定義包含一個函式特徵的 trait ，接著為型別實作該 trait 
+在本例中，我們為型別 `Circle` 實作 trait `HasArea` ：
 
 ```rust
 struct Circle {
@@ -43,11 +43,11 @@ impl HasArea for Circle {
 ```
 
 可以看到，`trait` 區塊和 `impl` 區塊看起來十分相似，但只需定義型別特徵，不需要定義方法本體
-當我們 `impl` 一個trait 時，使用 `impl Trait for Item` 而非 `impl Item`。
+當我們 `impl` 一個 trait 時，使用 `impl Trait for Item` 而非 `impl Item`。
 
 ## 泛型函式的 Trait 限制
 
-Traits 保證一個型別應有的行為，因此非常有用，泛型函式能利用 trait 作為[限制(bound)][bounds]
+Traits 保證一個型別應有的行為，因此非常有用，泛型函式能利用 trait 作為 [限制][bounds]（bound）
 用以限制他們接受的型別。
 下面的函式無法成功編譯：
 
@@ -66,7 +66,7 @@ error: no method named `area` found for type `T` in the current scope
 ```
 
 因為型別 `T` 可以為任何型態，我們無法保證它一定實作了 `area` 方法，但我們可以對泛型 `T`
-加上trait 限制，確保它實作該方法：
+加上 trait 限制，確保它實作該方法：
 
 ```rust
 # trait HasArea {
@@ -81,7 +81,7 @@ fn print_area<T: HasArea>(shape: T) {
 因為 trait 定義了函式特徵，我們可以確認任何實作了 `HasArea` trait 的型別
 一定有 `.area()` 方法。
 
-以下是修改後，說明trait bound 如何運作的例子
+以下是修改後，說明 trait bound 如何運作的例子：
 
 ```rust
 trait HasArea {
@@ -141,7 +141,7 @@ This shape has an area of 3.141593
 This shape has an area of 1
 ```
 
-如你所見，`print_area` 是泛型同時我確保我們傳入正確的型別
+如你所見， `print_area` 是泛型同時我確保我們傳入正確的型別
 如果我們傳入不正確的型別：
 
 ```rust,ignore
@@ -201,13 +201,13 @@ impl<T: PartialEq> Rectangle<T> { ... }
 
 我們定義一個新的結構體 `Rectangle`，能夠接受任意精確度的數字-幾乎可算是任意型別-
 只要能夠比較是否相等，我們是否能對其他結構體 `HasArea`、`Square`、`Circle`
-做相同的事？可以，但他們需要實作乘法，要實作它可以參考 [operator traits][operators-and-overloading].
+做相同的事？可以，但他們需要實作乘法，要實作它可以參考 [operator traits][operators-and-overloading]。
 
 [operators-and-overloading]: operators-and-overloading.html
 
 # 實作 traits 的規則
 
-到目前為止，我們只對結構體加上 trait 實作，但我們可以對任何型別實作 trait
+到目前為止，我們只對結構體加上 trait 實作，但我們可以對任何型別實作 trait，
 技術上來說，我們「可以」對 `i32` 實作 `HasArea`：
 
 ```rust
@@ -230,8 +230,8 @@ impl HasArea for i32 {
 
 這看起來有點像毫無規則的「瘋狂西部大拓荒」，但實際上實作 trait 時有兩條規則
 
-第一：實作的trait 必須在你定義的有效範圍，否則無法實作
-這裡有個例子：標準函式庫提供了[`Write`][write] trait，對 `File`s 新增 I/O 用的功能
+第一：實作的trait 必須在你定義的有效範圍，否則無法實作。
+這裡有個例子：標準函式庫提供了　[`Write`][write] trait　，對 `File`s 新增 I/O 用的功能
 `File` 在預設並沒有這些方法：
 
 [write]: ../std/io/trait.Write.html
@@ -243,7 +243,7 @@ let result = f.write(buf);
 # result.unwrap(); // ignore the error
 ```
 
-以下為編譯錯諤：
+以下為編譯錯誤：
 
 ```text
 error: type `std::fs::File` does not implement any method in scope named `write`
@@ -262,7 +262,7 @@ let result = f.write(buf);
 # result.unwrap(); // ignore the error
 ```
 
-即可成功編譯
+即可成功編譯。
 
 這表示即便有人做了對 `i32` 新增一個方法的蠢事，它也不會影響到你，除非你引入該 trait
 
@@ -281,7 +281,7 @@ let result = f.write(buf);
 
 # 多重 trait 限制
 
-上文已經我們可以使用trait 限制泛型參數：
+上文已經我們可以使用 trait 限制泛型參數：
 
 ```rust
 fn foo<T: Clone>(x: T) {
@@ -289,7 +289,7 @@ fn foo<T: Clone>(x: T) {
 }
 ```
 
-若需要超過一個限制，可以使用 `+`:
+若需要超過一個限制，可以使用 `+` :
 
 ```rust
 use std::fmt::Debug;
@@ -318,7 +318,7 @@ fn foo<T: Clone, K: Clone + Debug>(x: T, y: K) {
 
 限制語法卡在中間，分隔了最左的函式名稱與最右的參數列：
 
-Rust 的解法為'`where` 子句'：
+Rust 的解法為「`where` 子句」：
 
 ```rust
 use std::fmt::Debug;
@@ -341,8 +341,8 @@ fn main() {
 }
 ```
 
-`foo()` 用了先前的語法，`bar()` 則使用 `where` 子句
-需要做的僅是在參數列後加入 `where`，並將限制從型別參數中移出
+`foo()` 用了先前的語法 `bar()` 則使用 `where` 子句，
+需要做的僅是在參數列後加入 `where` ，並將限制從型別參數中移出，
 對更長的限制列可以上空白：
 
 ```rust
@@ -358,7 +358,7 @@ fn bar<T, K>(x: T, y: K)
 }
 ```
 
-這個彈性能讓複雜的語法更加清楚
+這個彈性能讓複雜的語法更加清楚。
 
 `where` 並不僅是更簡單的語法，例如：
 
@@ -386,10 +386,15 @@ fn inverse<T>() -> T
 
 這展示 `where` 額外的特性，它們除了型別參數 `T`，亦可限制型別（範例中的 `i32`)
 在範例中，`i32` 必須實作 `ConvertTo<T>`，這裡的 `where` 限制 `T`而不是定義 `i32`是什麼
+This shows off the additional feature of `where` clauses: they allow bounds
+on the left-hand side not only of type parameters `T`, but also of types
+(`i32` in this case). In this example, `i32` must implement
+`ConvertTo<T>`. Rather than defining what `i32` is (since that's obvious), the
+`where` clause here constrains `T`.
 
 # 預設方法
 
-如果已知一般的實作是如何，可在trait 中加入預設方法，例如
+如果已知一般的實作是如何，可在 trait 中加入預設方法，例如
 `is_invalid()` 和　`is_valid()` 是相反的：
 
 ```rust
@@ -453,7 +458,7 @@ trait FooBar : Foo {
 }
 ```
 
-實作 `FooBar` 必須同時實作 `Foo`，像這樣：
+實作 `FooBar` 必須同時實作 `Foo` ，像這樣：
 
 ```rust
 # trait Foo {
@@ -481,7 +486,7 @@ error: the trait `main::Foo` is not implemented for the type `main::Baz` [E0277]
 
 # 推導
 
-重複實作例如 `Debug` 和`Default` 相當無聊，因此Rust 提供了[屬性][attributes]
+重複實作例如 `Debug` 和`Default` 相當無聊，因此Rust 提供了 [屬性][attributes]
 讓Rust 自動為你實作這些 traits：
 
 ```rust
