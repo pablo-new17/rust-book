@@ -1,26 +1,27 @@
-% Method Syntax
+# 方法語法（Method Syntax）
 
-Functions are great, but if you want to call a bunch of them on some data, it
-can be awkward. Consider this code:
+
+函式（functions）非常好用，但是如果當你想要在一些資料上呼叫一堆函式時，它並不是那麼方便。
+看看以下的程式碼：
 
 ```rust,ignore
 baz(bar(foo));
 ```
 
-We would read this left-to-right, and so we see ‘baz bar foo’. But this isn’t the
-order that the functions would get called in, that’s inside-out: ‘foo bar baz’.
-Wouldn’t it be nice if we could do this instead?
+我們可以從左讀到右，然後我們就會看到「baz bar foo」的結果。
+但這樣的順序並不是函式被呼叫的次序，函式的呼叫是由內而外的：「foo bar baz」才對。
+如果我們能像以下這樣不是很好嗎？
 
 ```rust,ignore
 foo.bar().baz();
 ```
 
-Luckily, as you may have guessed with the leading question, you can! Rust provides
-the ability to use this ‘method call syntax’ via the `impl` keyword.
+幸運的是，正如你所猜的那樣，的確可以這樣做！
+Rust 透過 `impl` 關鍵字提供了「方法呼叫語法」（method call syntax）的功能。
 
-# Method calls
+## 方法呼叫
 
-Here’s how it works:
+這是它的運作方式：
 
 ```rust
 struct Circle {
@@ -41,23 +42,19 @@ fn main() {
 }
 ```
 
-This will print `12.566371`.
+這會印出 `12.566371`。
 
-We’ve made a `struct` that represents a circle. We then write an `impl` block,
-and inside it, define a method, `area`.
+我們建立一個代表園圈的 `struct`。
+然後撰寫一個 `impl` 區塊，在其中定義一個方法 `area`。
 
-Methods take a special first parameter, of which there are three variants:
-`self`, `&self`, and `&mut self`. You can think of this first parameter as
-being the `foo` in `foo.bar()`. The three variants correspond to the three
-kinds of things `foo` could be: `self` if it’s a value on the stack,
-`&self` if it’s a reference, and `&mut self` if it’s a mutable reference.
-Because we took the `&self` parameter to `area`, we can use it like any
-other parameter. Because we know it’s a `Circle`, we can access the `radius`
-like we would with any other `struct`.
+方法的第一個參數比較特別，它有三種變體：`self`、`&self` 及 `&mut self`。
+你可以把第一個參數想成 `foo.bar()` 中的 `foo`。
+而三種不同的變體則對應到三種可能的 `foo` 類型：如果是堆疊中的一個值就使用 `self`；如果是 reference 就使用 `&self`；如果是可變 reference 就使用 `&mut self`。
+範例中因為 `area` 使用 `&self` 作為參數，我們可以像使用其他參數一樣使用它。
+而我們清楚它是個 `Circle`，所以我們可以存取它的 `radius`。
 
-We should default to using `&self`, as you should prefer borrowing over taking
-ownership, as well as taking immutable references over mutable ones. Here’s an
-example of all three variants:
+我們預設應該使用 `&self`，因為與其取得所有權，你應該更傾向使用借用（borrowing），正如同與其使用可變 references，應該更傾向使用不可變 reference。
+以下是全部三種變體的範例：
 
 ```rust
 struct Circle {
@@ -81,8 +78,8 @@ impl Circle {
 }
 ```
 
-You can use as many `impl` blocks as you’d like. The previous example could
-have also been written like this:
+你可以盡情使用多個 `impl` 區塊。
+所以上述範例也能改寫成這樣：
 
 ```rust
 struct Circle {
@@ -110,11 +107,12 @@ impl Circle {
 }
 ```
 
-# Chaining method calls
+## 鍊接方法呼叫（Chaining method calls）
 
-So, now we know how to call a method, such as `foo.bar()`. But what about our
-original example, `foo.bar().baz()`? This is called ‘method chaining’. Let’s
-look at an example:
+所以現在我們了解如何呼叫方法了，像是 `foo.bar()` 這樣。
+但是最一開始的那個例子 `foo.bar().baz()` 呢？
+這個被稱為「方法鍊接」（method chaining）。
+讓我們來看個例子：
 
 ```rust
 struct Circle {
@@ -142,7 +140,7 @@ fn main() {
 }
 ```
 
-Check the return type:
+注意回傳值的型別：
 
 ```rust
 # struct Circle;
@@ -151,13 +149,13 @@ fn grow(&self, increment: f64) -> Circle {
 # Circle } }
 ```
 
-We say we’re returning a `Circle`. With this method, we can grow a new
-`Circle` to any arbitrary size.
+我們回傳了一個 `Circle`。
+透過這個方法，我們可以把 `Circle` 成長到任意的大小。
 
-# Associated functions
+## 關聯函式（Associated functions）
 
-You can also define associated functions that do not take a `self` parameter.
-Here’s a pattern that’s very common in Rust code:
+你也能定義不需要 `self` 參數的關聯函式。
+這在 Rust 中是非常常見的模式：
 
 ```rust
 struct Circle {
@@ -181,18 +179,17 @@ fn main() {
 }
 ```
 
-This ‘associated function’ builds a new `Circle` for us. Note that associated
-functions are called with the `Struct::function()` syntax, rather than the
-`ref.method()` syntax. Some other languages call associated functions ‘static
-methods’.
+這個「關聯函式」（associated function）替我們建立了一個新的 `Circle`。
+請注意關聯函式是透過 `Struct::function()` 語法被呼叫的，而不是透過 `ref.method()` 語法。
+一些其他程式語言會把關聯函式稱為「靜態方法」（static methods）。
 
-# Builder Pattern
+## 生成器模式（Builder Pattern）
 
-Let’s say that we want our users to be able to create `Circle`s, but we will
-allow them to only set the properties they care about. Otherwise, the `x`
-and `y` attributes will be `0.0`, and the `radius` will be `1.0`. Rust doesn’t
-have method overloading, named arguments, or variable arguments. We employ
-the builder pattern instead. It looks like this:
+我們希望使用者可以建立 `Circle`，而且我們將允許他們只設定他們所關心的屬性。
+例如 `x` 和 `y` 是 `0.0`，而 `radius` 是 `1.0`。
+Rust 並沒有方法重載、命名參數、或可變參數的功能。
+但我們利用生成器模式（Builder Pattern）來取代。
+它看起來像這樣：
 
 ```rust
 struct Circle {
@@ -251,12 +248,12 @@ fn main() {
 }
 ```
 
-What we’ve done here is make another `struct`, `CircleBuilder`. We’ve defined our
-builder methods on it. We’ve also defined our `area()` method on `Circle`. We
-also made one more method on `CircleBuilder`: `finalize()`. This method creates
-our final `Circle` from the builder. Now, we’ve used the type system to enforce
-our concerns: we can use the methods on `CircleBuilder` to constrain making
-`Circle`s in any way we choose.
+我們在此處又建立了另一個名為 `CircleBuilder` 的 `struct`。
+我們替它定義了生成器方法（builder methods）。
+我們也定義了 `Circle` 上的 `area()` 方法。
+另外，我們也替 `CircleBuilder` 多定義了一個方法：`finalize()`。
+這個方法會從生成器產生最終的 `Circle`。
+現在我們可以使用型別系統來執行我們所關心的事：使用 `CircleBuilder` 上的方法來產生我們所想要的 `Circle`。
 
 
 > *commit 6ba9520*

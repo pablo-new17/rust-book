@@ -18,6 +18,7 @@ boolean                | 布林                          | 參考：[維基百�
 bounds-check           | 邊界檢查                      | 參考：[維基百科][bounds-check]
 borrowing              | 借用                          |
 bug                    | 程式錯誤                      |
+Builder Pattern        | 生成器模式                    | 參考：[維基百科][Builder Pattern]
 byte                   | 位元組                        | 參考：[維基百科][byte]
 camel case             | 駝峰式大小寫                  | 參考：[維基百科][camel case]
 collection             | 集合                          | 參考：[維基百科][collection]
@@ -67,6 +68,7 @@ mutability             | 可變性                        |
 mutation               | 可變數                        |
 namespace              | 命名空間                      | 參考：[維基百科][namespace]
 operators              | 運算子                        | 參考：[維基百科][operators]
+overloading            | 重載                          | 參考：[維基百科][overloading]
 ownership              | 所有權                        |
 package                | 套件                          | 參考：[維基百科][package]
 parse                  | 分析、分析語法                |
@@ -116,6 +118,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [bounds-check]: https://zh.wikipedia.org/zh-tw/%E8%BE%B9%E7%95%8C%E6%A3%80%E6%9F%A5
 [bracket]: https://zh.wikipedia.org/zh-tw/%E6%8B%AC%E5%8F%B7
 [byte]: https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82
+[Builder Pattern]: https://zh.wikipedia.org/zh-tw/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F
 [camel case]: https://zh.wikipedia.org/zh-tw/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB
 [collection]: https://zh.wikipedia.org/zh-tw/%E9%9B%86%E5%90%88_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 [concurrency]: https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E8%AE%A1%E7%AE%97
@@ -143,6 +146,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [multiple dispatch]: https://zh.wikipedia.org/wiki/%E5%A4%9A%E5%88%86%E6%B4%BE
 [namespace]: https://zh.wikipedia.org/zh-tw/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4
 [operators]: https://zh.wikipedia.org/zh-tw/C%E5%92%8CC%2B%2B%E9%81%8B%E7%AE%97%E5%AD%90
+[overloading]: https://zh.wikipedia.org/zh-tw/%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD
 [package]: https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85
 [parser]: https://zh.wikipedia.org/zh-tw/%E8%AA%9E%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8
 [pattern]: https://zh.wikipedia.org/zh-tw/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA)

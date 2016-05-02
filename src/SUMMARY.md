@@ -18,7 +18,7 @@
     * [枚舉](enums.md)
     * [Match](match.md)
     * [模式](patterns.md)
-    * [Method Syntax](method-syntax.md)
+    * [方法語法](method-syntax.md)
     * [向量](vectors.md)
     * [字串](strings.md)
     * [泛型](generics.md)
