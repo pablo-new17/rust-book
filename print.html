@@ -3993,8 +3993,7 @@ impl&lt;T&gt; Point&lt;T&gt; {
 </blockquote>
 <h1>Traits</h1>
 <p>trait 為 Rust 語言特徵，告知 Rust compiler 一個型別必須滿足的功能性。</p>
-<p>記得提過的 <code>impl</code> 關鍵字，用在使用 <a href="method-syntax.html">method syntax</a>
-呼叫函數：</p>
+<p>回想一下使用 <a href="method-syntax.html">方法語法</a> 呼叫函式時用過的 <code>impl</code> 關鍵字：</p>
 <pre><code class="language-rust">struct Circle {
     x: f64,
     y: f64,
@@ -4007,8 +4006,8 @@ impl Circle {
     }
 }
 </code></pre>
-<p>Traits 很相似，除了我們首先先定義包含一個函式特徵的 trait ，接著為型別實作該 trait
-在本例中，我們為型別 <code>Circle</code> 實作 trait <code>HasArea</code> ：</p>
+<p>Traits 很相似，除了我們首先要定義包含一個函式特徵的 trait，接著為型別實作該 trait。
+在本例中，我們為型別 <code>Circle</code> 實作 trait <code>HasArea</code>：</p>
 <pre><code class="language-rust">struct Circle {
     x: f64,
     y: f64,
@@ -4025,10 +4024,10 @@ impl HasArea for Circle {
     }
 }
 </code></pre>
-<p>可以看到，<code>trait</code> 區塊和 <code>impl</code> 區塊看起來十分相似，但只需定義型別特徵，不需要定義方法本體
+<p>可以看到，<code>trait</code> 區塊和 <code>impl</code> 區塊看起來十分相似，但只需定義型別特徵，不需要定義方法本體。
 當我們 <code>impl</code> 一個 trait 時，使用 <code>impl Trait for Item</code> 而非 <code>impl Item</code>。</p>
 <h2>泛型函式的 Trait 限制</h2>
-<p>Traits 保證一個型別應有的行為，因此非常有用，泛型函式能利用 trait 作為 <a href="glossary.html#bounds">限制</a>（bound）
+<p>Traits 保證一個型別應有的行為，因此非常有用，泛型函式能利用 trait 作為 <a href="glossary.html#%E7%95%8C%E7%B7%9A%EF%BC%88Bounds%EF%BC%89">界線</a>（bound）。
 用以限制他們接受的型別。
 下面的函式無法成功編譯：</p>
 <pre><code class="language-rust,ignore">fn print_area&lt;T&gt;(shape: T) {
@@ -4038,8 +4037,8 @@ impl HasArea for Circle {
 <p>Rust 會警告：</p>
 <pre><code class="language-text">error: no method named `area` found for type `T` in the current scope
 </code></pre>
-<p>因為型別 <code>T</code> 可以為任何型態，我們無法保證它一定實作了 <code>area</code> 方法，但我們可以對泛型 <code>T</code>
-加上 trait 限制，確保它實作該方法：</p>
+<p>因為型別 <code>T</code> 可以為任何型態，我們無法保證它一定實作了 <code>area</code> 方法。
+但我們可以對泛型 <code>T</code> 加上 trait 限制，確保它實作該方法：</p>
 <pre><code class="language-rust"># trait HasArea {
 #     fn area(&amp;self) -&gt; f64;
 # }
@@ -4048,9 +4047,8 @@ fn print_area&lt;T: HasArea&gt;(shape: T) {
 }
 </code></pre>
 <p><code>&lt;T: HasArea&gt;</code> 語法意味：「任何實作了 <code>HasArea</code> trait 的型別」
-因為 trait 定義了函式特徵，我們可以確認任何實作了 <code>HasArea</code> trait 的型別
-一定有 <code>.area()</code> 方法。</p>
-<p>以下是修改後，說明 trait bound 如何運作的例子：</p>
+因為 trait 定義了函式特徵，我們可以確認任何實作了 <code>HasArea</code> trait 的型別一定有 <code>.area()</code> 方法。</p>
+<p>以下是修改後，說明 trait 限制如何運作的例子：</p>
 <pre><code class="language-rust">trait HasArea {
     fn area(&amp;self) -&gt; f64;
 }
@@ -4104,15 +4102,15 @@ fn main() {
 <pre><code class="language-text">This shape has an area of 3.141593
 This shape has an area of 1
 </code></pre>
-<p>如你所見， <code>print_area</code> 是泛型同時我確保我們傳入正確的型別
+<p>如你所見， <code>print_area</code> 是泛型，同時又能確保我們傳入正確的型別。
 如果我們傳入不正確的型別：</p>
 <pre><code class="language-rust,ignore">print_area(5);
 </code></pre>
-<p>會造成編譯時期錯誤：</p>
+<p>會造成編譯期的錯誤：</p>
 <pre><code class="language-text">error: the trait `HasArea` is not implemented for the type `_` [E0277]
 </code></pre>
 <h2>泛型結構體的 Trait 限制</h2>
-<p>泛型結構體同樣能夠利用 trait 限制，需要做的只是在宣告型別參數時添加限制
+<p>泛型結構體同樣能夠利用 trait 限制，需要做的只是在宣告型別參數時添加限制。
 這裡有個新的型別 <code>Rectangle&lt;T&gt;</code> 和它的操作 <code>is_square()</code>：</p>
 <pre><code class="language-rust">struct Rectangle&lt;T&gt; {
     x: T,
@@ -4141,16 +4139,15 @@ fn main() {
     assert!(!r.is_square());
 }
 </code></pre>
-<p><code>is_square()</code> 需要確認邊是否相等，因此邊的型別一定要實作 trait
-[<code>core::cmp::PartialEq</code>]<a href="../core/cmp/trait.PartialEq.html">PartialEq</a>：</p>
+<p><code>is_square()</code> 需要確認邊是否相等，因此邊的型別一定要實作 trait [<code>core::cmp::PartialEq</code>]<a href="https://doc.rust-lang.org/core/cmp/trait.PartialEq.html">PartialEq</a>：</p>
 <pre><code class="language-ignore">impl&lt;T: PartialEq&gt; Rectangle&lt;T&gt; { ... }
 </code></pre>
-<p>現在，一個 rectangle 可用任何可以比較是否相等的型別來定義</p>
-<p>我們定義一個新的結構體 <code>Rectangle</code>，能夠接受任意精確度的數字-幾乎可算是任意型別-
-只要能夠比較是否相等，我們是否能對其他結構體 <code>HasArea</code>、<code>Square</code>、<code>Circle</code>
-做相同的事？可以，但他們需要實作乘法，要實作它可以參考 <a href="operators-and-overloading.html">operator traits</a>。</p>
-<h1>實作 traits 的規則</h1>
-<p>到目前為止，我們只對結構體加上 trait 實作，但我們可以對任何型別實作 trait，
+<p>現在，一個 rectangle 可用任何可以比較是否相等的型別來定義。</p>
+<p>我們定義一個新的結構體 <code>Rectangle</code>，能夠接受任意精確度的數字，幾乎可說是任意型別，只要它能比較是否相等。
+我們是否能對其他結構體 <code>HasArea</code>、<code>Square</code>、<code>Circle</code> 做相同的事？
+可以，但他們需要實作乘法，要實作它可以參考 <a href="operators-and-overloading.html">operator traits</a>。</p>
+<h2>實作 traits 的規則</h2>
+<p>到目前為止，我們只對結構體加上 trait 實作，但我們可以對任何型別實作 trait。
 技術上來說，我們「可以」對 <code>i32</code> 實作 <code>HasArea</code>：</p>
 <pre><code class="language-rust">trait HasArea {
     fn area(&amp;self) -&gt; f64;
@@ -4166,11 +4163,11 @@ impl HasArea for i32 {
 
 5.area();
 </code></pre>
-<p>儘管可以這麼做，對這類基本型別實作方法並不算是好的風格</p>
-<p>這看起來有點像毫無規則的「瘋狂西部大拓荒」，但實際上實作 trait 時有兩條規則</p>
-<p>第一：實作的trait 必須在你定義的有效範圍，否則無法實作。
-這裡有個例子：標準函式庫提供了　[<code>Write</code>]<a href="../std/io/trait.Write.html">write</a> trait　，對 <code>File</code>s 新增 I/O 用的功能
-<code>File</code> 在預設並沒有這些方法：</p>
+<p>儘管可以這麼做，對這類基本型別實作方法並不算是好的風格。</p>
+<p>這看起來有點像毫無規則的「瘋狂西部大拓荒」，但實際上實作 trait 時有兩條規則。</p>
+<p>第一：實作的trait 必須在你定義的有效範圍中，否則無法實作。
+這裡有個例子：標準函式庫提供了 <a href="https://doc.rust-lang.org/std/io/trait.Write.html">Write</a> trait　，對 <code>File</code> 新增 I/O 用的功能。
+<code>File</code> 預設並沒有這些方法：</p>
 <pre><code class="language-rust,ignore">let mut f = std::fs::File::open(&quot;foo.txt&quot;).expect(&quot;Couldn’t open foo.txt&quot;);
 let buf = b&quot;whatever&quot;; // byte string literal. buf: &amp;[u8; 8]
 let result = f.write(buf);
@@ -4181,7 +4178,7 @@ let result = f.write(buf);
 let result = f.write(buf);
                ^~~~~~~~~~
 </code></pre>
-<p>我們需要先 <code>use</code> <code>Write</code> trait：</p>
+<p>我們需要先 <code>use</code> 這個 <code>Write</code> trait：</p>
 <pre><code class="language-rust,ignore">use std::io::Write;
 
 let mut f = std::fs::File::open(&quot;foo.txt&quot;).expect(&quot;Couldn’t open foo.txt&quot;);
@@ -4189,22 +4186,22 @@ let buf = b&quot;whatever&quot;;
 let result = f.write(buf);
 # result.unwrap(); // ignore the error
 </code></pre>
-<p>即可成功編譯。</p>
-<p>這表示即便有人做了對 <code>i32</code> 新增一個方法的蠢事，它也不會影響到你，除非你引入該 trait</p>
-<p>另外一個限制為：你實作的trait 和 type，其中一個必須是你定義的，更精確的說
-其中一個一定要和寫 <code>impl</code> 同個crate 中定義，關於 Rust 模組和套件系統的資訊，請見
-<a href="crates-and-modules.html">crates and modules</a>。</p>
-<p>我們可以對 <code>i32</code> 實作 <code>HasArea</code>，因為我們定義自己了 <code>HasArea</code>，但我們無法
-對 <code>i32</code> 實作Rust 提供的 <code>ToString</code>，因為無論 trait 或型別都不是我們這個crate 定義的</p>
-<p>最後一件關於 traits 的事：包含trait限制的泛型函式使用'單型'（monomorphization：「Mono」為單，「morph」指型態）
-因些他們是靜態分派，要知道更多細節請參考 <a href="trait-objects.html">trait objects</a></p>
-<h1>多重 trait 限制</h1>
+<p>如此即可成功編譯。</p>
+<p>這表示即便有人做了對 <code>i32</code> 新增一個方法的蠢事，它也不會影響到你，除非你使用該 trait。</p>
+<p>另外一個限制為：trait 或實作的的型別，其中之一必須是你所定義的。
+更精確的說，這兩者之一必須要和你所寫的 <code>impl</code> 在同個 crate 中定義。
+關於 Rust 模組和套件系統的資訊，請見 <a href="crates-and-modules.html">crates and modules</a> 章節。</p>
+<p>我們可以對 <code>i32</code> 實作 <code>HasArea</code>，因為我們定義自己了 <code>HasArea</code>。
+但我們無法對 <code>i32</code> 實作 Rust 提供的 <code>ToString</code>，因為無論 trait 或型別都不是我們的 crate 所定義的。</p>
+<p>最後一件關於 traits 的事：包含 trait 限制的泛型函式使用「單型」（monomorphization：「Mono」為單，「morph」指型態），
+因些他們是靜態分派，要知道更多細節請參考 <a href="trait-objects.html">trait objects</a> 章節。</p>
+<h2>多重 trait 限制</h2>
 <p>上文已經我們可以使用 trait 限制泛型參數：</p>
 <pre><code class="language-rust">fn foo&lt;T: Clone&gt;(x: T) {
     x.clone();
 }
 </code></pre>
-<p>若需要超過一個限制，可以使用 <code>+</code> :</p>
+<p>若需要一個以上的限制，可以使用 <code>+</code>:</p>
 <pre><code class="language-rust">use std::fmt::Debug;
 
 fn foo&lt;T: Clone + Debug&gt;(x: T) {
@@ -4212,8 +4209,8 @@ fn foo&lt;T: Clone + Debug&gt;(x: T) {
     println!(&quot;{:?}&quot;, x);
 }
 </code></pre>
-<p>現在型別 <code>T</code> 需要 <code>Clone</code> 和 <code>Debug</code> traits</p>
-<h1>Where 子句</h1>
+<p>現在型別 <code>T</code> 需要 <code>Clone</code> 和 <code>Debug</code> traits。</p>
+<h2>Where 子句</h2>
 <p>撰寫少量泛型和 trait 限制的函式不算大問題，但當數量增加時，語法即變得不簡潔：</p>
 <pre><code class="language-rust">use std::fmt::Debug;
 
@@ -4223,7 +4220,7 @@ fn foo&lt;T: Clone, K: Clone + Debug&gt;(x: T, y: K) {
     println!(&quot;{:?}&quot;, y);
 }
 </code></pre>
-<p>限制語法卡在中間，分隔了最左的函式名稱與最右的參數列：</p>
+<p>限制語法卡在中間，分隔了最左的函式名稱與最右的參數列。</p>
 <p>Rust 的解法為「<code>where</code> 子句」：</p>
 <pre><code class="language-rust">use std::fmt::Debug;
 
@@ -4244,9 +4241,9 @@ fn main() {
     bar(&quot;Hello&quot;, &quot;world&quot;);
 }
 </code></pre>
-<p><code>foo()</code> 用了先前的語法 <code>bar()</code> 則使用 <code>where</code> 子句，
-需要做的僅是在參數列後加入 <code>where</code> ，並將限制從型別參數中移出，
-對更長的限制列可以上空白：</p>
+<p>範例中 <code>foo()</code> 用了先前的語法，<code>bar()</code> 則使用 <code>where</code> 子句。
+你所需要做的僅是在參數列後加入 <code>where</code>，並將限制從型別參數中移出。
+對更長的限制列則可加入空白：</p>
 <pre><code class="language-rust">use std::fmt::Debug;
 
 fn bar&lt;T, K&gt;(x: T, y: K)
@@ -4259,7 +4256,8 @@ fn bar&lt;T, K&gt;(x: T, y: K)
 }
 </code></pre>
 <p>這個彈性能讓複雜的語法更加清楚。</p>
-<p><code>where</code> 並不僅是更簡單的語法，例如：</p>
+<p><code>where</code> 並不僅讓語法變的更簡單，它還更加強大。
+例如：</p>
 <pre><code class="language-rust">trait ConvertTo&lt;Output&gt; {
     fn convert(&amp;self) -&gt; Output;
 }
@@ -4280,24 +4278,27 @@ fn inverse&lt;T&gt;() -&gt; T
     42.convert()
 }
 </code></pre>
-<p>這展示 <code>where</code> 額外的特性，它們除了型別參數 <code>T</code>，亦可限制型別（範例中的 <code>i32</code>)
-在範例中，<code>i32</code> 必須實作 <code>ConvertTo&lt;T&gt;</code>，這裡的 <code>where</code> 限制 <code>T</code>而不是定義 <code>i32</code>是什麼
+<p>這凸顯了 <code>where</code> 子句額外的功能：它允許限制的左邊不僅是型別參數 <code>T</code>，也可以是任意型別（範例中為 <code>i32</code>）。
+在這範例中，<code>i32</code> 必須實作 <code>ConvertTo&lt;T&gt;</code>。</p>
+<blockquote>
+<p>譯註：最後一段不知含義，故保留原文於此。
 This shows off the additional feature of <code>where</code> clauses: they allow bounds
 on the left-hand side not only of type parameters <code>T</code>, but also of types
 (<code>i32</code> in this case). In this example, <code>i32</code> must implement
 <code>ConvertTo&lt;T&gt;</code>. Rather than defining what <code>i32</code> is (since that's obvious), the
 <code>where</code> clause here constrains <code>T</code>.</p>
-<h1>預設方法</h1>
-<p>如果已知一般的實作是如何，可在 trait 中加入預設方法，例如
-<code>is_invalid()</code> 和　<code>is_valid()</code> 是相反的：</p>
+</blockquote>
+<h2>預設方法</h2>
+<p>如果已知一般的實作是如何，可在 trait 中加入預設方法。
+例如 <code>is_invalid()</code> 和　<code>is_valid()</code> 是相反的：</p>
 <pre><code class="language-rust">trait Foo {
     fn is_valid(&amp;self) -&gt; bool;
 
     fn is_invalid(&amp;self) -&gt; bool { !self.is_valid() }
 }
 </code></pre>
-<p>因為加上預設方法，實作 <code>Foo</code> 的人必須實作 <code>is_valid()</code> 但不需要實作 <code>is_invalid()</code>
-這樣的方法仍可被覆寫：</p>
+<p>因為已經加入了預設方法，實作 <code>Foo</code> 的人只需要實作 <code>is_valid()</code>，但不需實作 <code>is_invalid()</code>。
+這種預設方法仍可被覆寫：</p>
 <pre><code class="language-rust"># trait Foo {
 #     fn is_valid(&amp;self) -&gt; bool;
 #
@@ -4332,8 +4333,8 @@ assert!(!default.is_invalid()); // prints &quot;Called UseDefault.is_valid.&quot
 let over = OverrideDefault;
 assert!(over.is_invalid()); // prints &quot;Called OverrideDefault.is_invalid!&quot;
 </code></pre>
-<h1>繼承</h1>
-<p>有時，實作一個trait 要求實作另一個：</p>
+<h2>繼承</h2>
+<p>有時，實作一個 trait 會要求實作另一個：</p>
 <pre><code class="language-rust">trait Foo {
     fn foo(&amp;self);
 }
@@ -4342,7 +4343,7 @@ trait FooBar : Foo {
     fn foobar(&amp;self);
 }
 </code></pre>
-<p>實作 <code>FooBar</code> 必須同時實作 <code>Foo</code> ，像這樣：</p>
+<p>實作 <code>FooBar</code> 必須同時實作 <code>Foo</code>，像這樣：</p>
 <pre><code class="language-rust"># trait Foo {
 #     fn foo(&amp;self);
 # }
@@ -4362,9 +4363,9 @@ impl FooBar for Baz {
 <p>如果我們忘了實作 <code>Foo</code>，Rust 會告訴我們：</p>
 <pre><code class="language-text">error: the trait `main::Foo` is not implemented for the type `main::Baz` [E0277]
 </code></pre>
-<h1>推導</h1>
-<p>重複實作例如 <code>Debug</code> 和<code>Default</code> 相當無聊，因此Rust 提供了 <a href="attributes.html">屬性</a>
-讓Rust 自動為你實作這些 traits：</p>
+<h2>推導</h2>
+<p>不停的重複實作像是 <code>Debug</code> 和 <code>Default</code> 的 traits 相當無聊。
+因此Rust 提供了 <a href="attributes.html">屬性</a> 讓 Rust 自動替你實作這些 traits：</p>
 <pre><code class="language-rust">#[derive(Debug)]
 struct Foo;
 
@@ -4374,15 +4375,15 @@ fn main() {
 </code></pre>
 <p>不過，推導只適用在一些 traits 上：</p>
 <ul>
-<li>[<code>Clone</code>](../core/clone/trait.Clone.html)</li>
-<li>[<code>Copy</code>](../core/marker/trait.Copy.html)</li>
-<li>[<code>Debug</code>](../core/fmt/trait.Debug.html)</li>
-<li>[<code>Default</code>](../core/default/trait.Default.html)</li>
-<li>[<code>Eq</code>](../core/cmp/trait.Eq.html)</li>
-<li>[<code>Hash</code>](../core/hash/trait.Hash.html)</li>
-<li>[<code>Ord</code>](../core/cmp/trait.Ord.html)</li>
-<li>[<code>PartialEq</code>](../core/cmp/trait.PartialEq.html)</li>
-<li>[<code>PartialOrd</code>](../core/cmp/trait.PartialOrd.html)</li>
+<li>[<code>Clone</code>](https://doc.rust-lang.org/core/clone/trait.Clone.html)</li>
+<li>[<code>Copy</code>](https://doc.rust-lang.org/core/marker/trait.Copy.html)</li>
+<li>[<code>Debug</code>](https://doc.rust-lang.org/core/fmt/trait.Debug.html)</li>
+<li>[<code>Default</code>](https://doc.rust-lang.org/core/default/trait.Default.html)</li>
+<li>[<code>Eq</code>](https://doc.rust-lang.org/core/cmp/trait.Eq.html)</li>
+<li>[<code>Hash</code>](https://doc.rust-lang.org/core/hash/trait.Hash.html)</li>
+<li>[<code>Ord</code>](https://doc.rust-lang.org/core/cmp/trait.Ord.html)</li>
+<li>[<code>PartialEq</code>](https://doc.rust-lang.org/core/cmp/trait.PartialEq.html)</li>
+<li>[<code>PartialOrd</code>](https://doc.rust-lang.org/core/cmp/trait.PartialOrd.html)</li>
 </ul>
 <blockquote>
 <p><em>commit a559577</em></p>
