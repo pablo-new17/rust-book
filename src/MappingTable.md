@@ -48,6 +48,7 @@ fault                  | 錯誤                          |
 formalization          | 正規化                        |
 function               | 函式                          | 參考：[維基百科][function]
 generics               | 泛型                          | 參考：[維基百科][generics]
+identifier             | 標識符                        | 參考：[維基百科][identifier]
 index                  | 索引                          | 參考：[維基百科][index]
 instance               | 實體                          |
 iterative              | 疊代                          | 參考：[維基百科][iterative]
@@ -74,6 +75,7 @@ package                | 套件                          | 參考：[維基百�
 parse                  | 分析、分析語法                |
 parser                 | 語法分析器                    | 參考：[維基百科][parser]
 pattern                | 模式                          | 參考：[維基百科][pattern]
+pattern matching       | 模式                          | 參考：[中華民國資訊學會][pattern matching]
 plugins                | 外掛                          |
 pointer                | 指標                          | 參考：[維基百科][pointer]
 polymorphism           | 多型                          | 參考：[維基百科][polymorphism]
@@ -131,6 +133,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [heap]: https://zh.wikipedia.org/zh-tw/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
 [function]: https://zh.wikipedia.org/zh-tw/%E5%AD%90%E7%A8%8B%E5%BA%8F
 [generics]: https://zh.wikipedia.org/zh-tw/%E6%B3%9B%E5%9E%8B
+[identifier]: https://zh.wikipedia.org/wiki/%E6%A8%99%E8%AD%98%E7%AC%A6
 [index]: https://zh.wikipedia.org/zh-tw/%E7%B4%A2%E5%BC%95
 [integer]: https://zh.wikipedia.org/zh-tw/%E6%95%B4%E6%95%B0_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 [iterative]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3
@@ -150,6 +153,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [package]: https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85
 [parser]: https://zh.wikipedia.org/zh-tw/%E8%AA%9E%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8
 [pattern]: https://zh.wikipedia.org/zh-tw/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA)
+[pattern matching]: http://www.iicm.org.tw/term/termb_P.htm
 [pointer]: https://zh.wikipedia.org/zh-tw/%E6%8C%87%E6%A8%99_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
 [polymorphism]: https://zh.wikipedia.org/wiki/%E5%A4%9A%E5%9E%8B_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 [primitive type]: https://zh.wikipedia.org/zh-tw/%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5
