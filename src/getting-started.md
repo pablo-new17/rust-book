@@ -106,7 +106,7 @@ Rust 的支援程度被分為三級。每一級都有不同的保證。
 如果在 Linux 或 Mac 上，我們只需要開啟終端機並輸入：
 
 ```bash
-$ curl -sSf https://static.rust-lang.org/rustup.sh | sh
+$ curl https://sh.rustup.rs -sSf | sh
 ```
 
 這樣就會下載安裝腳本，然後開始安裝。當全部完成後，你將會看到：
