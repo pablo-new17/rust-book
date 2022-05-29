@@ -457,7 +457,8 @@ authors = [ "Your name <you@example.com>" ]
 
 ```bash
 $ cargo build
-   Compiling hello_world v0.0.1 (file:///home/yourname/projects/hello_world)
+   Compiling hello_world v0.0.1 (/home/\<username\>/projects/hello_world)
+   Finished dev [unoptimized + debuginfo] target(s) in 0.51s
 $ ./target/debug/hello_world
 Hello, world!
 ```
