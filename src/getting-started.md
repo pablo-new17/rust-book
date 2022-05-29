@@ -457,7 +457,7 @@ authors = [ "Your name <you@example.com>" ]
 
 ```bash
 $ cargo build
-   Compiling hello_world v0.0.1 (/home/\<username\>/projects/hello_world)
+   Compiling hello_world v0.0.1 (/home/<username>/projects/hello_world)
    Finished dev [unoptimized + debuginfo] target(s) in 0.51s
 $ ./target/debug/hello_world
 Hello, world!
@@ -469,6 +469,7 @@ Hello, world!
 
 ```bash
 $ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.00s
      Running `target/debug/hello_world`
 Hello, world!
 ```
@@ -479,8 +480,9 @@ Cargo 判斷檔案沒有更動，所以它直接去執行二進位執行檔。
 
 ```bash
 $ cargo run
-   Compiling hello_world v0.0.1 (file:///home/yourname/projects/hello_world)
-     Running `target/debug/hello_world`
+   Compiling hello_world v0.0.1 (/home/<username>/projects/hello_world)
+   Finished dev [unoptimized + debuginfo] target(s) in 0.18s
+    Running `target/debug/hello_world`
 Hello, world!
 ```
 
