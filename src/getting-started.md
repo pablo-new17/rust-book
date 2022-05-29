@@ -186,6 +186,9 @@ $ rustc --version
 
 你將會看到版本號碼、commit hash 及 commit 的日期。
 
+以我的為例：`rustc 1.61.0 (fe5b13d68 2022-05-18)`
+
+
 如果你成功了，代表 Rust 安裝成功了！恭喜你！
 
 如果沒有成功，而你是使用 Windows 作業系統，請確認 Rust 有設定在你的 %PATH% 系統環境變數內。
