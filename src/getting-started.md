@@ -156,6 +156,7 @@ Current installation options:
 2) Customize installation
 3) Cancel installation
 ```
+其中 $HOME 是你的個人目錄，一般為 /home/<username>
 
 接著按下 `1` 用內建的選項參數，接著按照提示安裝。
 
