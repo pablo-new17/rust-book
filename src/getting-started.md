@@ -112,19 +112,49 @@ $ curl https://sh.rustup.rs -sSf | sh
 這樣就會下載安裝腳本，然後開始安裝。當全部完成後，你將會看到：
 
 ```text
-Welcome to Rust.
+Welcome to Rust!
 
-This script will download the Rust compiler and its package manager, Cargo, and
-install them to /usr/local. You may install elsewhere by running this script
-with the --prefix=<path> option.
+This will download and install the official compiler for the Rust
+programming language, and its package manager, Cargo.
 
-The installer will run under ‘sudo’ and may ask you for your password. If you do
-not want the script to run ‘sudo’ then pass it the --disable-sudo flag.
+Rustup metadata and toolchains will be installed into the Rustup
+home directory, located at:
 
-You may uninstall later by running /usr/local/lib/rustlib/uninstall.sh,
-or by running this script again with the --uninstall flag.
+  $HOME/.rustup
 
-Continue? (y/N)
+This can be modified with the RUSTUP_HOME environment variable.
+
+The Cargo home directory located at:
+
+  $HOME/.cargo
+
+This can be modified with the CARGO_HOME environment variable.
+
+The cargo, rustc, rustup and other commands will be added to
+Cargo's bin directory, located at:
+
+  $HOME/.cargo/bin
+
+This path will then be added to your PATH environment variable by
+modifying the profile files located at:
+
+  $HOME/.profile
+  $HOME/.bashrc
+
+You can uninstall at any time with rustup self uninstall and
+these changes will be reverted.
+
+Current installation options:
+
+
+   default host triple: x86_64-unknown-linux-gnu
+     default toolchain: stable (default)
+               profile: default
+  modify PATH variable: yes
+
+1) Proceed with installation (default)
+2) Customize installation
+3) Cancel installation
 ```
 
 接著按下 `y` 表示同意，接著按照提示安裝。
@@ -142,6 +172,8 @@ Continue? (y/N)
 ```bash
 $ sudo /usr/local/lib/rustlib/uninstall.sh
 ```
+其中的 $HOME 是你的內定個人目錄，一般為 
+
 
 如果你是安裝 Windows 安裝檔來安裝的，請重新執行 `.msi` 檔，然後他就會出現移除的選項。
 
