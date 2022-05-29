@@ -157,7 +157,7 @@ Current installation options:
 3) Cancel installation
 ```
 
-接著按下 `y` 表示同意，接著按照提示安裝。
+接著按下 `1` 用內建的選項參數，接著按照提示安裝。
 
 ### 安裝在 Windows 上
 
