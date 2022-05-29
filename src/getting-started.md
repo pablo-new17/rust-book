@@ -156,9 +156,9 @@ Current installation options:
 2) Customize installation
 3) Cancel installation
 ```
-其中 $HOME 是你的個人目錄，一般為 /home/\<username\>
+其中的 $HOME 是你的內定個人目錄，一般為 /home/\<username\>
 
-接著按下 `1` 用內建的選項參數，接著按照提示安裝。
+接著按下 `1` 用內建的選項參數，接著按照提示安裝。 或 `2` 進行客製化安裝。
 
 ### 安裝在 Windows 上
 
@@ -173,8 +173,6 @@ Current installation options:
 ```bash
 $ sudo /usr/local/lib/rustlib/uninstall.sh
 ```
-其中的 $HOME 是你的內定個人目錄，一般為 
-
 
 如果你是安裝 Windows 安裝檔來安裝的，請重新執行 `.msi` 檔，然後他就會出現移除的選項。
 
